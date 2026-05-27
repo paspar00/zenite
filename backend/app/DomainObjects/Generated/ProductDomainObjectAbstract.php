@@ -37,6 +37,7 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
     final public const IS_HIGHLIGHTED = 'is_highlighted';
     final public const HIGHLIGHT_MESSAGE = 'highlight_message';
     final public const WAITLIST_ENABLED = 'waitlist_enabled';
+    final public const LOT_MODE_ENABLED = 'lot_mode_enabled';
 
     protected int $id;
     protected int $event_id;
@@ -65,6 +66,7 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
     protected bool $is_highlighted = false;
     protected ?string $highlight_message = null;
     protected ?bool $waitlist_enabled = null;
+    protected bool $lot_mode_enabled = false;
 
     public function toArray(): array
     {
@@ -96,6 +98,7 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
                     'is_highlighted' => $this->is_highlighted ?? null,
                     'highlight_message' => $this->highlight_message ?? null,
                     'waitlist_enabled' => $this->waitlist_enabled ?? null,
+                    'lot_mode_enabled' => $this->lot_mode_enabled ?? null,
                 ];
     }
 
@@ -394,5 +397,16 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
     public function getWaitlistEnabled(): ?bool
     {
         return $this->waitlist_enabled;
+    }
+
+    public function setLotModeEnabled(bool $lot_mode_enabled): self
+    {
+        $this->lot_mode_enabled = $lot_mode_enabled;
+        return $this;
+    }
+
+    public function getLotModeEnabled(): bool
+    {
+        return $this->lot_mode_enabled;
     }
 }

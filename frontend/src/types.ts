@@ -53,6 +53,8 @@ export interface RegisterAccountRequest extends AcceptInvitationRequest {
     gclid?: string | null;
     fbclid?: string | null;
     utm_raw?: Record<string, string> | null;
+    city?: string | null;
+    state?: string | null;
 }
 
 export interface ResetPasswordRequest {
@@ -107,6 +109,8 @@ export interface User {
     is_account_owner?: boolean;
     locale?: SupportedLocales;
     marketing_opted_in_at?: string | null;
+    city?: string | null;
+    state?: string | null;
 }
 
 export interface Account {
@@ -557,6 +561,7 @@ export interface Product {
     waitlist_enabled?: boolean | null;
     has_waiting_entries?: boolean;
     waitlist_entry_count?: number;
+    lot_mode_enabled?: boolean;
 }
 
 export interface ProductCategory {
@@ -849,6 +854,7 @@ export enum MessageType {
     TicketHolders = 'TICKET_HOLDERS',
     AllAttendees = 'ALL_ATTENDEES',
     OrderOwnersWithProduct = 'ORDER_OWNERS_WITH_PRODUCT',
+    OrderOwnersInEventRegion = 'ORDER_OWNERS_IN_EVENT_REGION',
 }
 
 export interface PromoCode {
