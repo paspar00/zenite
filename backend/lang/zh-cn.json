@@ -662,5 +662,15 @@
     "Stripe payment account not connected": "",
     "No completed paid orders on this account": "",
     "Event was created less than 24 hours ago": "",
-    "Review Message": ""
+    "Review Message": "",
+    "New event near you: :title": "您附近有新活动：:title",
+    "New event near you!": "您附近有新活动！",
+    "Hello, :name!": "你好，:name！",
+    "Hello!": "你好！",
+    "There is a new event happening near you:": "您附近正在举办一项新活动：",
+    "Date:": "日期：",
+    "Location:": "地点：",
+    "View event and buy tickets": "查看活动并购票",
+    "You are receiving this email because you registered on our platform and this event is happening near you.": "您收到此邮件是因为您已在我们的平台注册，且此活动正在您附近举行。",
+    "Unsubscribe": "退订"
 }

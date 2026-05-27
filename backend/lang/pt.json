@@ -662,5 +662,15 @@
     "Stripe payment account not connected": "",
     "No completed paid orders on this account": "",
     "Event was created less than 24 hours ago": "",
-    "Review Message": ""
+    "Review Message": "",
+    "New event near you: :title": "Novo evento perto de si: :title",
+    "New event near you!": "Novo evento perto de si!",
+    "Hello, :name!": "Ola, :name!",
+    "Hello!": "Ola!",
+    "There is a new event happening near you:": "Ha um novo evento a acontecer perto de si:",
+    "Date:": "Data:",
+    "Location:": "Local:",
+    "View event and buy tickets": "Ver evento e comprar bilhetes",
+    "You are receiving this email because you registered on our platform and this event is happening near you.": "Esta a receber este e-mail porque se registou na nossa plataforma e este evento esta a acontecer perto de si.",
+    "Unsubscribe": "Cancelar subscricao"
 }
