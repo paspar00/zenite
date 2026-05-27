@@ -1,7 +1,7 @@
 # Especificação Técnica e de Produto — Módulo de Marketing TicketHub
 
-**Versão:** 1.0  
-**Data:** 2026-05-25  
+**Versão:** 1.0
+**Data:** 2026-05-25
 **Plataforma base:** hi.events (Laravel 10 + React/Vite SSR)
 
 ---
@@ -305,7 +305,7 @@ Organizer seleciona segmento
 
 ### Esboço condicional (modelo mais simples: crédito por organizador, não resgatável)
 
-**`wallet_accounts`** — saldo por subscriber por organizador  
+**`wallet_accounts`** — saldo por subscriber por organizador
 **`wallet_transactions`** — ledger append-only (credit/debit)
 
 Regras mínimas:
