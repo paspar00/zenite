@@ -1,6 +1,7 @@
 <?php
 
 use HiEvents\Http\Actions\Accounts\CreateAccountAction;
+use HiEvents\Http\Actions\Marketing\UnsubscribeAction;
 use HiEvents\Http\Actions\Accounts\GetAccountAction;
 use HiEvents\Http\Actions\Accounts\Stripe\CreateStripeConnectAccountAction;
 use HiEvents\Http\Actions\Accounts\Stripe\GetStripeConnectAccountsAction;
@@ -53,6 +54,7 @@ use HiEvents\Http\Actions\Events\GetEventAction;
 use HiEvents\Http\Actions\Events\GetEventPublicAction;
 use HiEvents\Http\Actions\Events\GetEventsAction;
 use HiEvents\Http\Actions\Events\GetOrganizerEventsPublicAction;
+use HiEvents\Http\Actions\Events\GetAllEventsPublicAction;
 use HiEvents\Http\Actions\Events\Images\CreateEventImageAction;
 use HiEvents\Http\Actions\Events\Images\DeleteEventImageAction;
 use HiEvents\Http\Actions\Events\Images\GetEventImagesAction;
@@ -87,6 +89,7 @@ use HiEvents\Http\Actions\Orders\CancelOrderAction;
 use HiEvents\Http\Actions\Orders\DownloadOrderInvoiceAction;
 use HiEvents\Http\Actions\Orders\EditOrderAction;
 use HiEvents\Http\Actions\Orders\ExportOrdersAction;
+use HiEvents\Http\Actions\Orders\GetMyOrdersAction;
 use HiEvents\Http\Actions\Orders\GetOrderAction;
 use HiEvents\Http\Actions\Orders\GetOrdersAction;
 use HiEvents\Http\Actions\Orders\MarkOrderAsPaidAction;
@@ -215,6 +218,8 @@ use HiEvents\Http\Actions\Webhooks\EditWebhookAction;
 use HiEvents\Http\Actions\Webhooks\GetWebhookAction;
 use HiEvents\Http\Actions\Webhooks\GetWebhookLogsAction;
 use HiEvents\Http\Actions\Webhooks\GetWebhooksAction;
+use HiEvents\Http\Actions\Marketing\GetMarketingSubscribersAction;
+use HiEvents\Http\Actions\Marketing\GetGeoTargetingStatsAction;
 use Illuminate\Routing\Router;
 
 /** @var Router|Router $router */
@@ -249,6 +254,7 @@ $router->middleware(['auth:api'])->group(
 
         // Users
         $router->get('/users/me', GetMeAction::class);
+        $router->get('/users/me/orders', GetMyOrdersAction::class);
         $router->put('/users/me', UpdateMeAction::class);
         $router->post('/users', CreateUserAction::class);
         $router->get('/users', GetUsersAction::class);
@@ -294,6 +300,10 @@ $router->middleware(['auth:api'])->group(
         $router->get('/organizers/{organizer_id}/webhooks/{webhook_id}', GetOrganizerWebhookAction::class);
         $router->delete('/organizers/{organizer_id}/webhooks/{webhook_id}', DeleteOrganizerWebhookAction::class);
         $router->get('/organizers/{organizer_id}/webhooks/{webhook_id}/logs', GetOrganizerWebhookLogsAction::class);
+
+        // Marketing
+        $router->get('/organizers/{organizer_id}/marketing/subscribers', GetMarketingSubscribersAction::class);
+        $router->get('/organizers/{organizer_id}/events/{event_id}/marketing/geo-stats', GetGeoTargetingStatsAction::class);
 
         // Email Templates - Organizer level
         $router->get('/organizers/{organizerId}/email-templates', GetOrganizerEmailTemplatesAction::class);
@@ -493,6 +503,7 @@ $router->prefix('/admin')->middleware(['auth:api'])->group(
 $router->prefix('/public')->group(
     function (Router $router): void {
         // Events
+        $router->get('/events', GetAllEventsPublicAction::class);
         $router->get('/events/{event_id}', GetEventPublicAction::class);
 
         // Organizers
@@ -506,7 +517,7 @@ $router->prefix('/public')->group(
         // Orders
         $router->post('/events/{event_id}/order', CreateOrderActionPublic::class);
         $router->put('/events/{event_id}/order/{order_short_id}', CompleteOrderActionPublic::class);
-        $router->get('/events/{event_id}/order/{order_short_id}', GetOrderActionPublic::class);
+        $router->get('/events/{event_id}/order/{order_short_id}', GetOrderActionPublic::class)->middleware('throttle:30,1');
         $router->post('/events/{event_id}/order/{order_short_id}/abandon', AbandonOrderActionPublic::class);
         $router->post('/events/{event_id}/order/{order_short_id}/await-offline-payment', TransitionOrderToOfflinePaymentPublicAction::class);
         $router->get('/events/{event_id}/order/{order_short_id}/invoice', DownloadOrderInvoicePublicAction::class);
@@ -555,6 +566,9 @@ $router->prefix('/public')->group(
             $router->patch('/attendees/{attendee_short_id}', EditAttendeePublicAction::class)->middleware('throttle:self-service-edit');
             $router->post('/attendees/{attendee_short_id}/resend-ticket', ResendAttendeeTicketPublicAction::class)->middleware('throttle:self-service-email');
         });
+
+        // Unsubscribe (LGPD / marketing suppression)
+        $router->get('/unsubscribe/{emailEncoded}/{token}', UnsubscribeAction::class)->middleware('throttle:10,1');
 
         // Sitemap
         $router->get('/sitemap.xml', GetSitemapIndexAction::class);

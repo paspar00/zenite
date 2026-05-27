@@ -6,9 +6,12 @@ import {Helmet} from "react-helmet-async";
 import {NavLink, useRouteError} from "react-router";
 import {PoweredByFooter} from "../PoweredByFooter";
 import {getConfig} from '../../../utilites/config';
+import {useEffect} from "react";
 
 export const ErrorDisplay = () => {
     const error = useRouteError() as any;
+    const isDynamicImportError = error?.message
+        && /Failed to fetch dynamically imported module|Importing a module script failed|error loading dynamically imported module/i.test(error.message);
 
     const title = error?.status === 404
         ? t`Page not found`
@@ -19,6 +22,27 @@ export const ErrorDisplay = () => {
         : t`An error occurred while loading the page`;
 
     console.log('ErrorDisplay error:', error);
+
+    useEffect(() => {
+        if (!isDynamicImportError || typeof window === 'undefined') {
+            return;
+        }
+
+        const reloadKey = 'hi.events.dynamic-import-reload';
+        const currentPath = window.location.href;
+
+        try {
+            if (window.sessionStorage.getItem(reloadKey) === currentPath) {
+                return;
+            }
+
+            window.sessionStorage.setItem(reloadKey, currentPath);
+        } catch {
+            // Continue with the reload if storage is unavailable.
+        }
+
+        window.location.reload();
+    }, [isDynamicImportError]);
 
     return (
         <>
