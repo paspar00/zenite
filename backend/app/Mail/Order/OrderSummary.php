@@ -55,6 +55,7 @@ class OrderSummary extends BaseMail
                     'renderedBody' => $this->renderedTemplate->body,
                     'renderedCta' => $this->renderedTemplate->cta,
                     'eventSettings' => $this->eventSettings,
+                    'unsubscribeUrl' => $this->buildUnsubscribeUrl($this->order->getEmail(), $this->order->getAccountId()),
                 ]
             );
         }

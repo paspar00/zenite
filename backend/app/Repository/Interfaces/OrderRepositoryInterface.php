@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HiEvents\Repository\Interfaces;
 
+use HiEvents\DataTransferObjects\AddressDTO;
 use HiEvents\DomainObjects\OrderDomainObject;
 use HiEvents\DomainObjects\OrderItemDomainObject;
 use HiEvents\Http\DTO\QueryParamsDTO;
@@ -30,6 +31,12 @@ interface OrderRepositoryInterface extends RepositoryInterface
     public function findOrdersAssociatedWithProducts(int $eventId, array $productIds, array $orderStatuses): Collection;
 
     public function countOrdersAssociatedWithProducts(int $eventId, array $productIds, array $orderStatuses): int;
+
+    public function findCustomerOrdersByEmail(string $email): Collection;
+
+    public function findOrdersInEventRegion(int $accountId, AddressDTO $address): Collection;
+
+    public function countOrdersInEventRegion(int $accountId, AddressDTO $address): int;
 
     public function getAllOrdersForAdmin(
         ?string $search = null,

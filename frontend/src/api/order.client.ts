@@ -48,6 +48,17 @@ export interface ProductFormPayload {
     promo_code: string | null,
     affiliate_code?: string | null,
     session_identifier?: string,
+    utm_source?: string | null,
+    utm_medium?: string | null,
+    utm_campaign?: string | null,
+    utm_term?: string | null,
+    utm_content?: string | null,
+    utm_raw?: Record<string, string> | null,
+    referrer_url?: string | null,
+    landing_page?: string | null,
+    gclid?: string | null,
+    fbclid?: string | null,
+    attribution_session_id?: string | null,
 }
 
 export interface RefundOrderPayload {
@@ -57,6 +68,11 @@ export interface RefundOrderPayload {
 }
 
 export const orderClient = {
+    mine: async () => {
+        const response = await api.get<GenericDataResponse<Order[]>>('users/me/orders');
+        return response.data;
+    },
+
     all: async (eventId: IdParam, pagination: QueryFilters) => {
         const response = await api.get<GenericPaginatedResponse<Order>>(
             `events/${eventId}/orders` + queryParamsHelper.buildQueryString(pagination),
@@ -123,7 +139,8 @@ export const orderClientPublic = {
         eventId: number,
         orderShortId: string,
         includes: string[] = [],
-        sessionIdentifier?: string
+        sessionIdentifier?: string,
+        email?: string,
     ) => {
         const query = new URLSearchParams();
         if (includes.length > 0) {
@@ -131,6 +148,9 @@ export const orderClientPublic = {
         }
         if (sessionIdentifier) {
             query.append("session_identifier", sessionIdentifier);
+        }
+        if (email) {
+            query.append("email", email);
         }
 
         const response = await publicApi.get<GenericDataResponse<Order>>(

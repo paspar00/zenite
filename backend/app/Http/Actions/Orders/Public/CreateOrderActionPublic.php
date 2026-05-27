@@ -46,6 +46,17 @@ class CreateOrderActionPublic extends BaseAction
                 'products' => ProductOrderDetailsDTO::collectionFromArray($request->input('products')),
                 'session_identifier' => $sessionId,
                 'order_locale' => $this->localeService->getLocaleOrDefault($request->getPreferredLanguage()),
+                'utm_source' => $request->input('utm_source'),
+                'utm_medium' => $request->input('utm_medium'),
+                'utm_campaign' => $request->input('utm_campaign'),
+                'utm_term' => $request->input('utm_term'),
+                'utm_content' => $request->input('utm_content'),
+                'utm_raw' => $request->input('utm_raw') ? json_encode($request->input('utm_raw')) : null,
+                'referrer_url' => $request->input('referrer_url'),
+                'landing_page' => $request->input('landing_page'),
+                'gclid' => $request->input('gclid'),
+                'fbclid' => $request->input('fbclid'),
+                'attribution_session_id' => $request->input('attribution_session_id'),
             ])
         );
 

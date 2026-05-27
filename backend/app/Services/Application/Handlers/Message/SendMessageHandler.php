@@ -3,7 +3,9 @@
 namespace HiEvents\Services\Application\Handlers\Message;
 
 use Carbon\Carbon;
+use HiEvents\DataTransferObjects\AddressDTO;
 use HiEvents\DomainObjects\Enums\MessageTypeEnum;
+use HiEvents\DomainObjects\EventSettingDomainObject;
 use HiEvents\DomainObjects\MessageDomainObject;
 use HiEvents\DomainObjects\Status\MessageStatus;
 use HiEvents\Exceptions\AccountNotVerifiedException;
@@ -80,6 +82,9 @@ class SendMessageHandler
         $isScheduled = $messageData->scheduled_at !== null && !$messageData->is_test;
 
         $event = $this->eventRepository->findById($messageData->event_id);
+        $regionAddress = $messageData->type === MessageTypeEnum::ORDER_OWNERS_IN_EVENT_REGION
+            ? $this->getEventRegionAddress($messageData->event_id)
+            : null;
 
         $scheduledAtUtc = $messageData->scheduled_at
             ? DateHelper::convertToUTC($messageData->scheduled_at, $event->getTimezone())
@@ -119,6 +124,11 @@ class SendMessageHandler
                 'account_id' => $messageData->account_id,
                 'attendee_ids' => $messageData->attendee_ids,
                 'product_ids' => $messageData->product_ids,
+                'region_filters' => $regionAddress ? [
+                    'country' => $regionAddress->country,
+                    'state_or_region' => $regionAddress->state_or_region,
+                    'city' => $regionAddress->city,
+                ] : null,
             ],
         ]);
 
@@ -164,6 +174,10 @@ class SendMessageHandler
                 productIds: $messageData->product_ids ?? [],
                 orderStatuses: $messageData->order_statuses ?? ['COMPLETED'],
             ),
+            MessageTypeEnum::ORDER_OWNERS_IN_EVENT_REGION => $this->orderRepository->countOrdersInEventRegion(
+                accountId: $messageData->account_id,
+                address: $this->getEventRegionAddress($messageData->event_id),
+            ),
         };
     }
 
@@ -202,5 +216,26 @@ class SendMessageHandler
             'id' => $messageData->order_id,
             'event_id' => $messageData->event_id,
         ])?->getId();
+    }
+
+    private function getEventRegionAddress(int $eventId): AddressDTO
+    {
+        $event = $this->eventRepository
+            ->loadRelation(EventSettingDomainObject::class)
+            ->findById($eventId);
+
+        $eventAddress = $event->getEventSettings()?->getAddress();
+
+        if ($eventAddress === null || empty($eventAddress->country) || (empty($eventAddress->state_or_region) && empty($eventAddress->city))) {
+            throw ValidationException::withMessages([
+                'message_type' => [__('The event must have a country and state or city before you can message customers in the event region.')],
+            ]);
+        }
+
+        return new AddressDTO(
+            city: empty($eventAddress->state_or_region) ? $eventAddress->city : null,
+            state_or_region: $eventAddress->state_or_region,
+            country: $eventAddress->country,
+        );
     }
 }

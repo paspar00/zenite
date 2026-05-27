@@ -25,6 +25,7 @@ class GetOrderActionPublic extends BaseAction
             eventId: $eventId,
             orderShortId: $orderShortId,
             includeEventInResponse: $this->isIncludeRequested($request, 'event'),
+            email: $request->query->get('email'),
         ));
 
         $response = $this->resourceResponse(

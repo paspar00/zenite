@@ -662,5 +662,15 @@
     "Stripe payment account not connected": "",
     "No completed paid orders on this account": "",
     "Event was created less than 24 hours ago": "",
-    "Review Message": ""
+    "Review Message": "",
+    "New event near you: :title": "Uj esemeny a kozelben: :title",
+    "New event near you!": "Uj esemeny a kozelben!",
+    "Hello, :name!": "Szia, :name!",
+    "Hello!": "Szia!",
+    "There is a new event happening near you:": "Egy uj esemeny zajlik a kozeledben:",
+    "Date:": "Datum:",
+    "Location:": "Helyszin:",
+    "View event and buy tickets": "Esemeny megtekintese es jegyvasarlas",
+    "You are receiving this email because you registered on our platform and this event is happening near you.": "Azert kapja ezt az e-mailt, mert regisztralt platformunkon, es ez az esemeny a kozeleben zajlik.",
+    "Unsubscribe": "Leiratkozas"
 }

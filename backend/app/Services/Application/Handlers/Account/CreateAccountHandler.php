@@ -19,6 +19,7 @@ use HiEvents\Services\Application\Handlers\Account\DTO\CreateAccountDTO;
 use HiEvents\Services\Application\Handlers\Account\Exceptions\AccountConfigurationDoesNotExist;
 use HiEvents\Services\Application\Handlers\Account\Exceptions\AccountRegistrationDisabledException;
 use HiEvents\Services\Domain\Account\AccountUserAssociationService;
+use HiEvents\Services\Domain\Marketing\MarketingSubscriberService;
 use HiEvents\Services\Domain\User\EmailConfirmationService;
 use Illuminate\Config\Repository;
 use Illuminate\Database\DatabaseManager;
@@ -41,6 +42,7 @@ class CreateAccountHandler
         private readonly AccountConfigurationRepositoryInterface $accountConfigurationRepository,
         private readonly AccountAttributionRepositoryInterface   $accountAttributionRepository,
         private readonly LoggerInterface                         $logger,
+        private readonly MarketingSubscriberService              $marketingSubscriberService,
     )
     {
     }
@@ -57,7 +59,7 @@ class CreateAccountHandler
         $isSaasMode = $this->config->get('app.saas_mode_enabled');
         $passwordHash = $this->hashManager->make($accountData->password);;
 
-        return $this->databaseManager->transaction(function () use ($isSaasMode, $passwordHash, $accountData) {
+        $account = $this->databaseManager->transaction(function () use ($isSaasMode, $passwordHash, $accountData) {
             $account = $this->accountRepository->create([
                 'timezone' => $this->getTimezone($accountData),
                 'currency_code' => $this->getCurrencyCode($accountData),
@@ -109,6 +111,17 @@ class CreateAccountHandler
 
             return $account;
         });
+
+        $this->marketingSubscriberService->syncFromRegistration(
+            email: $accountData->email,
+            firstName: $accountData->first_name,
+            lastName: $accountData->last_name,
+            accountId: $account->getId(),
+            city: $accountData->city,
+            state: $accountData->state,
+        );
+
+        return $account;
     }
 
     private function getTimezone(CreateAccountDTO $accountData): ?string

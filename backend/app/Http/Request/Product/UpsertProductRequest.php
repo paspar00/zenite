@@ -44,6 +44,7 @@ class UpsertProductRequest extends BaseRequest
             'is_highlighted' => 'boolean',
             'highlight_message' => 'string|nullable|max:255',
             'waitlist_enabled' => 'boolean|nullable',
+            'lot_mode_enabled' => 'boolean|nullable',
         ];
     }
 

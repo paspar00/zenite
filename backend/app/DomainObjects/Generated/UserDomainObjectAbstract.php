@@ -24,6 +24,8 @@ abstract class UserDomainObjectAbstract extends \HiEvents\DomainObjects\Abstract
     final public const TIMEZONE = 'timezone';
     final public const LOCALE = 'locale';
     final public const MARKETING_OPTED_IN_AT = 'marketing_opted_in_at';
+    final public const CITY = 'city';
+    final public const STATE = 'state';
 
     protected int $id;
     protected string $email;
@@ -39,6 +41,8 @@ abstract class UserDomainObjectAbstract extends \HiEvents\DomainObjects\Abstract
     protected string $timezone;
     protected string $locale = 'en';
     protected ?string $marketing_opted_in_at = null;
+    protected ?string $city = null;
+    protected ?string $state = null;
 
     public function toArray(): array
     {
@@ -57,6 +61,8 @@ abstract class UserDomainObjectAbstract extends \HiEvents\DomainObjects\Abstract
                     'timezone' => $this->timezone ?? null,
                     'locale' => $this->locale ?? null,
                     'marketing_opted_in_at' => $this->marketing_opted_in_at ?? null,
+                    'city' => $this->city ?? null,
+                    'state' => $this->state ?? null,
                 ];
     }
 
@@ -212,5 +218,27 @@ abstract class UserDomainObjectAbstract extends \HiEvents\DomainObjects\Abstract
     public function getMarketingOptedInAt(): ?string
     {
         return $this->marketing_opted_in_at;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setState(?string $state): self
+    {
+        $this->state = $state;
+        return $this;
+    }
+
+    public function getState(): ?string
+    {
+        return $this->state;
     }
 }

@@ -662,5 +662,15 @@
     "Stripe payment account not connected": "",
     "No completed paid orders on this account": "",
     "Event was created less than 24 hours ago": "",
-    "Review Message": ""
+    "Review Message": "",
+    "New event near you: :title": "Nieuw evenement bij jou in de buurt: :title",
+    "New event near you!": "Nieuw evenement bij jou in de buurt!",
+    "Hello, :name!": "Hallo, :name!",
+    "Hello!": "Hallo!",
+    "There is a new event happening near you:": "Er is een nieuw evenement bij jou in de buurt:",
+    "Date:": "Datum:",
+    "Location:": "Locatie:",
+    "View event and buy tickets": "Bekijk evenement en koop tickets",
+    "You are receiving this email because you registered on our platform and this event is happening near you.": "Je ontvangt deze e-mail omdat je je hebt geregistreerd op ons platform en dit evenement bij jou in de buurt plaatsvindt.",
+    "Unsubscribe": "Uitschrijven"
 }

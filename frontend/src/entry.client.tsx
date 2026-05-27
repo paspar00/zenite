@@ -13,6 +13,12 @@ declare global {
 }
 
 const dehydratedState = window.__REHYDRATED_STATE__;
+const hideSsrLoader = () => {
+    const loader = document.querySelector('.ssr-loader') as HTMLElement | null;
+    if (loader) {
+        loader.style.display = 'none';
+    }
+};
 
 async function initClientApp() {
     const rawLocale = getClientLocale();
@@ -40,4 +46,10 @@ async function initClientApp() {
     );
 }
 
-initClientApp();
+initClientApp()
+    .catch((error) => {
+        console.error('Failed to hydrate client app', error);
+    })
+    .finally(() => {
+        hideSsrLoader();
+    });

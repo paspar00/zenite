@@ -30,6 +30,7 @@ abstract class EventDomainObjectAbstract extends \HiEvents\DomainObjects\Abstrac
     final public const SHORT_ID = 'short_id';
     final public const TICKET_QUANTITY_AVAILABLE = 'ticket_quantity_available';
     final public const CATEGORY = 'category';
+    final public const GEO_CAMPAIGN_SENT_AT = 'geo_campaign_sent_at';
 
     protected int $id;
     protected int $account_id;
@@ -51,6 +52,7 @@ abstract class EventDomainObjectAbstract extends \HiEvents\DomainObjects\Abstrac
     protected string $short_id;
     protected ?int $ticket_quantity_available = null;
     protected string $category = 'OTHER';
+    protected ?string $geo_campaign_sent_at = null;
 
     public function toArray(): array
     {
@@ -75,6 +77,7 @@ abstract class EventDomainObjectAbstract extends \HiEvents\DomainObjects\Abstrac
                     'short_id' => $this->short_id ?? null,
                     'ticket_quantity_available' => $this->ticket_quantity_available ?? null,
                     'category' => $this->category ?? null,
+                    'geo_campaign_sent_at' => $this->geo_campaign_sent_at ?? null,
                 ];
     }
 
@@ -296,5 +299,16 @@ abstract class EventDomainObjectAbstract extends \HiEvents\DomainObjects\Abstrac
     public function getCategory(): string
     {
         return $this->category;
+    }
+
+    public function setGeoCampaignSentAt(?string $geo_campaign_sent_at): self
+    {
+        $this->geo_campaign_sent_at = $geo_campaign_sent_at;
+        return $this;
+    }
+
+    public function getGeoCampaignSentAt(): ?string
+    {
+        return $this->geo_campaign_sent_at;
     }
 }

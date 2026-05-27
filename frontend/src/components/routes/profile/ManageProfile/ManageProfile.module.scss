@@ -24,3 +24,22 @@
   margin-bottom: var(--hi-spacing-lg);
 }
 
+.ordersLoader {
+  display: flex;
+  justify-content: center;
+  padding: var(--hi-spacing-xl) 0;
+}
+
+.orderCard {
+  border: 1px solid var(--mantine-color-gray-3);
+  border-radius: var(--mantine-radius-md);
+  padding: var(--hi-spacing-lg);
+  background: linear-gradient(180deg, var(--mantine-color-white) 0%, var(--mantine-color-gray-0) 100%);
+}
+
+.orderMetaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--hi-spacing-md);
+  margin-top: var(--hi-spacing-md);
+}

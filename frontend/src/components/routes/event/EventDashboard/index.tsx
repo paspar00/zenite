@@ -23,6 +23,7 @@ import {EventLifecycleStatus, EventStatus, StripePlatform} from "../../../../typ
 import {isHiEvents} from "../../../../utilites/helpers.ts";
 import {StripeConnectButton} from "../../../common/StripeConnectButton";
 import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
+import {GeoTargetingStatsCard} from "../../../common/GeoTargetingStatsCard";
 
 export const DashBoardSkeleton = () => {
     return (
@@ -152,6 +153,11 @@ export const EventDashboard = () => {
 
             {event && (<>
                 <StatBoxes/>
+
+                <GeoTargetingStatsCard
+                    organizerId={event.organizer_id}
+                    eventId={event.id}
+                />
 
                 {shouldShowChecklist && (
                     <Card className={classes.setupCard}>

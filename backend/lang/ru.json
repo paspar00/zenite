@@ -677,5 +677,15 @@
     "Stripe payment account not connected": "",
     "No completed paid orders on this account": "",
     "Event was created less than 24 hours ago": "",
-    "Review Message": ""
+    "Review Message": "",
+    "New event near you: :title": "Novoe meroprijatie rjadom s vami: :title",
+    "New event near you!": "Novoe meroprijatie rjadom s vami!",
+    "Hello, :name!": "Privet, :name!",
+    "Hello!": "Privet!",
+    "There is a new event happening near you:": "Rjadom s vami prohodit novoe meroprijatie:",
+    "Date:": "Data:",
+    "Location:": "Mesto:",
+    "View event and buy tickets": "Posmotret meroprijatie i kupit bilety",
+    "You are receiving this email because you registered on our platform and this event is happening near you.": "Vy poluchaete eto pismo, potomu chto zaregistrirovalis na nashej platforme.",
+    "Unsubscribe": "Otpisatsja"
 }

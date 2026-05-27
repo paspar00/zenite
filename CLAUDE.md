@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Additional Engineering Rules
+
+See [ENGINEERING_RULES.md](./ENGINEERING_RULES.md) for project rules about architectural boundaries, correct route design, dead code removal, and anti-coupling practices.
+
 ## Project Overview
 
 Hi.Events is an open-source event management and ticketing platform with a Laravel backend and React frontend, using Domain-Driven Design (DDD).

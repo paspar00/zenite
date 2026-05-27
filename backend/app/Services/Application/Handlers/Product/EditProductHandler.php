@@ -126,6 +126,7 @@ class EditProductHandler
                 'is_highlighted' => $productsData->is_highlighted ?? false,
                 'highlight_message' => $productsData->highlight_message,
                 'waitlist_enabled' => $productsData->waitlist_enabled,
+                'lot_mode_enabled' => $productsData->lot_mode_enabled ?? false,
             ],
             where: $where
         );

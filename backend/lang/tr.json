@@ -677,5 +677,15 @@
     "Stripe payment account not connected": "",
     "No completed paid orders on this account": "",
     "Event was created less than 24 hours ago": "",
-    "Review Message": ""
+    "Review Message": "",
+    "New event near you: :title": "Yakininizda yeni bir etkinlik: :title",
+    "New event near you!": "Yakininizda yeni bir etkinlik!",
+    "Hello, :name!": "Merhaba, :name!",
+    "Hello!": "Merhaba!",
+    "There is a new event happening near you:": "Yakininizda yeni bir etkinlik gerceklesiyor:",
+    "Date:": "Tarih:",
+    "Location:": "Konum:",
+    "View event and buy tickets": "Etkinligi gor ve bilet al",
+    "You are receiving this email because you registered on our platform and this event is happening near you.": "Bu e-postayi platformumuza kayitli oldugunuz ve bu etkinligin yakininizda gerceklestigi icin aliyorsunuz.",
+    "Unsubscribe": "Aboneligi iptal et"
 }

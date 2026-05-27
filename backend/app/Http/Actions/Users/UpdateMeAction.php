@@ -37,6 +37,8 @@ class UpdateMeAction extends BaseAction
                 'timezone' => $request->validated('timezone'),
                 'locale' => $request->validated('locale'),
                 'marketing_opt_in' => $request->has('marketing_opt_in') ? (bool) $request->validated('marketing_opt_in') : null,
+                'city' => $request->validated('city'),
+                'state' => $request->validated('state'),
             ]));
 
             return $this->resourceResponse(UserResource::class, $user);

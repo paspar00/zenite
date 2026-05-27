@@ -50,6 +50,9 @@ async function main() {
     } else {
         app.use(compression());
         app.use(base, sirv(path.join(__dirname, "./dist/client"), { extensions: [] }));
+        app.use(`${base.replace(/\/$/, "")}/assets`, (req, res) => {
+            res.status(404).type("text/plain").send("Asset not found");
+        });
     }
 
     const getViteEnvironmentVariables = () => {
@@ -121,6 +124,7 @@ Sitemap: ${frontendUrl}/sitemap.xml
                 .replace(/<!--render-helmet-->.*?<!--\/render-helmet-->/s, helmetHtml);
 
             res.setHeader("Content-Type", "text/html");
+            res.setHeader("Cache-Control", "no-store, max-age=0");
             return res.status(200).end(html);
         } catch (error) {
             if (error instanceof Response) {

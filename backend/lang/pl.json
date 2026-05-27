@@ -662,5 +662,15 @@
     "Stripe payment account not connected": "Konto płatności Stripe nie połączone",
     "No completed paid orders on this account": "Brak zakończonych płatnych zamówień na tym koncie",
     "Event was created less than 24 hours ago": "Wydarzenie zostało utworzone mniej niż 24 godziny temu",
-    "Review Message": "Przejrzyj wiadomość"
+    "Review Message": "Przejrzyj wiadomość",
+    "New event near you: :title": "Nowe wydarzenie w poblizu: :title",
+    "New event near you!": "Nowe wydarzenie w poblizu!",
+    "Hello, :name!": "Czesc, :name!",
+    "Hello!": "Czesc!",
+    "There is a new event happening near you:": "W poblizu odbywa sie nowe wydarzenie:",
+    "Date:": "Data:",
+    "Location:": "Miejsce:",
+    "View event and buy tickets": "Zobacz wydarzenie i kup bilety",
+    "You are receiving this email because you registered on our platform and this event is happening near you.": "Otrzymujesz te wiadomosc, poniewaz zarejestrowales sie na naszej platformie, a to wydarzenie odbywa sie w Twoim poblizu.",
+    "Unsubscribe": "Wypisz sie"
 }

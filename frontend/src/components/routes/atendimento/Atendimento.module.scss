@@ -1,0 +1,118 @@
+// Reutiliza os estilos do marketplace
+@import "../marketplace/Marketplace.module.scss";
+
+// ─── Contact Grid ─────────────────────────────────────────────────────────────
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 8px;
+}
+
+.contactCard {
+  background: #fff;
+  border: 1px solid #e8eaf0;
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    box-shadow: 0 8px 32px rgba(0, 71, 204, 0.12);
+    transform: translateY(-2px);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #666;
+  }
+}
+
+.contactIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.contactCta {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #0047cc;
+  margin-top: 4px;
+}
+
+// ─── FAQ ──────────────────────────────────────────────────────────────────────
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 760px;
+}
+
+.faqItem {
+  border: 1px solid #e8eaf0;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 0.15s;
+
+  &.faqOpen {
+    border-color: #0047cc;
+  }
+}
+
+.faqQuestion {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  text-align: left;
+
+  &:hover {
+    background: #f7f9ff;
+  }
+}
+
+.faqChevron {
+  flex-shrink: 0;
+  color: #0047cc;
+  transition: transform 0.2s;
+
+  .faqOpen & {
+    transform: rotate(180deg);
+  }
+}
+
+.faqAnswer {
+  margin: 0;
+  padding: 0 20px 16px;
+  font-size: 0.88rem;
+  color: #555;
+  line-height: 1.6;
+}

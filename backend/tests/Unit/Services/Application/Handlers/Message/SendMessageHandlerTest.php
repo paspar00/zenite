@@ -3,10 +3,12 @@
 namespace Tests\Unit\Services\Application\Handlers\Message;
 
 use Carbon\Carbon;
+use HiEvents\DataTransferObjects\AddressDTO;
 use HiEvents\DomainObjects\AccountDomainObject;
 use HiEvents\DomainObjects\AttendeeDomainObject;
 use HiEvents\DomainObjects\Enums\MessageTypeEnum;
 use HiEvents\DomainObjects\EventDomainObject;
+use HiEvents\DomainObjects\EventSettingDomainObject;
 use HiEvents\DomainObjects\MessageDomainObject;
 use HiEvents\DomainObjects\OrderDomainObject;
 use HiEvents\DomainObjects\ProductDomainObject;
@@ -187,6 +189,74 @@ class SendMessageHandlerTest extends TestCase
 
         $this->assertSame($message, $result);
 
+        Bus::assertDispatched(SendMessagesJob::class);
+    }
+
+    public function testHandleCreatesRegionalMessageAndDispatchesJob(): void
+    {
+        $dto = new SendMessageDTO(
+            account_id: 1,
+            event_id: 101,
+            subject: 'Hello regional customers',
+            message: '<p>Regional test</p>',
+            type: MessageTypeEnum::ORDER_OWNERS_IN_EVENT_REGION,
+            is_test: false,
+            send_copy_to_current_user: false,
+            sent_by_user_id: 99,
+        );
+
+        $settings = m::mock(EventSettingDomainObject::class);
+        $settings->shouldReceive('getAddress')->andReturn(new AddressDTO(
+            state_or_region: 'Sao Paulo',
+            country: 'BR',
+        ));
+
+        $event = m::mock(EventDomainObject::class);
+        $event->shouldReceive('getTimezone')->andReturn('UTC');
+        $event->shouldReceive('getEventSettings')->andReturn($settings);
+
+        $this->eventRepository->shouldReceive('findById')->with(101)->andReturn($event);
+        $this->eventRepository->shouldReceive('loadRelation')->with(EventSettingDomainObject::class)->andReturnSelf();
+
+        $account = m::mock(AccountDomainObject::class);
+        $account->shouldReceive('getAccountVerifiedAt')->andReturn(Carbon::now());
+        $account->shouldReceive('getIsManuallyVerified')->andReturn(true);
+
+        $this->accountRepository->shouldReceive('findById')->with(1)->andReturn($account);
+        $this->config->shouldReceive('get')->with('app.saas_mode_enabled')->andReturn(false);
+        $this->eligibilityService->shouldReceive('checkTierLimits')->andReturn(null);
+        $this->eligibilityService->shouldReceive('checkEligibility')->andReturn(null);
+        $this->purifier->shouldReceive('purify')->with('<p>Regional test</p>')->andReturn('<p>Regional test</p>');
+
+        $this->orderRepository->shouldReceive('countOrdersInEventRegion')->with(
+            1,
+            m::on(fn(AddressDTO $address) => $address->country === 'BR' && $address->state_or_region === 'Sao Paulo')
+        )->andReturn(12);
+        $this->attendeeRepository->shouldReceive('findWhereIn')->andReturn(collect());
+        $this->productRepository->shouldReceive('findWhereIn')->andReturn(collect());
+        $this->orderRepository->shouldReceive('findFirstWhere')->andReturn(null);
+
+        $message = m::mock(MessageDomainObject::class);
+        $message->shouldReceive('getId')->andReturn(1);
+        $message->shouldReceive('getOrderId')->andReturn(null);
+        $message->shouldReceive('getAttendeeIds')->andReturn([]);
+        $message->shouldReceive('getProductIds')->andReturn([]);
+        $message->shouldReceive('getStatus')->andReturn('PROCESSING');
+
+        $this->messageRepository->shouldReceive('create')
+            ->once()
+            ->withArgs(function (array $data) {
+                return $data['type'] === MessageTypeEnum::ORDER_OWNERS_IN_EVENT_REGION->name
+                    && $data['send_data']['region_filters']['country'] === 'BR'
+                    && $data['send_data']['region_filters']['state_or_region'] === 'Sao Paulo';
+            })
+            ->andReturn($message);
+
+        Bus::fake();
+
+        $result = $this->handler->handle($dto);
+
+        $this->assertSame($message, $result);
         Bus::assertDispatched(SendMessagesJob::class);
     }
 }

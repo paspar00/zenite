@@ -27,10 +27,12 @@ use HiEvents\Helper\IdHelper;
 use HiEvents\Repository\Eloquent\Value\Relationship;
 use HiEvents\Repository\Interfaces\AffiliateRepositoryInterface;
 use HiEvents\Repository\Interfaces\AttendeeRepositoryInterface;
+use HiEvents\Repository\Interfaces\EventRepositoryInterface;
 use HiEvents\Repository\Interfaces\EventSettingsRepositoryInterface;
 use HiEvents\Repository\Interfaces\OrderRepositoryInterface;
 use HiEvents\Repository\Interfaces\ProductPriceRepositoryInterface;
 use HiEvents\Repository\Interfaces\QuestionAnswerRepositoryInterface;
+use HiEvents\Jobs\SyncMarketingSubscriberJob;
 use HiEvents\Services\Application\Handlers\Order\DTO\CompleteOrderDTO;
 use HiEvents\Services\Application\Handlers\Order\DTO\CompleteOrderOrderDTO;
 use HiEvents\Services\Application\Handlers\Order\DTO\CompleteOrderProductDataDTO;
@@ -62,6 +64,7 @@ class CompleteOrderHandler
         private readonly DomainEventDispatcherService      $domainEventDispatcherService,
         private readonly EventSettingsRepositoryInterface  $eventSettingsRepository,
         private readonly CheckoutSessionManagementService  $sessionManagementService,
+        private readonly EventRepositoryInterface          $eventRepository,
     )
     {
     }
@@ -115,6 +118,11 @@ class CompleteOrderHandler
                     orderId: $updatedOrder->getId(),
                 )
             );
+
+            $event = $this->eventRepository->findFirstWhere(['id' => $updatedOrder->getEventId()]);
+            if ($event !== null) {
+                SyncMarketingSubscriberJob::dispatch($updatedOrder->getId(), $event->getAccountId());
+            }
         }
 
         return $updatedOrder;

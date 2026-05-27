@@ -20,4 +20,7 @@ enum MessageTypeEnum
 
     // Emails all customers who have purchased a specific product, ticket or merchandise etc.
     case ORDER_OWNERS_WITH_PRODUCT;
+
+    // Emails order owners from the account customer base who are in the same region as the event.
+    case ORDER_OWNERS_IN_EVENT_REGION;
 }

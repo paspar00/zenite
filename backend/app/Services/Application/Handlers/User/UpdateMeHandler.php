@@ -42,6 +42,8 @@ readonly class UpdateMeHandler
                 'last_name' => $updateUserData->last_name,
                 'timezone' => $updateUserData->timezone,
                 'locale' => $updateUserData->locale,
+                'city' => $updateUserData->city,
+                'state' => $updateUserData->state,
             ];
 
             if ($this->isChangingEmail($updateUserData, $existingUser)) {
@@ -111,6 +113,11 @@ readonly class UpdateMeHandler
      */
     private function isUpdatingDetails(UpdateMeDTO $updateUserData): bool
     {
-        return $updateUserData->first_name !== null || $updateUserData->last_name !== null || $updateUserData->timezone !== null || $updateUserData->email !== null;
+        return $updateUserData->first_name !== null
+            || $updateUserData->last_name !== null
+            || $updateUserData->timezone !== null
+            || $updateUserData->email !== null
+            || $updateUserData->city !== null
+            || $updateUserData->state !== null;
     }
 }

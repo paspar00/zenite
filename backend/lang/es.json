@@ -670,5 +670,15 @@
     "View Event": "Ver evento",
     "Your waitlist offer has expired": "Tu oferta de la lista de espera ha expirado",
     "We'll notify you as soon as a spot becomes available.": "Te notificaremos en cuanto haya una plaza disponible.",
-    "You're on the waitlist!": "¡Estás en la lista de espera!"
+    "You're on the waitlist!": "¡Estás en la lista de espera!",
+    "New event near you: :title": "Nuevo evento cerca de ti: :title",
+    "New event near you!": "Nuevo evento cerca de ti!",
+    "Hello, :name!": "Hola, :name!",
+    "Hello!": "Hola!",
+    "There is a new event happening near you:": "Hay un nuevo evento cerca de ti:",
+    "Date:": "Fecha:",
+    "Location:": "Lugar:",
+    "View event and buy tickets": "Ver evento y comprar entradas",
+    "You are receiving this email because you registered on our platform and this event is happening near you.": "Recibes este correo porque te registraste en nuestra plataforma y este evento ocurre cerca de ti.",
+    "Unsubscribe": "Cancelar suscripcion"
 }

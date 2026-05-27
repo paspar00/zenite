@@ -626,5 +626,15 @@
     "Stripe payment account not connected": "",
     "No completed paid orders on this account": "",
     "Event was created less than 24 hours ago": "",
-    "Review Message": ""
+    "Review Message": "",
+    "New event near you: :title": "Su kien moi gan ban: :title",
+    "New event near you!": "Su kien moi gan ban!",
+    "Hello, :name!": "Xin chao, :name!",
+    "Hello!": "Xin chao!",
+    "There is a new event happening near you:": "Co mot su kien moi dang dien ra gan ban:",
+    "Date:": "Ngay:",
+    "Location:": "Dia diem:",
+    "View event and buy tickets": "Xem su kien va mua ve",
+    "You are receiving this email because you registered on our platform and this event is happening near you.": "Ban nhan duoc email nay vi da dang ky tren nen tang cua chung toi va su kien nay dang dien ra gan ban.",
+    "Unsubscribe": "Huy dang ky"
 }

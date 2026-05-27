@@ -2,6 +2,7 @@ import classes from "./EventHomepage.module.scss";
 import SelectProducts from "../../routes/product-widget/SelectProducts";
 import "../../../styles/widget/default.scss";
 import React, {useEffect, useRef, useState} from "react";
+import {MarketplaceHeader} from "../../common/MarketplaceHeader";
 import {EventDocumentHead} from "../../common/EventDocumentHead";
 import {eventCoverImage, eventHomepageUrl, imageUrl, organizerHomepageUrl} from "../../../utilites/urlHelper.ts";
 import {Event, OrganizerStatus} from "../../../types.ts";
@@ -182,6 +183,8 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
 
     return (
         <>
+            <MarketplaceHeader showBack/>
+
             {event?.status && event?.id && (
                 <StatusToggle
                     entityType="event"
@@ -629,7 +632,9 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
                                     {t`Terms of Service`}
                                 </Anchor>
                             </div>
-                            <PoweredByFooter className={classes.poweredByFooter}/>
+                            <p className={classes.footerBrand}>
+                                © {new Date().getFullYear()} TicketHub · Todos os direitos reservados
+                            </p>
                         </div>
                     </div>
 

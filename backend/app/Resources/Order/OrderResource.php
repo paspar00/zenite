@@ -5,6 +5,7 @@ namespace HiEvents\Resources\Order;
 use HiEvents\DomainObjects\OrderDomainObject;
 use HiEvents\Resources\Attendee\AttendeeResource;
 use HiEvents\Resources\BaseResource;
+use HiEvents\Resources\Event\EventResourcePublic;
 use HiEvents\Resources\Order\Invoice\InvoiceResource;
 use HiEvents\Resources\Question\QuestionAnswerViewResource;
 use Illuminate\Http\Request;
@@ -43,6 +44,10 @@ class OrderResource extends BaseResource
             'payment_provider' => $this->getPaymentProvider(),
             'promo_code' => $this->getPromoCode(),
             'event_id' => $this->getEventId(),
+            'event' => $this->when(
+                !is_null($this->getEvent()),
+                fn() => new EventResourcePublic($this->getEvent())
+            ),
             'order_items' => $this->when(
                 !is_null($this->getOrderItems()),
                 fn() => OrderItemResource::collection($this->getOrderItems())

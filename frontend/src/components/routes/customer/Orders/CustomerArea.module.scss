@@ -1,0 +1,163 @@
+// ─── Page Layout ────────────────────────────────────────────────────────────
+.page {
+  padding: 32px 0 60px;
+}
+
+// ─── Greeting Header ────────────────────────────────────────────────────────
+.heroHeader {
+  background: linear-gradient(135deg, #3a0ca3 0%, #4361ee 100%);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 32px;
+  color: #fff;
+}
+
+.greeting {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #fff;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  margin: 0;
+  opacity: 0.85;
+  color: #fff;
+}
+
+// ─── Tabs ───────────────────────────────────────────────────────────────────
+.tabsRoot {
+  --tab-color: #4361ee;
+}
+
+// ─── Ticket Card ────────────────────────────────────────────────────────────
+.ticketCard {
+  border: 1px solid var(--mantine-color-gray-3);
+  border-radius: 12px;
+  padding: 18px 20px;
+  background: #fff;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: box-shadow 0.15s;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(67, 97, 238, 0.1);
+  }
+}
+
+.ticketIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4361ee20 0%, #3a0ca320 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #4361ee;
+}
+
+.ticketBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.ticketEvent {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ticketProduct {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0 0 8px;
+}
+
+.ticketMeta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ticketMetaItem {
+  font-size: 0.78rem;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+// ─── Order Card ─────────────────────────────────────────────────────────────
+.orderCard {
+  border: 1px solid var(--mantine-color-gray-3);
+  border-radius: 12px;
+  padding: 20px;
+  background: #fff;
+  transition: box-shadow 0.15s;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  }
+}
+
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.orderTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 4px;
+}
+
+.orderMeta {
+  font-size: 0.82rem;
+  color: #888;
+  margin: 0;
+}
+
+.orderMetaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--mantine-color-gray-2);
+}
+
+.orderMetaLabel {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin: 0 0 2px;
+}
+
+.orderMetaValue {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.orderItems {
+  font-size: 0.82rem;
+  color: #888;
+  margin-top: 10px;
+}
+
+// ─── Empty / Loading ─────────────────────────────────────────────────────────
+.loader {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}

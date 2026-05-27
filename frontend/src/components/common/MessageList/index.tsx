@@ -25,6 +25,7 @@ export const statusBadgeColor = (status?: string) => {
 export const typeLabel = (type: MessageType) => {
     const map: Record<string, string> = {
         [MessageType.OrderOwnersWithProduct]: t`Order owners with products`,
+        [MessageType.OrderOwnersInEventRegion]: t`Order owners in the event region`,
         [MessageType.IndividualAttendees]: t`Individual attendees`,
         [MessageType.AllAttendees]: t`All attendees`,
         [MessageType.TicketHolders]: t`Ticket holders`,
