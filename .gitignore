@@ -20,3 +20,6 @@ prompts/
 
 /plans/**
 /plans
+
+/.lean-ctx/
+/docker/all-in-one/rebuild.log
