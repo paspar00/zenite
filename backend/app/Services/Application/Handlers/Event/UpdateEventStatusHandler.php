@@ -9,6 +9,7 @@ use HiEvents\Repository\Interfaces\EventRepositoryInterface;
 use HiEvents\Services\Application\Handlers\Event\DTO\UpdateEventStatusDTO;
 use HiEvents\DomainObjects\Status\EventStatus;
 use HiEvents\Jobs\Event\Webhook\DispatchEventWebhookJob;
+use HiEvents\Jobs\Marketing\SendGeoTargetingCampaignJob;
 use HiEvents\Services\Infrastructure\DomainEvents\Enums\DomainEventType;
 use Illuminate\Database\DatabaseManager;
 use Psr\Log\LoggerInterface;
@@ -76,6 +77,10 @@ readonly class UpdateEventStatusHandler
             $event->getId(),
             $eventType,
         );
+
+        if ($updateEventStatusDTO->status === EventStatus::LIVE->name) {
+            SendGeoTargetingCampaignJob::dispatch($updateEventStatusDTO->eventId, $updateEventStatusDTO->accountId);
+        }
 
         return $event;
     }

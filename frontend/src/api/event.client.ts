@@ -99,8 +99,9 @@ export const eventsClient = {
 }
 
 export const eventsClientPublic = {
-    all: async () => {
-        const response = await publicApi.get<GenericPaginatedResponse<Event>>('events');
+    all: async (params?: QueryFilters) => {
+        const query = params ? queryParamsHelper.buildQueryString(params) : '';
+        const response = await publicApi.get<GenericPaginatedResponse<Event>>('events' + query);
         return response.data;
     },
 

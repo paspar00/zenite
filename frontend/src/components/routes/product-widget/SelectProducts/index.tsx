@@ -35,6 +35,7 @@ import {eventsClientPublic} from "../../../../api/event.client.ts";
 import {promoCodeClientPublic} from "../../../../api/promo-code.client.ts";
 import {IconChevronRight, IconX} from "@tabler/icons-react"
 import {getSessionIdentifier} from "../../../../utilites/sessionIdentifier.ts";
+import {captureUtmData, getStoredUtmData} from "../../../../utilites/utm.ts";
 import {Constants} from "../../../../constants.ts";
 import {clearWaitlistJoinedForEvent} from "../../../../hooks/useWaitlistJoined.ts";
 
@@ -92,6 +93,8 @@ const SelectProducts = (props: SelectProductsProps) => {
     const [affiliateCode, setAffiliateCode] = useState<string | null>(null);
 
     useEffect(() => sendHeightToIframeWidgets(), [resizeObserverRect.height]);
+
+    useEffect(() => { captureUtmData(); }, []);
 
     useEffect(() => {
         const storageKey = 'affiliate_code_' + eventId;
@@ -277,9 +280,12 @@ const SelectProducts = (props: SelectProductsProps) => {
 
     const handleProductSelection = (values: Omit<ProductFormPayload, "session_identifier">) => {
         if (values && selectedProductQuantitySum > 0) {
+            const utmData = getStoredUtmData();
             productMutation.mutate({
                 ...values,
-                session_identifier: getSessionIdentifier()
+                session_identifier: getSessionIdentifier(),
+                attribution_session_id: getSessionIdentifier(),
+                ...(utmData ?? {}),
             });
         } else {
             showInfo(t`Please select at least one product`);

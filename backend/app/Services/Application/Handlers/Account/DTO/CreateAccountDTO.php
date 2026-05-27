@@ -26,6 +26,8 @@ final class CreateAccountDTO extends BaseDTO
         public readonly ?string $gclid = null,
         public readonly ?string $fbclid = null,
         public readonly ?array $utm_raw = null,
+        public readonly ?string $city = null,
+        public readonly ?string $state = null,
     )
     {
     }

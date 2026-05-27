@@ -17,6 +17,7 @@ use HiEvents\Repository\Interfaces\AffiliateRepositoryInterface;
 use HiEvents\Repository\Interfaces\EventRepositoryInterface;
 use HiEvents\Repository\Interfaces\PromoCodeRepositoryInterface;
 use HiEvents\Services\Application\Handlers\Order\DTO\CreateOrderPublicDTO;
+use HiEvents\Services\Application\Handlers\Order\OrderAttributionService;
 use HiEvents\Services\Domain\Order\OrderItemProcessingService;
 use HiEvents\Services\Domain\Order\OrderManagementService;
 use HiEvents\Services\Domain\Product\AvailableProductQuantitiesFetchService;
@@ -35,6 +36,7 @@ class CreateOrderHandler
         private readonly OrderItemProcessingService             $orderItemProcessingService,
         private readonly AvailableProductQuantitiesFetchService $availableProductQuantitiesFetchService,
         private readonly DatabaseManager                        $databaseManager,
+        private readonly OrderAttributionService                $orderAttributionService,
     )
     {
     }
@@ -83,7 +85,23 @@ class CreateOrderHandler
                 promoCode: $promoCode,
             );
 
-            return $this->orderManagementService->updateOrderTotals($order, $orderItems);
+            $updatedOrder = $this->orderManagementService->updateOrderTotals($order, $orderItems);
+
+            $this->orderAttributionService->persist($updatedOrder->getId(), [
+                'utm_source' => $createOrderPublicDTO->utm_source,
+                'utm_medium' => $createOrderPublicDTO->utm_medium,
+                'utm_campaign' => $createOrderPublicDTO->utm_campaign,
+                'utm_term' => $createOrderPublicDTO->utm_term,
+                'utm_content' => $createOrderPublicDTO->utm_content,
+                'utm_raw' => $createOrderPublicDTO->utm_raw ? json_decode($createOrderPublicDTO->utm_raw, true) : null,
+                'referrer_url' => $createOrderPublicDTO->referrer_url,
+                'landing_page' => $createOrderPublicDTO->landing_page,
+                'gclid' => $createOrderPublicDTO->gclid,
+                'fbclid' => $createOrderPublicDTO->fbclid,
+                'session_id' => $createOrderPublicDTO->attribution_session_id,
+            ]);
+
+            return $updatedOrder;
         });
     }
 

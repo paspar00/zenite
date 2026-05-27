@@ -101,6 +101,16 @@ const AttendeeField = ({orderId, eventId, attendeeId, form}: {
 
 const CUSTOM_PRESET = 'custom';
 
+const getEventRegionSummary = (event: Event) => {
+    const location = event.settings?.location_details;
+
+    if (!location?.country || (!location.state_or_region && !location.city)) {
+        return null;
+    }
+
+    return [location.city, location.state_or_region, location.country].filter(Boolean).join(', ');
+};
+
 const getSchedulePresets = (event: Event) => {
     const now = dayjs.utc();
     const startDate = dayjs.utc(event.start_date);
@@ -139,6 +149,7 @@ export const SendMessageModal = (props: EventMessageModalProps) => {
     const [tierLimitError, setTierLimitError] = useState<string | null>(null);
     const [isScheduled, setIsScheduled] = useState(false);
     const [selectedPreset, setSelectedPreset] = useState<string | null>(null);
+    const eventRegionSummary = useMemo(() => event ? getEventRegionSummary(event) : null, [event]);
 
     const presets = useMemo(() => event ? getSchedulePresets(event) : [], [event]);
 
@@ -293,6 +304,10 @@ export const SendMessageModal = (props: EventMessageModalProps) => {
                                             value: 'ORDER_OWNERS_WITH_PRODUCT',
                                             label: t`Order owners with a specific product`,
                                         },
+                                        {
+                                            value: 'ORDER_OWNERS_IN_EVENT_REGION',
+                                            label: t`Order owners in the event region`,
+                                        },
                                     ]}
                                     label={t`Recipients`}
                                     description={t`Select which attendees should receive this message`}
@@ -336,6 +351,14 @@ export const SendMessageModal = (props: EventMessageModalProps) => {
                                         {...form.getInputProps('order_statuses')}
                                     />
                                 </>
+                            )}
+
+                            {(form.values.message_type === MessageType.OrderOwnersInEventRegion) && (
+                                <Alert variant="light" color={eventRegionSummary ? 'blue' : 'yellow'}>
+                                    {eventRegionSummary
+                                        ? t`This message will be sent to order owners in the same region as this event: ${eventRegionSummary}`
+                                        : t`Add a country and state or city to the event location before sending to the event region.`}
+                                </Alert>
                             )}
 
                             {(form.values.message_type === MessageType.OrderOwner && orderId) && (
@@ -445,7 +468,12 @@ export const SendMessageModal = (props: EventMessageModalProps) => {
                                     loading={sendMessageMutation.isPending}
                                     type={'submit'}
                                     leftSection={isScheduled ? <IconClock size={16}/> : <IconSend size={16}/>}
-                                    disabled={!form.values.acknowledgement || !isAccountVerified || accountRequiresManualVerification}
+                                    disabled={
+                                        !form.values.acknowledgement
+                                        || !isAccountVerified
+                                        || accountRequiresManualVerification
+                                        || (form.values.message_type === MessageType.OrderOwnersInEventRegion && !eventRegionSummary)
+                                    }
                                 >
                                     {isScheduled ? t`Schedule Message` : (form.values.is_test ? t`Send Test` : t`Send Message`)}
                                 </Button>
@@ -454,7 +482,12 @@ export const SendMessageModal = (props: EventMessageModalProps) => {
                                         <Button
                                             type="button"
                                             className={classes.menuButton}
-                                            disabled={!form.values.acknowledgement || !isAccountVerified || accountRequiresManualVerification}
+                                            disabled={
+                                                !form.values.acknowledgement
+                                                || !isAccountVerified
+                                                || accountRequiresManualVerification
+                                                || (form.values.message_type === MessageType.OrderOwnersInEventRegion && !eventRegionSummary)
+                                            }
                                         >
                                             <IconChevronDown size={16}/>
                                         </Button>

@@ -95,6 +95,16 @@ use HiEvents\Repository\Interfaces\StripePayoutsRepositoryInterface;
 use HiEvents\Repository\Interfaces\TaxAndFeeRepositoryInterface;
 use HiEvents\Repository\Interfaces\TicketLookupTokenRepositoryInterface;
 use HiEvents\Repository\Interfaces\UserRepositoryInterface;
+use HiEvents\Repository\Eloquent\MarketingConsentAuditRepository;
+use HiEvents\Repository\Eloquent\MarketingSubscriberRepository;
+use HiEvents\Repository\Eloquent\MarketingSubscriberSourceRepository;
+use HiEvents\Repository\Eloquent\MarketingSuppressionRepository;
+use HiEvents\Repository\Eloquent\OrderAttributionRepository;
+use HiEvents\Repository\Interfaces\MarketingConsentAuditRepositoryInterface;
+use HiEvents\Repository\Interfaces\MarketingSubscriberRepositoryInterface;
+use HiEvents\Repository\Interfaces\MarketingSubscriberSourceRepositoryInterface;
+use HiEvents\Repository\Interfaces\MarketingSuppressionRepositoryInterface;
+use HiEvents\Repository\Interfaces\OrderAttributionRepositoryInterface;
 use HiEvents\Repository\Interfaces\WaitlistEntryRepositoryInterface;
 use HiEvents\Repository\Interfaces\WebhookLogRepositoryInterface;
 use HiEvents\Repository\Interfaces\WebhookRepositoryInterface;
@@ -153,6 +163,11 @@ class RepositoryServiceProvider extends ServiceProvider
         TicketLookupTokenRepositoryInterface::class => TicketLookupTokenRepository::class,
         AccountMessagingTierRepositoryInterface::class => AccountMessagingTierRepository::class,
         WaitlistEntryRepositoryInterface::class => WaitlistEntryRepository::class,
+        MarketingSuppressionRepositoryInterface::class => MarketingSuppressionRepository::class,
+        MarketingConsentAuditRepositoryInterface::class => MarketingConsentAuditRepository::class,
+        OrderAttributionRepositoryInterface::class => OrderAttributionRepository::class,
+        MarketingSubscriberRepositoryInterface::class => MarketingSubscriberRepository::class,
+        MarketingSubscriberSourceRepositoryInterface::class => MarketingSubscriberSourceRepository::class,
     ];
 
     public function register(): void

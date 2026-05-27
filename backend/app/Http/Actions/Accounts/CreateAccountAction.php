@@ -61,6 +61,8 @@ class CreateAccountAction extends BaseAuthAction
                 'gclid' => $request->validated('gclid'),
                 'fbclid' => $request->validated('fbclid'),
                 'utm_raw' => $request->validated('utm_raw'),
+                'city' => $request->validated('city'),
+                'state' => $request->validated('state'),
             ]));
         } catch (EmailAlreadyExists $e) {
             throw ValidationException::withMessages([

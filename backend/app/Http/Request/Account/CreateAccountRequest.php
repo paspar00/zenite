@@ -37,6 +37,8 @@ class CreateAccountRequest extends BaseRequest
             'gclid' => ['nullable', 'string', 'max:255'],
             'fbclid' => ['nullable', 'string', 'max:255'],
             'utm_raw' => ['nullable', 'array'],
+            'city' => ['nullable', 'string', 'max:100'],
+            'state' => ['nullable', 'string', 'max:10'],
         ];
     }
 }

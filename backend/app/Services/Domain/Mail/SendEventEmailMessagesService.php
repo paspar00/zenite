@@ -2,6 +2,7 @@
 
 namespace HiEvents\Services\Domain\Mail;
 
+use HiEvents\DataTransferObjects\AddressDTO;
 use HiEvents\DomainObjects\AttendeeDomainObject;
 use HiEvents\DomainObjects\Enums\MessageTypeEnum;
 use HiEvents\DomainObjects\EventDomainObject;
@@ -20,6 +21,7 @@ use HiEvents\Repository\Interfaces\MessageRepositoryInterface;
 use HiEvents\Repository\Interfaces\OrderRepositoryInterface;
 use HiEvents\Repository\Interfaces\UserRepositoryInterface;
 use HiEvents\Services\Application\Handlers\Message\DTO\SendMessageDTO;
+use HiEvents\Services\Domain\Suppression\CheckSuppressionService;
 use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Collection;
 use Symfony\Component\HttpKernel\Log\Logger;
@@ -36,6 +38,7 @@ class SendEventEmailMessagesService
         private readonly UserRepositoryInterface     $userRepository,
         private readonly Logger                      $logger,
         private readonly Dispatcher                  $dispatcher,
+        private readonly CheckSuppressionService     $checkSuppressionService,
     )
     {
     }
@@ -81,6 +84,9 @@ class SendEventEmailMessagesService
                 break;
             case MessageTypeEnum::ORDER_OWNERS_WITH_PRODUCT:
                 $this->sendProductMessages($messageData, $event);
+                break;
+            case MessageTypeEnum::ORDER_OWNERS_IN_EVENT_REGION:
+                $this->sendEventRegionMessages($messageData, $event);
                 break;
         }
 
@@ -235,6 +241,31 @@ class SendEventEmailMessagesService
         });
     }
 
+    private function sendEventRegionMessages(SendMessageDTO $messageData, EventDomainObject $event): void
+    {
+        $regionAddress = $this->getEventRegionAddress($event);
+
+        $orders = $this->orderRepository->findOrdersInEventRegion(
+            accountId: $messageData->account_id,
+            address: $regionAddress,
+        );
+
+        if ($orders->isEmpty()) {
+            return;
+        }
+
+        $this->sendEmailToMessageSender($messageData, $event);
+
+        $orders->each(function (OrderDomainObject $order) use ($messageData, $event) {
+            $this->sendMessage(
+                emailAddress: $order->getEmail(),
+                fullName: $order->getFullName(),
+                messageData: $messageData,
+                event: $event,
+            );
+        });
+    }
+
     private function sendMessage(
         string            $emailAddress,
         string            $fullName,
@@ -243,6 +274,10 @@ class SendEventEmailMessagesService
     ): void
     {
         if (in_array($emailAddress, $this->sentEmails, true)) {
+            return;
+        }
+
+        if ($this->checkSuppressionService->isSuppressed($emailAddress, $event->getAccountId())) {
             return;
         }
 
@@ -260,5 +295,16 @@ class SendEventEmailMessagesService
         );
 
         $this->sentEmails[] = $emailAddress;
+    }
+
+    private function getEventRegionAddress(EventDomainObject $event): AddressDTO
+    {
+        $eventAddress = $event->getEventSettings()?->getAddress();
+
+        return new AddressDTO(
+            city: empty($eventAddress?->state_or_region) ? $eventAddress?->city : null,
+            state_or_region: $eventAddress?->state_or_region,
+            country: $eventAddress?->country,
+        );
     }
 }
