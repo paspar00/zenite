@@ -1,0 +1,62 @@
+.footer {
+  background: #1a1a2e;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 20px 24px;
+  font-size: 13px;
+  margin-top: auto;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+}
+
+.brand {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.brandLink {
+  color: #a78bfa;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s;
+
+  &:hover {
+    color: #c4b5fd;
+  }
+}
+
+.copy {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+// Override LanguageSwitcher to match dark footer
+.lang {
+  :global(.mantine-Select-input),
+  :global(.mantine-NativeSelect-input) {
+    background: rgba(255, 255, 255, 0.07) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 12px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12) !important;
+    }
+  }
+
+  :global(.mantine-Select-section),
+  :global(.mantine-NativeSelect-section) {
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+}

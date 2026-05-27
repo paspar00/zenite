@@ -31,6 +31,8 @@ class UpdateMeRequest extends BaseRequest
                 Password::min(8)
             ],
             'marketing_opt_in' => 'boolean|nullable',
+            'city' => 'nullable|string|max:100',
+            'state' => 'nullable|string|max:100',
         ];
     }
 }

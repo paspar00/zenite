@@ -49,6 +49,15 @@ class GetOrderPublicHandler
             $this->verifySessionId($order->getSessionId());
         }
 
+        if ($order->getStatus() === OrderStatus::COMPLETED->name) {
+            $hasValidSession = $order->getSessionId() !== null
+                && $this->sessionIdentifierService->verifySession($order->getSessionId());
+
+            if (!$hasValidSession) {
+                $this->verifyEmailForCompletedOrder($order, $getOrderData->email);
+            }
+        }
+
         return $order;
     }
 
@@ -57,6 +66,15 @@ class GetOrderPublicHandler
         if (!$this->sessionIdentifierService->verifySession($orderSessionId)) {
             throw new UnauthorizedException(
                 __('Sorry, we could not verify your session. Please restart your order.')
+            );
+        }
+    }
+
+    private function verifyEmailForCompletedOrder(OrderDomainObject $order, ?string $email): void
+    {
+        if ($email === null || strtolower(trim($email)) !== strtolower(trim($order->getEmail()))) {
+            throw new UnauthorizedException(
+                __('Please provide the email address used for this order to view its details.')
             );
         }
     }

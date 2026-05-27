@@ -26,7 +26,26 @@ const Root = () => {
 export const router: RouteObject[] = [
     {
         path: "",
-        element: <Root />,
+        async lazy() {
+            const Marketplace = await import("./components/routes/marketplace");
+            return {Component: Marketplace.default};
+        },
+        errorElement: <ErrorPage />
+    },
+    {
+        path: "atendimento",
+        async lazy() {
+            const Atendimento = await import("./components/routes/atendimento");
+            return { Component: Atendimento.default };
+        },
+        errorElement: <ErrorPage />
+    },
+    {
+        path: "unsubscribe/:emailEncoded/:token",
+        async lazy() {
+            const Unsubscribe = await import("./components/routes/unsubscribe");
+            return { Component: Unsubscribe.default };
+        },
         errorElement: <ErrorPage />
     },
     {
@@ -115,6 +134,42 @@ export const router: RouteObject[] = [
                 async lazy() {
                     const ConfirmEmailAddress = await import("./components/routes/profile/ConfirmEmailAddress");
                     return { Component: ConfirmEmailAddress.default };
+                }
+            },
+        ]
+    },
+    {
+        path: "customer/auth",
+        errorElement: <ErrorPage />,
+        async lazy() {
+            const CustomerAuth = await import("./components/routes/customer/Auth");
+            return { Component: CustomerAuth.default };
+        },
+    },
+    {
+        path: "customer",
+        errorElement: <ErrorPage />,
+        async lazy() {
+            const CustomerLayout = await import("./components/layouts/CustomerLayout");
+            return { Component: CustomerLayout.default };
+        },
+        children: [
+            {
+                path: "",
+                element: <Navigate to="/customer/orders" replace={true} />,
+            },
+            {
+                path: "orders",
+                async lazy() {
+                    const CustomerOrders = await import("./components/routes/customer/Orders");
+                    return { Component: CustomerOrders.default };
+                }
+            },
+            {
+                path: "profile",
+                async lazy() {
+                    const CustomerProfile = await import("./components/routes/customer/Profile");
+                    return { Component: CustomerProfile.default };
                 }
             },
         ]

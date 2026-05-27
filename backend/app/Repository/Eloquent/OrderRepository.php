@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HiEvents\Repository\Eloquent;
 
+use HiEvents\DataTransferObjects\AddressDTO;
 use HiEvents\DomainObjects\AttendeeDomainObject;
 use HiEvents\DomainObjects\Generated\OrderDomainObjectAbstract;
 use HiEvents\DomainObjects\OrderDomainObject;
@@ -185,6 +186,51 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         return $count;
     }
 
+    public function findCustomerOrdersByEmail(string $email): Collection
+    {
+        $orders = $this->model
+            ->whereRaw('LOWER(email) = ?', [strtolower(trim($email))])
+            ->where('status', '!=', OrderStatus::RESERVED->name)
+            ->where('status', '!=', OrderStatus::ABANDONED->name)
+            ->orderByDesc('created_at')
+            ->get();
+
+        $this->resetModel();
+
+        return $this->handleResults($orders);
+    }
+
+    public function findOrdersInEventRegion(int $accountId, AddressDTO $address): Collection
+    {
+        $query = $this->model
+            ->select('orders.*')
+            ->join('events', 'orders.event_id', '=', 'events.id')
+            ->where('events.account_id', $accountId)
+            ->where('orders.status', '!=', OrderStatus::RESERVED->name)
+            ->where('orders.status', '!=', OrderStatus::ABANDONED->name);
+
+        $this->applyRegionAddressFilters($query, $address);
+
+        return $this->handleResults($query->get());
+    }
+
+    public function countOrdersInEventRegion(int $accountId, AddressDTO $address): int
+    {
+        $query = $this->model
+            ->join('events', 'orders.event_id', '=', 'events.id')
+            ->where('events.account_id', $accountId)
+            ->where('orders.status', '!=', OrderStatus::RESERVED->name)
+            ->where('orders.status', '!=', OrderStatus::ABANDONED->name);
+
+        $this->applyRegionAddressFilters($query, $address);
+
+        $count = $query->count();
+
+        $this->resetModel();
+
+        return $count;
+    }
+
     public function getAllOrdersForAdmin(
         ?string $search = null,
         int $perPage = 20,
@@ -235,5 +281,22 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         $this->resetModel();
 
         return $exists;
+    }
+
+    private function applyRegionAddressFilters(Builder $query, AddressDTO $address): void
+    {
+        $query->whereRaw("LOWER(COALESCE(orders.address->>'country', '')) = ?", [
+            mb_strtolower(trim((string) $address->country)),
+        ]);
+
+        if (!empty($address->state_or_region)) {
+            $query->whereRaw("LOWER(COALESCE(orders.address->>'state_or_region', '')) = ?", [
+                mb_strtolower(trim($address->state_or_region)),
+            ]);
+        } elseif (!empty($address->city)) {
+            $query->whereRaw("LOWER(COALESCE(orders.address->>'city', '')) = ?", [
+                mb_strtolower(trim($address->city)),
+            ]);
+        }
     }
 }

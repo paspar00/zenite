@@ -3,7 +3,7 @@ import classes from "./Auth.module.scss";
 import {t} from "@lingui/macro";
 import {useGetMe} from "../../../queries/useGetMe.ts";
 import {PoweredByFooter} from "../../common/PoweredByFooter";
-import {LanguageSwitcher} from "../../common/LanguageSwitcher";
+import {CustomerFooter} from "../../common/CustomerFooter";
 import {
     IconChartBar,
     IconCreditCard,
@@ -127,41 +127,28 @@ const AuthLayout = () => {
     }
 
     return (
-        <div className={classes.authLayout}>
-            <div className={classes.splitLayout}>
-                <div className={classes.leftPanel}>
-                    <main className={classes.container}>
-                        <div className={classes.logo} onClick={handleLogoClick} style={{cursor: 'pointer'}}>
-                            <img
-                                src={getConfig("VITE_APP_LOGO_DARK", "/logos/hi-events-stacked-light.svg")}
-                                alt={t`${getConfig("VITE_APP_NAME", "Hi.Events")} logo`}
-                            />
-                        </div>
-                        <div className={classes.wrapper}>
-                            <Outlet />
-                            {/*
-                             * (c) Hi.Events Ltd 2025
-                             *
-                             * PLEASE NOTE:
-                             *
-                             * Hi.Events is licensed under the GNU Affero General Public License (AGPL) version 3.
-                             *
-                             * You can find the full license text at: https://github.com/HiEventsDev/hi.events/blob/main/LICENCE
-                             *
-                             * In accordance with Section 7(b) of the AGPL, we ask that you retain the "Powered by Hi.Events" notice.
-                             *
-                             * If you wish to remove this notice, a commercial license is available at: https://hi.events/licensing
-                             */}
-                            {!isHiEvents() && <PoweredByFooter />}
-                            <div className={classes.languageSwitcher}>
-                                <LanguageSwitcher />
+        <div style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
+            <div className={classes.authLayout} style={{flex: 1}}>
+                <div className={classes.splitLayout}>
+                    <div className={classes.leftPanel}>
+                        <main className={classes.container}>
+                            <div className={classes.logo} onClick={handleLogoClick} style={{cursor: 'pointer'}}>
+                                <img
+                                    src={getConfig("VITE_APP_LOGO_DARK", "/logos/hi-events-stacked-light.svg")}
+                                    alt={t`${getConfig("VITE_APP_NAME", "Hi.Events")} logo`}
+                                />
                             </div>
-                        </div>
-                    </main>
-                </div>
+                            <div className={classes.wrapper}>
+                                <Outlet />
+                                {!isHiEvents() && <PoweredByFooter />}
+                            </div>
+                        </main>
+                    </div>
 
-                <FeaturePanel />
+                    <FeaturePanel />
+                </div>
             </div>
+            <CustomerFooter/>
         </div>
     );
 };

@@ -1,0 +1,119 @@
+.page {
+  min-height: calc(100vh - 60px);
+  background: #f4f6f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+  width: 100%;
+  max-width: 440px;
+  overflow: hidden;
+}
+
+// ─── Tabs ────────────────────────────────────────────────────────────────────
+.tabs {
+  display: flex;
+  border-bottom: 1.5px solid #f0f0f0;
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #888;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+
+  &:hover {
+    color: #0047cc;
+    background: #f7f9ff;
+  }
+}
+
+.tabActive {
+  color: #0047cc;
+  border-bottom: 2.5px solid #0047cc;
+  margin-bottom: -1.5px;
+}
+
+// ─── Form ────────────────────────────────────────────────────────────────────
+.formSection {
+  padding: 28px 32px 24px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.nameRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.submitBtn {
+  background: #0047cc !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  height: 44px !important;
+
+  &:hover {
+    background: #003db5 !important;
+  }
+}
+
+// ─── Ticket Lookup ───────────────────────────────────────────────────────────
+.ticketLookup {
+  padding: 0 32px 28px;
+}
+
+.divider {
+  height: 1px;
+  background: #f0f0f0;
+  margin-bottom: 20px;
+}
+
+.ticketLookupLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin: 0 0 12px;
+}
+
+.ticketForm {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+
+  > :first-child {
+    flex: 1;
+  }
+}
+
+.ticketSuccess {
+  font-size: 13px;
+  color: #2e7d32;
+  background: #f1f8f1;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0;
+}

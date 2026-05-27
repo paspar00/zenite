@@ -11,6 +11,9 @@ export interface UserMeRequest {
     password_current: string;
     locale: string;
     marketing_opt_in?: boolean;
+    city?: string | null;
+    state?: string | null;
+    current_password?: string;
 }
 
 export interface UpdateUserRequest {

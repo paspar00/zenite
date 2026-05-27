@@ -34,6 +34,8 @@ class UserResource extends BaseResource
             'has_pending_email_change' => $this->getPendingEmail() !== null,
             'locale' => $this->getLocale(),
             'marketing_opted_in_at' => $this->getMarketingOptedInAt(),
+            'city' => $this->getCity(),
+            'state' => $this->getState(),
             $this->mergeWhen($isImpersonating, [
                 'is_impersonating' => true,
                 'impersonator_id' => $impersonatorId,
