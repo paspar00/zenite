@@ -94,6 +94,7 @@ class CreateProductService
             'is_highlighted' => $productsData->getIsHighlighted(),
             'highlight_message' => $productsData->getHighlightMessage(),
             'waitlist_enabled' => $productsData->getWaitlistEnabled(),
+            'lot_mode_enabled' => $productsData->getLotModeEnabled(),
         ]);
     }
 

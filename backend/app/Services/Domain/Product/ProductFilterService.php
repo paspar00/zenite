@@ -33,6 +33,7 @@ class ProductFilterService
         private readonly OrderPlatformFeePassThroughService     $platformFeeService,
         private readonly AccountRepositoryInterface             $accountRepository,
         private readonly EventRepositoryInterface               $eventRepository,
+        private readonly ProductLotService                      $productLotService,
     )
     {
     }
@@ -297,6 +298,8 @@ class ProductFilterService
 
     private function processProductPrices(ProductDomainObject $product, bool $hideSoldOutProducts = true): void
     {
+        $this->productLotService->filterToActiveLot($product);
+
         $product->setProductPrices(
             $product->getProductPrices()
                 ?->each(fn(ProductPriceDomainObject $price) => $this->processProductPrice($product, $price))

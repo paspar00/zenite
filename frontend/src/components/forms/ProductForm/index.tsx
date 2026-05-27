@@ -1,6 +1,14 @@
 import {t, Trans} from "@lingui/macro";
 import {UseFormReturnType} from "@mantine/form";
-import {Event, Product, ProductPriceType, TaxAndFee, TaxAndFeeCalculationType, TaxAndFeeType} from "../../../types.ts";
+import {
+    Event,
+    Product,
+    ProductCategory,
+    ProductPriceType,
+    TaxAndFee,
+    TaxAndFeeCalculationType,
+    TaxAndFeeType
+} from "../../../types.ts";
 import {
     ActionIcon,
     Alert,
@@ -34,7 +42,7 @@ import {
 } from "@tabler/icons-react";
 import {useDisclosure} from "@mantine/hooks";
 import {NavLink, useParams} from "react-router";
-import {useEffect} from "react";
+import {useEffect, useMemo} from "react";
 import {CustomSelect, ItemProps} from "../../common/CustomSelect";
 import {formatCurrency, getCurrencySymbol} from "../../../utilites/currency.ts";
 import {useGetEvent} from "../../../queries/useGetEvent.ts";
@@ -48,6 +56,7 @@ import {showError} from "../../../utilites/notifications.tsx";
 import classNames from "classnames";
 import {InputLabelWithHelp} from "../../common/InputLabelWithHelp";
 import {CreateTaxOrFeeModal} from "../../modals/CreateTaxOrFeeModal";
+import {useGetEventProductCategories} from "../../../queries/useGetProductCategories.ts";
 
 interface ProductFormProps {
     form: UseFormReturnType<Product>,
@@ -178,10 +187,16 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
     const {eventId} = useParams();
     const [opened, {toggle}] = useDisclosure(false);
     const [taxFeeModalOpen, {open: openTaxFeeModal, close: closeTaxFeeModal}] = useDisclosure(false);
+    const isLotMode = !!form.values.lot_mode_enabled;
     const isFreeProduct = form.values.type === 'FREE';
     const isDonationProduct = form.values.type === 'DONATION';
     const {data: event} = useGetEvent(eventId);
+    const {data: productCategoriesResponse} = useGetEventProductCategories(eventId);
     const {data: taxesAndFees} = useGetTaxesAndFees();
+    const productCategories = useMemo<ProductCategory[]>(
+        () => productCategoriesResponse?.data ?? event?.product_categories ?? [],
+        [event?.product_categories, productCategoriesResponse?.data],
+    );
 
     const handleTaxOrFeeCreated = (taxOrFee: TaxAndFee) => {
         const currentIds = form.values.tax_and_fee_ids || [];
@@ -206,10 +221,16 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
     }, [form, form.values.type]);
 
     useEffect(() => {
-        if (event?.product_categories && event.product_categories.length === 1) {
-            form.setFieldValue('product_category_id', String(event.product_categories[0].id));
+        if (isLotMode) {
+            form.setFieldValue('type', ProductPriceType.Tiered);
         }
-    }, [event?.product_categories]);
+    }, [isLotMode]);
+
+    useEffect(() => {
+        if (productCategories.length === 1) {
+            form.setFieldValue('product_category_id', String(productCategories[0].id));
+        }
+    }, [productCategories]);
 
     const removeTaxesAndFees = () => {
         form.setFieldValue('tax_and_fee_ids', []);
@@ -244,27 +265,47 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
                 </Alert>
             )}
 
-            <CustomSelect
-                disabled={Number(product?.quantity_sold) > 0}
-                label={t`Price Type`}
-                required
-                form={form}
-                name={'type'}
-                optionList={productPriceOptions}
+            <Switch
+                mb={16}
+                {...form.getInputProps('lot_mode_enabled', {type: 'checkbox'})}
+                label={t`Enable Automatic Lots (Lotes Automáticos)`}
+                description={t`Automatically switch between price batches by date or quantity sold. Only one lot is active at a time.`}
             />
 
-            {form.errors.type && (
-                <Alert title={t`Product Price Type`} mb={20} color={'red'}>
-                    {form.errors.type}
-                </Alert>
+            {!isLotMode && (
+                <>
+                    <CustomSelect
+                        disabled={Number(product?.quantity_sold) > 0}
+                        label={t`Price Type`}
+                        required
+                        form={form}
+                        name={'type'}
+                        optionList={productPriceOptions}
+                    />
+
+                    {form.errors.type && (
+                        <Alert title={t`Product Price Type`} mb={20} color={'red'}>
+                            {form.errors.type}
+                        </Alert>
+                    )}
+
+                    {form.values.type === ProductPriceType.Tiered && (
+                        <Alert variant="light" title={t`What are Tiered Products?`} mb={20} icon={<IconInfoCircle size={18}/>}>
+                            <Trans>
+                                Tiered products allow you to offer multiple price options for the same product.
+                                This is perfect for early bird products, or offering different price
+                                options for different groups of people.
+                            </Trans>
+                        </Alert>
+                    )}
+                </>
             )}
 
-            {form.values.type === ProductPriceType.Tiered && (
-                <Alert variant="light" title={t`What are Tiered Products?`} mb={20} icon={<IconInfoCircle size={18}/>}>
+            {isLotMode && (
+                <Alert variant="light" color="blue" title={t`Automatic Lots`} mb={20} icon={<IconInfoCircle size={18}/>}>
                     <Trans>
-                        Tiered products allow you to offer multiple price options for the same product.
-                        This is perfect for early bird products, or offering different price
-                        options for different groups of people.
+                        Lots switch automatically: the first lot whose date and quantity conditions are met becomes active.
+                        Configure each lot below in order — earliest first.
                     </Trans>
                 </Alert>
             )}
@@ -289,10 +330,11 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
                     helpText={t`Categories help you organize your products. This title will be displayed on the public event page.`}
                 />}
                 placeholder={t`Select category...`}
-                data={event?.product_categories?.map((category) => ({
+                data={productCategories.map((category) => ({
                     value: String(category.id),
                     label: category.name,
                 }))}
+                comboboxProps={{withinPortal: true}}
             />
 
             {form.values.type !== ProductPriceType.Tiered && (
@@ -340,7 +382,7 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
             )}
 
             {form.values.type === ProductPriceType.Tiered && (
-                <Fieldset legend={t`Price Tiers`} mt={20} mb={20}>
+                <Fieldset legend={isLotMode ? t`Lots` : t`Price Tiers`} mt={20} mb={20}>
                     <div className={classes.priceTiers}>
                         <ProductPriceTierForm product={product} form={form} event={event}/>
                         <Button
@@ -357,7 +399,7 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
                                 })
                             }
                         >
-                            {t`Add tier`}
+                            {isLotMode ? t`Add lot` : t`Add tier`}
                         </Button>
                     </div>
                 </Fieldset>
