@@ -13,7 +13,7 @@ const CustomerLayout = () => {
                 rightContent={(
                     <div className={classes.actions}>
                         <NavLink to="/" className={classes.link}>
-                            Inicio
+                            Início
                         </NavLink>
                         <NavLink to="/customer/profile" className={classes.link}>
                             Meu Perfil

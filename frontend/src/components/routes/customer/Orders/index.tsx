@@ -16,59 +16,57 @@ import {formatDateWithLocale, relativeDate} from "../../../../utilites/dates.ts"
 import {Order} from "../../../../types.ts";
 import classes from "./CustomerArea.module.scss";
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// Helpers
 
 const statusColor = (status: string) => {
     switch (status) {
-        case 'COMPLETED':
-        case 'ACTIVE':
-            return 'green';
-        case 'CANCELLED':
-            return 'red';
-        case 'AWAITING_OFFLINE_PAYMENT':
-        case 'AWAITING_PAYMENT':
-            return 'yellow';
+        case "COMPLETED":
+        case "ACTIVE":
+            return "green";
+        case "CANCELLED":
+            return "red";
+        case "AWAITING_OFFLINE_PAYMENT":
+        case "AWAITING_PAYMENT":
+            return "yellow";
         default:
-            return 'gray';
+            return "gray";
     }
 };
 
 const statusLabel = (status: string) => {
     switch (status) {
-        case 'COMPLETED':
-            return 'Concluído';
-        case 'ACTIVE':
-            return 'Ativo';
-        case 'CANCELLED':
-            return 'Cancelado';
-        case 'AWAITING_OFFLINE_PAYMENT':
-        case 'AWAITING_PAYMENT':
-            return 'Aguardando pagamento';
+        case "COMPLETED":
+            return "Concluído";
+        case "ACTIVE":
+            return "Ativo";
+        case "CANCELLED":
+            return "Cancelado";
+        case "AWAITING_OFFLINE_PAYMENT":
+        case "AWAITING_PAYMENT":
+            return "Aguardando pagamento";
         default:
             return status;
     }
 };
 
-// ─── Tickets Tab ─────────────────────────────────────────────────────────────
+// Tickets Tab
 
 function TicketsTab({orders}: { orders: Order[] }) {
-    // Flatten attendees from all completed orders
-    const tickets = orders.flatMap(order =>
-        (order.attendees ?? []).map(a => ({
+    const tickets = orders.flatMap((order) =>
+        (order.attendees ?? []).map((a) => ({
             ...a,
             eventTitle: order.event?.title ?? `Evento #${order.event_id}`,
             eventDate: order.event?.start_date ?? null,
-            eventTimezone: order.event?.timezone ?? 'UTC',
+            eventTimezone: order.event?.timezone ?? "UTC",
         }))
     );
 
-    // If no attendees were returned, fall back to order items as "tickets"
-    const orderItems = orders.flatMap(order =>
-        (order.order_items ?? []).map(item => ({
+    const orderItems = orders.flatMap((order) =>
+        (order.order_items ?? []).map((item) => ({
             ...item,
             eventTitle: order.event?.title ?? `Evento #${order.event_id}`,
             eventDate: order.event?.start_date ?? null,
-            eventTimezone: order.event?.timezone ?? 'UTC',
+            eventTimezone: order.event?.timezone ?? "UTC",
             orderStatus: order.status,
         }))
     );
@@ -97,7 +95,7 @@ function TicketsTab({orders}: { orders: Order[] }) {
                         <div className={classes.ticketBody}>
                             <p className={classes.ticketEvent}>{ticket.eventTitle}</p>
                             <p className={classes.ticketProduct}>
-                                {ticket.product?.title ?? 'Ingresso'}
+                                {ticket.product?.title ?? "Ingresso"}
                             </p>
                             <div className={classes.ticketMeta}>
                                 <span className={classes.ticketMetaItem}>
@@ -107,7 +105,7 @@ function TicketsTab({orders}: { orders: Order[] }) {
                                 {ticket.eventDate && (
                                     <span className={classes.ticketMetaItem}>
                                         <IconCalendar size={12}/>
-                                        {formatDateWithLocale(ticket.eventDate, 'shortDate', ticket.eventTimezone)}
+                                        {formatDateWithLocale(ticket.eventDate, "shortDate", ticket.eventTimezone)}
                                     </span>
                                 )}
                                 {ticket.public_id && (
@@ -127,7 +125,6 @@ function TicketsTab({orders}: { orders: Order[] }) {
         );
     }
 
-    // Fallback: show order items as tickets
     return (
         <Stack gap="md">
             {orderItems.map((item, idx) => (
@@ -142,7 +139,7 @@ function TicketsTab({orders}: { orders: Order[] }) {
                             {item.eventDate && (
                                 <span className={classes.ticketMetaItem}>
                                     <IconCalendar size={12}/>
-                                    {formatDateWithLocale(item.eventDate, 'shortDate', item.eventTimezone)}
+                                    {formatDateWithLocale(item.eventDate, "shortDate", item.eventTimezone)}
                                 </span>
                             )}
                             <span className={classes.ticketMetaItem}>
@@ -159,7 +156,7 @@ function TicketsTab({orders}: { orders: Order[] }) {
     );
 }
 
-// ─── Orders Tab ──────────────────────────────────────────────────────────────
+// Orders Tab
 
 function OrdersTab({orders}: { orders: Order[] }) {
     if (orders.length === 0) {
@@ -194,7 +191,7 @@ function OrdersTab({orders}: { orders: Order[] }) {
 
                         {order.order_items?.length ? (
                             <p className={classes.orderItems}>
-                                {order.order_items.map(i => `${i.quantity}× ${i.item_name}`).join(', ')}
+                                {order.order_items.map((i) => `${i.quantity}× ${i.item_name}`).join(", ")}
                             </p>
                         ) : null}
 
@@ -221,10 +218,10 @@ function OrdersTab({orders}: { orders: Order[] }) {
     );
 }
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
+// Page
 
 const CustomerOrders = () => {
-    const [activeTab, setActiveTab] = useState<string>('tickets');
+    const [activeTab, setActiveTab] = useState<string>("tickets");
     const {data: me} = useGetMe();
     const {data: orders, isLoading, isError} = useGetMyOrders();
 
@@ -233,18 +230,16 @@ const CustomerOrders = () => {
 
     return (
         <div className={classes.page}>
-            {/* Personalized header */}
             <div className={classes.heroHeader}>
                 <h1 className={classes.greeting}>
-                    {firstName ? `Olá, ${firstName}! 👋` : 'Area do Cliente'}
+                    {firstName ? `Olá, ${firstName}!` : "Área do Cliente"}
                 </h1>
                 <p className={classes.subtitle}>
                     Acompanhe seus ingressos e histórico de compras em um único lugar.
                 </p>
             </div>
 
-            {/* Tabs */}
-            <Tabs value={activeTab} onChange={(v) => setActiveTab(v ?? 'tickets')} className={classes.tabsRoot}>
+            <Tabs value={activeTab} onChange={(v) => setActiveTab(v ?? "tickets")} className={classes.tabsRoot}>
                 <Tabs.List mb="lg">
                     <Tabs.Tab value="tickets" leftSection={<IconTicket size={16}/>}>
                         Meus Ingressos
@@ -254,7 +249,6 @@ const CustomerOrders = () => {
                     </Tabs.Tab>
                 </Tabs.List>
 
-                {/* Loading / Error */}
                 {isLoading && (
                     <div className={classes.loader}>
                         <Loader/>

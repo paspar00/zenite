@@ -61,7 +61,6 @@ const CustomerProfile = () => {
         },
     });
 
-    // Populate form when user data loads
     useEffect(() => {
         if (me) {
             profileForm.setValues({
@@ -104,7 +103,6 @@ const CustomerProfile = () => {
                 <Text c="dimmed" size="sm">Gerencie seus dados pessoais.</Text>
             </div>
 
-            {/* Personal data */}
             <Paper className={classes.card} withBorder radius="md" p="xl">
                 <div className={classes.cardHeader}>
                     <IconUser size={20} className={classes.cardIcon}/>
