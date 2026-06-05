@@ -16,7 +16,6 @@ import {
     IconUsers,
 } from '@tabler/icons-react';
 import {useCallback, useMemo, useRef} from "react";
-import {getConfig} from "../../../utilites/config.ts";
 import {isZeniteTickets} from "../../../utilites/helpers.ts";
 import {showInfo} from "../../../utilites/notifications.tsx";
 
@@ -133,10 +132,13 @@ const AuthLayout = () => {
                     <div className={classes.leftPanel}>
                         <main className={classes.container}>
                             <div className={classes.logo} onClick={handleLogoClick} style={{cursor: 'pointer'}}>
-                                <img
-                                    src={getConfig("VITE_APP_LOGO_DARK", "/logos/zenite-tickets-stacked-light.svg")}
-                                    alt={t`${getConfig("VITE_APP_NAME", "Zenite Tickets")} logo`}
-                                />
+                                <span className={classes.logoMark} aria-hidden="true">
+                                    <span />
+                                </span>
+                                <span className={classes.logoText}>
+                                    <strong>Zenite</strong>
+                                    <small>Tickets</small>
+                                </span>
                             </div>
                             <div className={classes.wrapper}>
                                 <Outlet />

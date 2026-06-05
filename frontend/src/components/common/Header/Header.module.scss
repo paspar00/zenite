@@ -1,20 +1,89 @@
 .header {
-  height: 56px;
+  height: 64px;
   background-color: var(--hi-primary);
-  border-bottom: 1px solid var(--mantine-color-gray-3);
-
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 24px rgba(255, 91, 0, 0.18);
 
   .logo {
     display: flex;
-    img {
-      max-width: 120px;
-    }
+    align-items: center;
+    gap: 9px;
+    color: white;
+    text-decoration: none;
+    min-width: max-content;
   }
 }
 
 .inner {
-  height: 56px;
+  height: 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.logoMark {
+  width: 26px;
+  height: 20px;
+  border: 2px solid currentColor;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 0 0 auto;
+  color: white;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 5px;
+    height: 10px;
+    background: var(--hi-primary);
+    border: 2px solid currentColor;
+    border-radius: 999px;
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    left: -4px;
+  }
+
+  &::after {
+    right: -4px;
+  }
+
+  span {
+    width: 13px;
+    height: 11px;
+    border-top: 2px solid currentColor;
+    transform: skewX(-18deg) translateY(1px);
+  }
+}
+
+.logoText {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  line-height: 1;
+
+  strong {
+    font-size: 1.04rem;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
+  small {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+}
+
+.rightContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
 }

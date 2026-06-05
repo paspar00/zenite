@@ -1,7 +1,6 @@
 import {Container} from '@mantine/core';
 import classes from './Header.module.scss';
 import {NavLink} from "react-router";
-import { getConfig } from '../../../utilites/config';
 
 interface HeaderProps {
     rightContent?: React.ReactNode;
@@ -13,8 +12,14 @@ export const Header = ({rightContent, fullWidth = false, logoTarget = '/manage/e
     return (
         <header className={classes.header}>
             <Container size="md" className={classes.inner} fluid={fullWidth}>
-                <NavLink className={classes.logo} to={logoTarget}>
-                    <img src={getConfig("VITE_APP_LOGO_LIGHT", "/logos/zenite-tickets-text-dark.svg")} alt={`${getConfig("VITE_APP_NAME", "Zenite Tickets")} logo`} className={classes.logo}/>
+                <NavLink className={classes.logo} to={logoTarget} aria-label="Zenite Tickets">
+                    <span className={classes.logoMark} aria-hidden="true">
+                        <span />
+                    </span>
+                    <span className={classes.logoText}>
+                        <strong>Zenite</strong>
+                        <small>Tickets</small>
+                    </span>
                 </NavLink>
 
                 <div className={classes.rightContent}>

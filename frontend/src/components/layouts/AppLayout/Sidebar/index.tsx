@@ -7,7 +7,6 @@ import {NavItem} from "../types";
 import {NavLink} from "react-router";
 import classNames from "classnames";
 import {useMediaQuery} from "@mantine/hooks";
-import {getConfig} from "../../../../utilites/config.ts";
 
 interface SidebarProps {
     sidebarOpen: boolean;
@@ -74,12 +73,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
     return (
         <div className={classNames(`${classes.sidebar} ${sidebarOpen ? classes.open : classes.closed}`)}>
             <div className={classes.logo}>
-                <NavLink to={`/manage/events`}>
-                    <img
-                        style={{maxWidth: '160px', margin: "10px auto"}}
-                        src={getConfig("VITE_APP_LOGO_LIGHT", "/logos/zenite-tickets-text-dark.svg")}
-                        alt={t`${getConfig("VITE_APP_NAME", "Zenite Tickets")} logo`}
-                    />
+                <NavLink to={`/manage/events`} aria-label="Zenite Tickets">
+                    <span className={classes.logoMark} aria-hidden="true">
+                        <span />
+                    </span>
+                    <span className={classes.logoText}>
+                        <strong>Zenite</strong>
+                        <small>Tickets</small>
+                    </span>
                 </NavLink>
             </div>
             <div className={classes.nav}>

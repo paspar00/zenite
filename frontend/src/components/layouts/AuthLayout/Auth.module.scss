@@ -51,7 +51,11 @@
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   margin-bottom: 1.5rem;
+  color: #161616;
 
   @include mixins.respond-below(md) {
     margin-bottom: 1.25rem;
@@ -60,17 +64,75 @@
   @include mixins.respond-below(sm) {
     margin-bottom: 1rem;
   }
+}
 
-  img {
-    height: 110px;
-    width: auto;
+.logoMark {
+  width: 42px;
+  height: 32px;
+  border: 3px solid var(--hi-primary);
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--hi-primary);
+  flex: 0 0 auto;
 
-    @include mixins.respond-below(md) {
-      height: 100px;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 8px;
+    height: 15px;
+    background: #fafafa;
+    border: 3px solid currentColor;
+    border-radius: 999px;
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    left: -6px;
+  }
+
+  &::after {
+    right: -6px;
+  }
+
+  span {
+    width: 21px;
+    height: 17px;
+    border-top: 3px solid currentColor;
+    transform: skewX(-18deg) translateY(2px);
+  }
+}
+
+.logoText {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  line-height: 1;
+
+  strong {
+    font-size: 1.72rem;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  small {
+    color: var(--hi-primary);
+    font-size: 1.48rem;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
+  @include mixins.respond-below(sm) {
+    strong {
+      font-size: 1.46rem;
     }
 
-    @include mixins.respond-below(sm) {
-      height: 90px;
+    small {
+      font-size: 1.26rem;
     }
   }
 }
