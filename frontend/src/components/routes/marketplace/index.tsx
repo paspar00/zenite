@@ -146,9 +146,14 @@ function BrandPresentation() {
                 <span className={classes.eyebrow}>Zenite para organizadores</span>
                 <h2>Venda inscrições com uma presença digital à altura do seu evento.</h2>
                 <p>
-                    A Zenite Tickets reúne página do evento, checkout seguro, Pix, cartão e gestão de
-                    participantes em uma experiência simples para quem compra e profissional para quem organiza.
+                    Zenite é o ponto mais alto: o auge da experiência esportiva. A marca une o pico da
+                    performance, as linhas de movimento e a bilheteria digital para representar eventos bem
+                    organizados, inscrições seguras e chegada no topo.
                 </p>
+                <div className={classes.brandMeaning}>
+                    <strong>O símbolo</strong>
+                    <span>O triângulo central representa o zênite, o ponto máximo. As linhas laterais remetem a velocidade, percurso e esporte. A base em formato de ingresso conecta tudo à venda de inscrições.</span>
+                </div>
                 <div className={classes.presentationActions}>
                     <NavLink to="/auth/register" className={classes.presentationPrimary}>
                         Criar meu evento <IconChevronRight size={16}/>
@@ -169,7 +174,7 @@ function BrandPresentation() {
                     <span><IconShieldCheck size={20}/> Pagamentos seguros</span>
                     <span><IconUsers size={20}/> Gestão de participantes</span>
                     <span><IconChartBar size={20}/> Relatórios em tempo real</span>
-                    <span><IconSparkles size={20}/> Página profissional</span>
+                    <span><IconSparkles size={20}/> Marca no auge</span>
                 </div>
             </div>
         </section>
@@ -272,7 +277,7 @@ export default function Marketplace() {
                 <div className={classes.heroInner}>
                     <h1 className={classes.heroTitle}>Zenite Tickets</h1>
                     <p className={classes.heroSubtitle}>
-                        Plataforma oficial para descobrir eventos e comprar inscrições com segurança, Pix e cartão.
+                        Plataforma oficial para descobrir eventos e comprar inscrições com Pix, cartão, boleto e outros métodos.
                     </p>
                     <div className={classes.searchBar}>
                         <IconSearch size={20} className={classes.searchIcon}/>
@@ -287,13 +292,14 @@ export default function Marketplace() {
                         <span className={classes.paymentLabel}>Formas de pagamento</span>
                         <span className={classes.paymentItem}><IconCreditCard size={16}/> Cartão</span>
                         <span className={classes.paymentItem}><IconQrcode size={16}/> Via Pix</span>
+                        <span className={classes.paymentItem}><IconTicket size={16}/> Boleto</span>
+                        <span className={classes.paymentItem}><IconShieldCheck size={16}/> Transferência</span>
+                        <span className={classes.paymentItem}><IconSparkles size={16}/> Outros</span>
                     </div>
                 </div>
             </section>
 
             <div className={classes.container}>
-                <BrandPresentation/>
-
                 <section className={classes.section}>
                     <div className={classes.spotlightHeader}>
                         <div>
@@ -306,6 +312,8 @@ export default function Marketplace() {
                     </div>
                     {searchMatchesVilaVelha && <ComingSoonEventCard/>}
                 </section>
+
+                <BrandPresentation/>
 
                 {/* Featured */}
                 {featured.length > 0 && (

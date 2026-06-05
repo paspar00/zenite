@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="430" height="112" viewBox="0 0 430 112" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="72" viewBox="0 0 220 72" role="img" aria-labelledby="title desc">
   <title id="title">Zenite Tickets</title>
-  <desc id="desc">Logo da plataforma Zenite Tickets</desc>
+  <desc id="desc">Marca da Zenite Tickets com símbolo do auge esportivo e bilheteria</desc>
   <defs>
-    <linearGradient id="zeniteMark" x1="8" y1="8" x2="92" y2="92" gradientUnits="userSpaceOnUse">
+    <linearGradient id="zeniteGradient" x1="8" y1="8" x2="64" y2="64" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#ffb000"/>
-      <stop offset="0.52" stop-color="#ff6b00"/>
+      <stop offset=".58" stop-color="#ff6b00"/>
       <stop offset="1" stop-color="#ff3b10"/>
     </linearGradient>
   </defs>
-  <g transform="translate(16 14)">
-    <path d="M14 0h70a14 14 0 0 1 14 14v9a12 12 0 0 0 0 24v9a14 14 0 0 1-14 14H14A14 14 0 0 1 0 56v-9a12 12 0 0 0 0-24v-9A14 14 0 0 1 14 0Z" fill="url(#zeniteMark)"/>
-    <path d="M35 58 49 17l14 41-14-9Z" fill="#fff"/>
-    <path d="M29 31h40" stroke="#101010" stroke-width="6" stroke-linecap="round" opacity=".18"/>
-    <path d="M22 45h56" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+  <g transform="translate(8 8)">
+    <path d="M10 4h44c4.4 0 8 3.6 8 8v6c-4.4 0-8 3.6-8 8s3.6 8 8 8v6c0 4.4-3.6 8-8 8H10c-4.4 0-8-3.6-8-8v-6c4.4 0 8-3.6 8-8s-3.6-8-8-8v-6c0-4.4 3.6-8 8-8Z" fill="url(#zeniteGradient)"/>
+    <path d="M17 39 32 13l15 26-15-8Z" fill="#ffffff"/>
+    <path d="M17 39h30" stroke="#101010" stroke-width="4" stroke-linecap="round" opacity=".22"/>
+    <path d="M15 27h16M15 21h12M37 21h12M33 27h16" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".86"/>
   </g>
-  <text x="132" y="52" font-family="Inter, Outfit, system-ui, sans-serif" font-size="38" font-weight="900" letter-spacing="0" fill="#ffffff">Zenite</text>
-  <text x="134" y="80" font-family="Inter, Outfit, system-ui, sans-serif" font-size="20" font-weight="800" letter-spacing=".16em" fill="#ff6b00">TICKETS</text>
+  <text x="82" y="34" font-family="Inter, Outfit, system-ui, sans-serif" font-size="27" font-weight="900" fill="#ffffff">Zenite</text>
+  <text x="84" y="53" font-family="Inter, Outfit, system-ui, sans-serif" font-size="13" font-weight="900" letter-spacing=".18em" fill="#ffb000">TICKETS</text>
 </svg>
