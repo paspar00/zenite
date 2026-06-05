@@ -33,6 +33,14 @@ export const router: RouteObject[] = [
         errorElement: <ErrorPage />
     },
     {
+        path: "meia-maratona-vila-velha-3-edicao",
+        async lazy() {
+            const MeiaMaratonaVilaVelha = await import("./components/routes/MeiaMaratonaVilaVelha");
+            return {Component: MeiaMaratonaVilaVelha.default};
+        },
+        errorElement: <ErrorPage />
+    },
+    {
         path: "atendimento",
         async lazy() {
             const Atendimento = await import("./components/routes/atendimento");
@@ -679,4 +687,3 @@ export const router: RouteObject[] = [
         errorElement: <ErrorPage />,
     }
 ];
-

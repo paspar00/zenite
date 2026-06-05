@@ -28,7 +28,7 @@ export const ErrorDisplay = () => {
             return;
         }
 
-        const reloadKey = 'hi.events.dynamic-import-reload';
+        const reloadKey = 'zenite-tickets.dynamic-import-reload';
         const currentPath = window.location.href;
 
         try {
@@ -64,8 +64,8 @@ export const ErrorDisplay = () => {
                 <Container size="md" className={classes.root}>
                     <Stack gap="xl" align="center">
                         <Image
-                            src={getConfig("VITE_APP_LOGO_DARK", "/logos/hi-events-stacked-light.svg")}
-                            alt={getConfig("VITE_APP_NAME", "Hi.Events") + " Logo"}
+                            src={getConfig("VITE_APP_LOGO_DARK", "/logos/zenite-tickets-stacked-light.svg")}
+                            alt={getConfig("VITE_APP_NAME", "Zenite Tickets") + " Logo"}
                             w={rem(140)}
                             h="auto"
                             fit="contain"

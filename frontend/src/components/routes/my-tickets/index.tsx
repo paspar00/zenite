@@ -103,7 +103,7 @@ const OrderCard = ({order}: { order: Order }) => {
                     component={NavLink}
                     to={orderUrl}
                     variant="gradient"
-                    gradient={{ from: 'grape', to: 'pink', deg: 90 }}
+                    gradient={{ from: 'orange', to: 'yellow', deg: 90 }}
                     size="sm"
                     leftSection={<IconExternalLink size={16}/>}
                 >

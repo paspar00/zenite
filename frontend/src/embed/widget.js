@@ -10,7 +10,7 @@
             const scriptURL = scriptElement.src;
             scriptOrigin = new URL(scriptURL).origin;
         } catch (e) {
-            console.error('HiEvent widget error: Invalid script URL');
+            console.error('Zenite Tickets widget error: Invalid script URL');
             return;
         }
 
@@ -18,7 +18,7 @@
         widgets.forEach((widget, index) => {
             const eventId = widget.getAttribute('data-hievents-id');
             if (!eventId) {
-                console.error('HiEvent widget error: data-hievents-id is required');
+                console.error('Zenite Tickets widget error: data-hievents-id is required');
                 return;
             }
 
@@ -39,7 +39,7 @@
                 ' allow-presentation'
             );
 
-            iframe.setAttribute('title', 'Hi.Events Widget');
+            iframe.setAttribute('title', 'Zenite Tickets Widget');
             iframe.style.border = 'none';
             iframe.style.width = '100%';
 

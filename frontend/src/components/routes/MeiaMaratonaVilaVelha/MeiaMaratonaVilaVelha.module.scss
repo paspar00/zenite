@@ -1,0 +1,139 @@
+.page {
+  min-height: 100vh;
+  background: #101010;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 72px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(16, 16, 16, 0.92);
+}
+
+.backLink {
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.brand {
+  width: 190px;
+  max-width: 42vw;
+}
+
+.hero {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 54px 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+  gap: 44px;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    padding: 32px 0;
+  }
+}
+
+.media {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    object-fit: cover;
+  }
+}
+
+.content {
+  h1 {
+    margin: 14px 0 16px;
+    font-size: clamp(38px, 5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: 0;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #ff6b00;
+  color: #101010;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.lead {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 18px;
+  line-height: 1.55;
+  margin: 0 0 28px;
+}
+
+.infoGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.infoItem {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 15px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+
+  svg {
+    color: #ff6b00;
+    flex: none;
+  }
+
+  strong,
+  span {
+    display: block;
+  }
+
+  strong {
+    font-size: 13px;
+    color: #ffffff;
+  }
+
+  span {
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 2px;
+  }
+}
+
+.notice {
+  margin-top: 20px;
+  padding: 16px;
+  border-left: 4px solid #ff6b00;
+  background: rgba(255, 107, 0, 0.1);
+
+  strong,
+  span {
+    display: block;
+  }
+
+  span {
+    margin-top: 4px;
+    color: rgba(255, 255, 255, 0.72);
+  }
+}

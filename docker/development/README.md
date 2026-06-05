@@ -1,6 +1,6 @@
-# Hi.Events local development with Docker
+# Zenite Tickets local development with Docker
 
-This guide walks you through setting up Hi.Events using Docker, including requirements, setup steps, configuration,
+This guide walks you through setting up Zenite Tickets using Docker, including requirements, setup steps, configuration,
 and environment variables.
 
 ## Requirements
@@ -17,7 +17,7 @@ and environment variables.
 ### 1. Clone the repository
 
 ```bash
-git clone git@github.com:HiEventsDev/Hi.Events.git
+git clone git@github.com:ZeniteTickets/zenite-tickets.git
 ```
 
 ### 2. Start the development environment
@@ -25,7 +25,7 @@ git clone git@github.com:HiEventsDev/Hi.Events.git
 Navigate to the Docker development directory and run the startup script:
 
 ```bash
-cd Hi.Events/docker/development
+cd Zenite Tickets/docker/development
 ./start-dev.sh
 ```
 
@@ -44,8 +44,8 @@ Windows users should follow the steps below to manually run the setup commands i
 Using Git Bash or Windows Terminal:
 
 ```bash
-git clone git@github.com:HiEventsDev/Hi.Events.git
-cd Hi.Events/docker/development
+git clone git@github.com:ZeniteTickets/zenite-tickets.git
+cd Zenite Tickets/docker/development
 ```
 
 ### 2. Generate SSL certificates
@@ -112,11 +112,11 @@ start https://localhost:8443/auth/register
 
 ## Additional configuration
 
-Hi.Events uses environment variables for configuration. You’ll find `.env` files in:
+Zenite Tickets uses environment variables for configuration. You’ll find `.env` files in:
 
 - `frontend/.env`
 - `backend/.env`
 
 You can modify these to customize your setup.
 
-For a full list of environment variables, see the [Environment Variables Documentation](https://hi.events/docs/getting-started/deploying#environment-variables).
+For a full list of environment variables, see the [Environment Variables Documentation](https://zenitetickets.com/docs/getting-started/deploying#environment-variables).

@@ -17,7 +17,7 @@ import {
 } from '@tabler/icons-react';
 import {useCallback, useMemo, useRef} from "react";
 import {getConfig} from "../../../utilites/config.ts";
-import {isHiEvents} from "../../../utilites/helpers.ts";
+import {isZeniteTickets} from "../../../utilites/helpers.ts";
 import {showInfo} from "../../../utilites/notifications.tsx";
 
 const allFeatures = [
@@ -118,7 +118,7 @@ const AuthLayout = () => {
 
         if (clickCountRef.current >= 5) {
             clickCountRef.current = 0;
-            showInfo(`HiEvents v${__APP_VERSION__}`);
+            showInfo(`Zenite Tickets v${__APP_VERSION__}`);
         }
     }, []);
 
@@ -134,13 +134,13 @@ const AuthLayout = () => {
                         <main className={classes.container}>
                             <div className={classes.logo} onClick={handleLogoClick} style={{cursor: 'pointer'}}>
                                 <img
-                                    src={getConfig("VITE_APP_LOGO_DARK", "/logos/hi-events-stacked-light.svg")}
-                                    alt={t`${getConfig("VITE_APP_NAME", "Hi.Events")} logo`}
+                                    src={getConfig("VITE_APP_LOGO_DARK", "/logos/zenite-tickets-stacked-light.svg")}
+                                    alt={t`${getConfig("VITE_APP_NAME", "Zenite Tickets")} logo`}
                                 />
                             </div>
                             <div className={classes.wrapper}>
                                 <Outlet />
-                                {!isHiEvents() && <PoweredByFooter />}
+                                {!isZeniteTickets() && <PoweredByFooter />}
                             </div>
                         </main>
                     </div>

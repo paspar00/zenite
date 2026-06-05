@@ -38,14 +38,14 @@
   transition: color 0.15s, background 0.15s;
 
   &:hover {
-    color: #0047cc;
+    color: #ff6b00;
     background: #f7f9ff;
   }
 }
 
 .tabActive {
-  color: #0047cc;
-  border-bottom: 2.5px solid #0047cc;
+  color: #ff6b00;
+  border-bottom: 2.5px solid #ff6b00;
   margin-bottom: -1.5px;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .submitBtn {
-  background: #0047cc !important;
+  background: #ff6b00 !important;
   color: #fff !important;
   font-weight: 700 !important;
   height: 44px !important;

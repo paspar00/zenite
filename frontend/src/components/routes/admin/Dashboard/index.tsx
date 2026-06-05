@@ -134,7 +134,7 @@ const AdminDashboard = () => {
 
                     <Paper shadow="sm" p="md" radius="md" withBorder>
                         <Group gap="xs">
-                            <IconTicket size={32} color="var(--mantine-color-violet-6)" />
+                            <IconTicket size={32} color="var(--mantine-color-primary-6)" />
                             <div style={{flex: 1}}>
                                 <Text size="xs" c="dimmed" fw={500}>
                                     {t`Tickets Sold`}
@@ -219,7 +219,7 @@ const AdminDashboard = () => {
 
                         <Paper shadow="sm" p="md" radius="md" withBorder>
                             <Group gap="xs">
-                                <IconUserPlus size={32} color="var(--mantine-color-pink-6)" />
+                                <IconUserPlus size={32} color="var(--mantine-color-primary-6)" />
                                 <div style={{flex: 1}}>
                                     <Text size="xs" c="dimmed" fw={500}>
                                         {t`New Signups`}

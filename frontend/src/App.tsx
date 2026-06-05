@@ -29,6 +29,13 @@ declare global {
     }
 }
 
+const defaultBrand = {
+    name: "Zenite Tickets",
+    primaryColor: "#ff6b00",
+    secondaryColor: "#101010",
+    favicon: "/manifest-icons/favicon.svg",
+};
+
 export const App: FC<
     PropsWithChildren<{
         queryClient: QueryClient;
@@ -73,8 +80,8 @@ export const App: FC<
             <MantineProvider
                 theme={{
                     colors: {
-                        primary: generateColors(getConfig("VITE_APP_PRIMARY_COLOR", "#40296C") as string),
-                        secondary: generateColors(getConfig("VITE_APP_SECONDARY_COLOR", "#3d0b44") as string),
+                        primary: generateColors(getConfig("VITE_APP_PRIMARY_COLOR", defaultBrand.primaryColor) as string),
+                        secondary: generateColors(getConfig("VITE_APP_SECONDARY_COLOR", defaultBrand.secondaryColor) as string),
                     },
                     primaryColor: "primary",
                     fontFamily: "Outfit, sans-serif",
@@ -89,10 +96,10 @@ export const App: FC<
                                 <ThirdPartyScripts/>
                                 <ModalsProvider>
                                     <Helmet>
-                                        <title>{getConfig("VITE_APP_NAME", "Hi.Events")}</title>
+                                        <title>{getConfig("VITE_APP_NAME", defaultBrand.name)}</title>
                                         <link rel="icon"
                                               type="image/svg+xml"
-                                              href={getConfig("VITE_APP_FAVICON", "/favicon.svg")}
+                                              href={getConfig("VITE_APP_FAVICON", defaultBrand.favicon)}
                                         />
                                     </Helmet>
                                     {props.children}

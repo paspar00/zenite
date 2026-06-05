@@ -47,8 +47,8 @@ export const GenericErrorPage: React.FC<GenericErrorPageProps> = ({
                     <Stack gap="xl" align="center">
 
                         <Image
-                            src={getConfig("VITE_APP_LOGO_DARK", "/logos/hi-events-stacked-light.svg")}
-                            alt={getConfig("VITE_APP_NAME", "Hi.Events") + " Logo"}
+                            src={getConfig("VITE_APP_LOGO_DARK", "/logos/zenite-tickets-stacked-light.svg")}
+                            alt={getConfig("VITE_APP_NAME", "Zenite Tickets") + " Logo"}
                             w={rem(140)}
                             h="auto"
                             fit="contain"
@@ -72,7 +72,7 @@ export const GenericErrorPage: React.FC<GenericErrorPageProps> = ({
                                     href={buttonUrl}
                                     leftSection={buttonIcon}
                                     variant="gradient"
-                                    gradient={{from: 'purple', to: 'pink'}}
+                                    gradient={{from: 'orange', to: 'yellow'}}
                                     className={classes.button}
                                 >
                                     {buttonText}

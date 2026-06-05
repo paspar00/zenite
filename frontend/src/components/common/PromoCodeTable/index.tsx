@@ -145,7 +145,7 @@ export const PromoCodeTable = ({event, promoCodes, openCreateModal}: PromoCodeTa
                                                     })}>
                                                 <Badge
                                                     variant={'light'}
-                                                    color={'pink'}>{code.applicable_product_ids?.length} {t`Product(s)`}</Badge>
+                                                    color={'orange'}>{code.applicable_product_ids?.length} {t`Product(s)`}</Badge>
                                             </Tooltip>
                                         )}
                                     </div>

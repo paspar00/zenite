@@ -33,7 +33,7 @@ export default function Unsubscribe() {
 
     const content: Record<Status, {icon: React.ReactNode; title: string; body: string}> = {
         loading: {
-            icon: <IconMailOff size={56} color="#0047cc" />,
+            icon: <IconMailOff size={56} color="#ff6b00" />,
             title: 'Processando…',
             body: 'Aguarde enquanto confirmamos seu cancelamento.',
         },
@@ -63,7 +63,7 @@ export default function Unsubscribe() {
 
     return (
         <div style={{display: 'flex', flexDirection: 'column', minHeight: '100vh', background: '#f7f9ff'}}>
-            <header style={{background: 'linear-gradient(135deg,#0047cc 0%,#1a1a2e 100%)', padding: '0 24px'}}>
+            <header style={{background: 'linear-gradient(135deg,#ff6b00 0%,#101010 100%)', padding: '0 24px'}}>
                 <div style={{maxWidth: 1100, margin: '0 auto', height: 60, display: 'flex', alignItems: 'center'}}>
                     <NavLink to="/" style={{display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: '#fff', fontWeight: 700, fontSize: '1.1rem'}}>
                         <IconTicket size={26} />
@@ -83,11 +83,11 @@ export default function Unsubscribe() {
                     textAlign: 'center',
                 }}>
                     <div style={{marginBottom: 20}}>{icon}</div>
-                    <h1 style={{margin: '0 0 12px', fontSize: '1.4rem', fontWeight: 700, color: '#1a1a2e'}}>{title}</h1>
+                    <h1 style={{margin: '0 0 12px', fontSize: '1.4rem', fontWeight: 700, color: '#101010'}}>{title}</h1>
                     <p style={{margin: '0 0 28px', fontSize: '0.95rem', color: '#555', lineHeight: 1.6}}>{body}</p>
                     <NavLink to="/" style={{
                         display: 'inline-block',
-                        background: '#0047cc',
+                        background: '#ff6b00',
                         color: '#fff',
                         borderRadius: 8,
                         padding: '10px 28px',

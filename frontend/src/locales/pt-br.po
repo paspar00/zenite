@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
-"Project-Id-Version: Hi.Events\n"
+"Project-Id-Version: Zenite Tickets\n"
 "Language: pt-br\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
@@ -4243,12 +4243,12 @@ msgid "Hi {0} 👋"
 msgstr "Oi {0} 👋"
 
 #: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:75
-msgid "Hi.Events Fee"
-msgstr "Taxa Hi.Events"
+msgid "Zenite Tickets Fee"
+msgstr "Taxa Zenite Tickets"
 
 #: src/components/routes/organizer/Reports/index.tsx:42
-msgid "Hi.Events platform fees and VAT breakdown by transaction"
-msgstr "Taxas da plataforma Hi.Events e discriminação do IVA por transação"
+msgid "Zenite Tickets platform fees and VAT breakdown by transaction"
+msgstr "Taxas da plataforma Zenite Tickets e discriminação do IVA por transação"
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:90
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:321
@@ -8465,8 +8465,8 @@ msgid "Thank you for attending!"
 msgstr "Obrigado por participar!"
 
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:91
-msgid "Thanks for your support as we continue to grow and improve Hi.Events!"
-msgstr "Obrigado pelo seu apoio enquanto continuamos a crescer e melhorar o Hi.Events!"
+msgid "Thanks for your support as we continue to grow and improve Zenite Tickets!"
+msgstr "Obrigado pelo seu apoio enquanto continuamos a crescer e melhorar o Zenite Tickets!"
 
 #: src/components/routes/product-widget/SelectProducts/index.tsx:186
 #: src/components/routes/product-widget/SelectProducts/index.tsx:234
@@ -8804,8 +8804,8 @@ msgid "This product is sold out"
 msgstr "Este produto está esgotado"
 
 #: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:118
-msgid "This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Hi.Events may be missing historical data."
-msgstr "Este relatório é apenas para fins informativos. Sempre consulte um profissional de impostos antes de usar esses dados para fins contábeis ou fiscais. Por favor, verifique com seu painel do Stripe, pois o Hi.Events pode não ter dados históricos."
+msgid "This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Zenite Tickets may be missing historical data."
+msgstr "Este relatório é apenas para fins informativos. Sempre consulte um profissional de impostos antes de usar esses dados para fins contábeis ou fiscais. Por favor, verifique com seu painel do Stripe, pois o Zenite Tickets pode não ter dados históricos."
 
 #: src/components/routes/auth/ResetPassword/index.tsx:28
 msgid "This reset password link is invalid or expired."
@@ -9144,8 +9144,8 @@ msgid "Try another email"
 msgstr "Tentar outro e-mail"
 
 #: src/components/common/PoweredByFooter/index.tsx:55
-msgid "Try Hi.Events Free"
-msgstr "Experimente Hi.Events Grátis"
+msgid "Try Zenite Tickets Free"
+msgstr "Experimente Zenite Tickets Grátis"
 
 #: src/components/common/LanguageSwitcher/index.tsx:38
 msgid "Turkish"

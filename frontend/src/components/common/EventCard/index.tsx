@@ -24,14 +24,14 @@ import {formatDateWithLocale, relativeDate} from "../../../utilites/dates.ts";
 import {Card} from "../Card";
 
 const placeholderGradients = [
-    'linear-gradient(135deg, var(--mantine-color-violet-5) 0%, var(--mantine-color-indigo-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-pink-5) 0%, var(--mantine-color-grape-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-blue-5) 0%, var(--mantine-color-cyan-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-teal-5) 0%, var(--mantine-color-green-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-orange-5) 0%, var(--mantine-color-yellow-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-indigo-5) 0%, var(--mantine-color-blue-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-grape-5) 0%, var(--mantine-color-violet-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-cyan-5) 0%, var(--mantine-color-teal-5) 100%)',
+    'linear-gradient(135deg, #101010 0%, #ff6b00 100%)',
+    'linear-gradient(135deg, #ff6b00 0%, #ffb000 100%)',
+    'linear-gradient(135deg, #262626 0%, #f97316 100%)',
+    'linear-gradient(135deg, #0a0a0a 0%, #fb923c 100%)',
+    'linear-gradient(135deg, #f97316 0%, #111827 100%)',
+    'linear-gradient(135deg, #171717 0%, #ea580c 100%)',
+    'linear-gradient(135deg, #ff4d00 0%, #101010 100%)',
+    'linear-gradient(135deg, #1f2937 0%, #ff8a00 100%)',
 ];
 
 interface EventCardProps {

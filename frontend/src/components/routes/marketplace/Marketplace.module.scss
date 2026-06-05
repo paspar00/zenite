@@ -15,7 +15,7 @@
 
 // ─── Header ──────────────────────────────────────────────────────────────────
 .header {
-  background: #0047cc;
+  background: #ff6b00;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -88,7 +88,7 @@
 
 .btnPrimary {
   background: #fff;
-  color: #0047cc;
+  color: #ff6b00;
   border-radius: 8px;
   padding: 6px 20px;
   font-size: 13px;
@@ -141,7 +141,7 @@
   padding: 13px 18px;
   font-size: 14px;
   font-weight: 600;
-  color: #1a1a2e;
+  color: #101010;
   text-decoration: none;
   transition: background 0.12s;
 
@@ -151,13 +151,13 @@
 
   &:hover {
     background: #f0f4ff;
-    color: #0047cc;
+    color: #ff6b00;
   }
 }
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 .hero {
-  background: linear-gradient(135deg, #0047cc 0%, #1a73e8 60%, #42a5f5 100%);
+  background: linear-gradient(135deg, #ff6b00 0%, #ff8a00 60%, #ffb000 100%);
   padding: 56px 20px 48px;
 }
 
@@ -245,8 +245,108 @@
 .sectionTitle {
   font-size: 22px;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #101010;
   margin: 0 0 20px;
+}
+
+.spotlightHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-end;
+  margin-bottom: 18px;
+
+  .sectionTitle {
+    margin-bottom: 0;
+  }
+}
+
+.eyebrow {
+  display: block;
+  color: #ff6b00;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.detailsLink {
+  color: #ff6b00;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.comingSoonCard {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.95fr) minmax(280px, 1.05fr);
+  background: #101010;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 18px 42px rgba(16, 16, 16, 0.22);
+
+  &:hover {
+    .comingSoonImage {
+      transform: scale(1.02);
+    }
+  }
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.comingSoonImage {
+  min-height: 300px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.25s ease;
+
+  @media (max-width: 760px) {
+    min-height: 220px;
+  }
+}
+
+.comingSoonBody {
+  padding: clamp(26px, 4vw, 44px);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h3 {
+    margin: 12px 0 18px;
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 7px 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-weight: 700;
+  }
+
+  svg {
+    color: #ff6b00;
+  }
+}
+
+.comingSoonBadge {
+  width: fit-content;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #ff6b00;
+  color: #101010;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 // ─── Featured Grid ────────────────────────────────────────────────────────────
@@ -368,7 +468,7 @@
 .eventCardTitle {
   font-size: 13px;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #101010;
   margin: 0 0 6px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -426,7 +526,7 @@
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
 .footer {
-  background: #1a1a2e;
+  background: #101010;
   color: rgba(255, 255, 255, 0.5);
   text-align: center;
   padding: 24px 20px;

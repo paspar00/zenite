@@ -110,8 +110,8 @@ export const iHavePurchasedALicence = () => {
     return getConfig('VITE_I_HAVE_PURCHASED_A_LICENCE');
 }
 
-export const isHiEvents = () => {
-    return getConfig('VITE_FRONTEND_URL')?.includes('.hi.events');
+export const isZeniteTickets = () => {
+    return getConfig('VITE_FRONTEND_URL')?.includes('zenitetickets.com');
 }
 
 export const isEmptyHtml = (content: string) => {

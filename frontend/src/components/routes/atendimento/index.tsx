@@ -140,7 +140,7 @@ export default function Atendimento() {
                             href="mailto:contato@formulaonline.space"
                             className={classes.contactCard}
                         >
-                            <div className={classes.contactIcon} style={{background: "#0047cc"}}>
+                            <div className={classes.contactIcon} style={{background: "#ff6b00"}}>
                                 <IconMail size={28} color="#fff"/>
                             </div>
                             <h3>E-mail</h3>

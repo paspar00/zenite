@@ -16,6 +16,14 @@ import {
     IconTicket,
 } from "@tabler/icons-react";
 
+const vilaVelhaEvent = {
+    title: "Meia Maratona de Vila Velha 3ª edição",
+    location: "Vila Velha, ES",
+    date: "Data a ser liberada",
+    url: "/meia-maratona-vila-velha-3-edicao",
+    image: "/images/meia-maratona-vila-velha-3-logo.svg",
+};
+
 const placeholderGradients = [
     'linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%)',
     'linear-gradient(135deg, #e91e63 0%, #880e4f 100%)',
@@ -103,6 +111,23 @@ function FeaturedEventCard({event}: { event: Event }) {
     );
 }
 
+function ComingSoonEventCard() {
+    return (
+        <NavLink to={vilaVelhaEvent.url} className={classes.comingSoonCard}>
+            <div
+                className={classes.comingSoonImage}
+                style={{backgroundImage: `url(${vilaVelhaEvent.image})`}}
+            />
+            <div className={classes.comingSoonBody}>
+                <span className={classes.comingSoonBadge}>3ª edição</span>
+                <h3>{vilaVelhaEvent.title}</h3>
+                <p><IconMapPin size={14}/> {vilaVelhaEvent.location}</p>
+                <p><IconCalendar size={14}/> {vilaVelhaEvent.date}</p>
+            </div>
+        </NavLink>
+    );
+}
+
 export default function Marketplace() {
     const [search, setSearch] = useState('');
     const [menuOpen, setMenuOpen] = useState(false);
@@ -121,6 +146,12 @@ export default function Marketplace() {
     }, [menuOpen]);
 
     const events: Event[] = data?.data ?? [];
+
+    const searchMatchesVilaVelha = search.trim()
+        ? `${vilaVelhaEvent.title} ${vilaVelhaEvent.location} ${vilaVelhaEvent.date}`
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        : true;
 
     const filtered = search.trim()
         ? events.filter(e => {
@@ -141,7 +172,7 @@ export default function Marketplace() {
                 <div className={classes.headerInner}>
                     <NavLink to="/" className={classes.logo}>
                         <IconTicket size={28} color="#fff"/>
-                        <span>TicketHub</span>
+                        <span>Zenite Tickets</span>
                     </NavLink>
                     <nav className={classes.nav}>
                         <a
@@ -192,9 +223,9 @@ export default function Marketplace() {
             {/* Hero */}
             <section className={classes.hero}>
                 <div className={classes.heroInner}>
-                    <h1 className={classes.heroTitle}>Desafie seus limites</h1>
+                    <h1 className={classes.heroTitle}>Zenite Tickets</h1>
                     <p className={classes.heroSubtitle}>
-                        Encontre um evento perto de você e movimente seu estilo de vida.
+                        Eventos, corridas e experiências com inscrições simples e seguras.
                     </p>
                     <div className={classes.searchBar}>
                         <IconSearch size={20} className={classes.searchIcon}/>
@@ -214,6 +245,17 @@ export default function Marketplace() {
             </section>
 
             <div className={classes.container}>
+                <section className={classes.section}>
+                    <div className={classes.spotlightHeader}>
+                        <div>
+                            <span className={classes.eyebrow}>Evento em preparação</span>
+                            <h2 className={classes.sectionTitle}>Abrindo em breve</h2>
+                        </div>
+                        <NavLink to={vilaVelhaEvent.url} className={classes.detailsLink}>Ver página provisória</NavLink>
+                    </div>
+                    {searchMatchesVilaVelha && <ComingSoonEventCard/>}
+                </section>
+
                 {/* Featured */}
                 {featured.length > 0 && (
                     <section className={classes.section}>

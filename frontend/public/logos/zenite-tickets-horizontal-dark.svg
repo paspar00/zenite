@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="92" viewBox="0 0 360 92" role="img" aria-labelledby="title">
+  <title id="title">Zenite Tickets Horizontal Logo Dark</title>
+  <rect width="360" height="92" rx="0" fill="#ffffff"/>
+  <g transform="translate(52 46)">
+    <path d="M-28-20h56a8 8 0 0 1 8 8v5a9 9 0 0 0 0 14v5a8 8 0 0 1-8 8h-56a8 8 0 0 1-8-8V7a9 9 0 0 0 0-14v-5a8 8 0 0 1 8-8Z" fill="#101010"/>
+    <path d="M-11 11 0-15 11 11 0 5Z" fill="#ff6b00"/>
+  </g>
+  <text x="101" y="42" font-family="Outfit, system-ui, sans-serif" font-size="30" font-weight="800" fill="#101010">ZENITE</text>
+  <text x="103" y="64" font-family="Outfit, system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="0.1em" fill="#ff6b00">TICKETS</text>
+</svg>

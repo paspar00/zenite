@@ -1,9 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-    <rect width="48" height="48" rx="8" fill="#18181b"/>
-    <text x="24" y="33"
-          font-family="system-ui, -apple-system, sans-serif"
-          font-size="26"
-          font-weight="700"
-          fill="#ffffff"
-          text-anchor="middle">HI<tspan fill="#cd58dd">.</tspan></text>
+    <rect width="48" height="48" rx="9" fill="#101010"/>
+    <path d="M12 24a7 7 0 0 0 0-10h24a7 7 0 0 0 0 10 7 7 0 0 0 0 10H12a7 7 0 0 0 0-10Z" fill="#ff6b00"/>
+    <path d="M18 33 24 13l6 20-6-5Z" fill="#ffffff"/>
 </svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="80" viewBox="0 0 320 80" role="img" aria-labelledby="title">
+  <title id="title">Zenite Tickets Logo Light</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&amp;display=swap');
+    .brand { font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: 0; }
+    .sub { font-family: 'Outfit', sans-serif; font-weight: 700; letter-spacing: 0.08em; }
+  </style>
+  <g transform="translate(44 40)">
+    <path d="M-25-18h50a7 7 0 0 1 7 7v5a8 8 0 0 0 0 12v5a7 7 0 0 1-7 7h-50a7 7 0 0 1-7-7V6a8 8 0 0 0 0-12v-5a7 7 0 0 1 7-7Z" fill="#ffffff"/>
+    <path d="M-11 10 0-14 11 10 0 5Z" fill="#ff6b00"/>
+    <path d="M-19-1h6M13-1h6" stroke="#ffd166" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <text x="88" y="36" class="brand" font-size="29" fill="#ffffff">ZENITE</text>
+  <text x="90" y="58" class="sub" font-size="14" fill="#ffb000">TICKETS</text>
+</svg>

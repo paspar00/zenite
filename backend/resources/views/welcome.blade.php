@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Hi.Events</title>
+        <title>Zenite Tickets</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -19,7 +19,7 @@
     <section class="py-24 flex items-center min-h-screen justify-center bg-white">
         <div class="mx-auto max-w-[43rem]">
             <div class="text-center">
-                <p class="text-lg font-medium leading-8 text-indigo-600/95">{{__('Congratulations 🎉')}} </p>
+                <p class="text-lg font-medium leading-8 text-orange-600/95">{{__('Congratulations 🎉')}} </p>
                 <h1 class="mt-3 text-[3.5rem] font-bold leading-[4rem] tracking-tight text-black">If you're seeing this {{ config('app.name') }} API is running</h1>
             </div>
         </div>

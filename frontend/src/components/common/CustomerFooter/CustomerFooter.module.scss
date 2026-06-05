@@ -1,5 +1,5 @@
 .footer {
-  background: #1a1a2e;
+  background: #101010;
   color: rgba(255, 255, 255, 0.45);
   padding: 20px 24px;
   font-size: 13px;
@@ -27,13 +27,13 @@
 }
 
 .brandLink {
-  color: #a78bfa;
+  color: #ffb000;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.15s;
 
   &:hover {
-    color: #c4b5fd;
+    color: #ff6b00;
   }
 }
 

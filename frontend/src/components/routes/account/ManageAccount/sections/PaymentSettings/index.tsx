@@ -14,7 +14,7 @@ import {Card} from "../../../../../common/Card";
 import {formatCurrency} from "../../../../../../utilites/currency.ts";
 import {showSuccess} from "../../../../../../utilites/notifications.tsx";
 import {getConfig} from "../../../../../../utilites/config.ts";
-import {isHiEvents} from "../../../../../../utilites/helpers.ts";
+import {isZeniteTickets} from "../../../../../../utilites/helpers.ts";
 import {VatSettings} from './VatSettings';
 import {VatSettingsModal} from './VatSettings/VatSettingsModal.tsx';
 import {VatNotice, getVatInfo} from './VatNotice';
@@ -46,8 +46,8 @@ const MigrationNotice = ({stripeData}: { stripeData: StripeConnectAccountsRespon
     const caAccount = stripeData.stripe_connect_accounts.find(acc => acc.platform === 'ca');
     const ieAccount = stripeData.stripe_connect_accounts.find(acc => acc.platform === 'ie');
 
-    // Only show if Hi.Events user has CA account but no completed IE account
-    if (!isHiEvents() || !caAccount || (ieAccount && ieAccount.is_setup_complete)) {
+    // Only show if Zenite Tickets user has CA account but no completed IE account
+    if (!isZeniteTickets() || !caAccount || (ieAccount && ieAccount.is_setup_complete)) {
         return null;
     }
 
@@ -88,7 +88,7 @@ const MigrationNotice = ({stripeData}: { stripeData: StripeConnectAccountsRespon
                     </div>
 
                     <Text size="xs" c="dimmed" fs="italic">
-                        {t`Thanks for your support as we continue to grow and improve Hi.Events!`}
+                        {t`Thanks for your support as we continue to grow and improve Zenite Tickets!`}
                     </Text>
                 </div>
             </Group>
@@ -101,7 +101,7 @@ const MigrationBanner = ({stripeData}: { stripeData: StripeConnectAccountsRespon
     const ieAccount = stripeData.stripe_connect_accounts.find(acc => acc.platform === 'ie');
 
     // Only show if user has CA account but no completed IE account
-    if (!isHiEvents() || !caAccount || (ieAccount && ieAccount.is_setup_complete)) {
+    if (!isZeniteTickets() || !caAccount || (ieAccount && ieAccount.is_setup_complete)) {
         return null;
     }
 
@@ -248,7 +248,7 @@ const FeePlanDisplay = ({configuration, stripeCountry}: FeePlanDisplayProps) => 
             <Title mb={10} order={3}>{t`Platform Fees`}</Title>
 
             <Text size="sm" c="dimmed" mb="lg">
-                {getConfig("VITE_APP_NAME", "Hi.Events")} charges platform fees to maintain and improve our services.
+                {getConfig("VITE_APP_NAME", "Zenite Tickets")} charges platform fees to maintain and improve our services.
                 These fees are automatically deducted from each transaction.
             </Text>
 
@@ -295,8 +295,8 @@ const FeePlanDisplay = ({configuration, stripeCountry}: FeePlanDisplayProps) => 
     );
 };
 
-// Hi.Events Cloud Multi-Platform Component
-const HiEventsConnectStatus = ({account}: { account: Account }) => {
+// Zenite Tickets Cloud Multi-Platform Component
+const ZeniteTicketsConnectStatus = ({account}: { account: Account }) => {
     const [fetchStripeDetails, setFetchStripeDetails] = useState(false);
     const [platformToSetup, setPlatformToSetup] = useState<string | undefined>();
 
@@ -372,7 +372,7 @@ const HiEventsConnectStatus = ({account}: { account: Account }) => {
     const ieAccount = stripeData.stripe_connect_accounts.find(acc => acc.platform === 'ie');
     const activePlatform = stripeData.account.stripe_platform;
 
-    // For new Hi.Events users with no CA platform (either new or only IE)
+    // For new Zenite Tickets users with no CA platform (either new or only IE)
     // Show simple setup without migration messaging
     if (isNewUser || (!caAccount && ieAccount)) {
         const hasIrelandAccount = !!ieAccount;
@@ -703,8 +703,8 @@ const OpenSourceConnectStatus = ({account}: { account: Account }) => {
 
 // Main Component that decides which to show
 const ConnectStatus = ({account}: { account: Account }) => {
-    if (isHiEvents()) {
-        return <HiEventsConnectStatus account={account}/>;
+    if (isZeniteTickets()) {
+        return <ZeniteTicketsConnectStatus account={account}/>;
     } else {
         return <OpenSourceConnectStatus account={account}/>;
     }
@@ -721,7 +721,7 @@ const PaymentSettings = () => {
     const vatSettingQuery = useGetAccountVatSetting(
         accountQuery.data?.id || 0,
         {
-            enabled: !!accountQuery.data?.id && isHiEvents()
+            enabled: !!accountQuery.data?.id && isZeniteTickets()
         }
     );
 
@@ -750,11 +750,11 @@ const PaymentSettings = () => {
     }, [stripeAccountsQuery.data]);
 
     // Check if user is returning from Stripe and needs to fill VAT info
-    // Only for Hi.Events Cloud - open-source doesn't have VAT handling
+    // Only for Zenite Tickets Cloud - open-source doesn't have VAT handling
     useEffect(() => {
         if (typeof window === 'undefined') return;
         if (hasCheckedVatModal) return;
-        if (!isHiEvents()) {
+        if (!isZeniteTickets()) {
             setHasCheckedVatModal(true);
             return;
         }
@@ -804,7 +804,7 @@ const PaymentSettings = () => {
 
     return (
         <>
-            {isHiEvents() && accountQuery.data && (
+            {isZeniteTickets() && accountQuery.data && (
                 <VatSettingsModal
                     account={accountQuery.data}
                     opened={showVatModal}
@@ -817,8 +817,8 @@ const PaymentSettings = () => {
                 subHeading={t`Manage your payment processing and view platform fees`}
             />
 
-            {/* Migration Notice - Show at the top for Hi.Events users who need to migrate */}
-            {isHiEvents() && stripeAccountsQuery.data && <MigrationNotice stripeData={stripeAccountsQuery.data}/>}
+            {/* Migration Notice - Show at the top for Zenite Tickets users who need to migrate */}
+            {isZeniteTickets() && stripeAccountsQuery.data && <MigrationNotice stripeData={stripeAccountsQuery.data}/>}
 
             <Card className={classes.tabContent}>
                 <LoadingMask/>
@@ -842,7 +842,7 @@ const PaymentSettings = () => {
                                 />
                             )}
                         </Grid.Col>
-                        {isHiEvents() && (
+                        {isZeniteTickets() && (
                             <Grid.Col span={{base: 12}}>
                                 {accountQuery.data && stripeAccountsQuery.data && (
                                     <VatSettings

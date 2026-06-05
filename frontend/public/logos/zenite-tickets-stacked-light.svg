@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="180" viewBox="0 0 220 180" role="img" aria-labelledby="title">
+  <title id="title">Zenite Tickets Stacked Logo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&amp;display=swap');
+    .brand { font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: 0; }
+    .sub { font-family: 'Outfit', sans-serif; font-weight: 700; letter-spacing: 0.1em; }
+  </style>
+  <rect x="58" y="18" width="104" height="72" rx="16" fill="#101010"/>
+  <path d="M76 54a12 12 0 0 0 0-18h48a12 12 0 0 0 0 18 12 12 0 0 0 0 18H76a12 12 0 0 0 0-18Z" fill="#ff6b00"/>
+  <path d="M94 70 110 34l16 36-16-9Z" fill="#ffffff"/>
+  <text x="110" y="126" class="brand" font-size="31" fill="#101010" text-anchor="middle">ZENITE</text>
+  <text x="110" y="150" class="sub" font-size="15" fill="#ff6b00" text-anchor="middle">TICKETS</text>
+</svg>

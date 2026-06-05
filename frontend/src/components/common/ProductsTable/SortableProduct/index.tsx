@@ -270,7 +270,7 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                     <Badge
                                         leftSection={<IconTicket size={12}/>}
                                         variant="light"
-                                        color="violet"
+                                        color="orange"
                                         size="sm"
                                     >
                                         {t`Ticket`}
@@ -298,7 +298,7 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                 {product.type === ProductPriceType.Donation && (
                                     <Badge
                                         variant="outline"
-                                        color="pink"
+                                        color="orange"
                                         size="sm"
                                     >
                                         {t`Donation`}
