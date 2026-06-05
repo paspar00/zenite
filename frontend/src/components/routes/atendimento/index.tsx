@@ -5,7 +5,6 @@ import {
     IconBrandWhatsapp,
     IconMail,
     IconMenu2,
-    IconTicket,
     IconClock,
     IconMessageCircle,
     IconHelp,
@@ -74,8 +73,7 @@ export default function Atendimento() {
             <header className={classes.header}>
                 <div className={classes.headerInner}>
                     <NavLink to="/" className={classes.logo}>
-                        <IconTicket size={28} color="#fff"/>
-                        <span>Zenite Tickets</span>
+                        <img src="/logos/zenite-tickets-premium.svg" alt="Zenite Tickets"/>
                     </NavLink>
                     <nav className={classes.nav}>
                         <NavLink to="/" className={classes.navLink}>Eventos</NavLink>

@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useParams} from "react-router";
 import {publicApi} from "../../../api/public-client.ts";
 import {CustomerFooter} from "../../common/CustomerFooter";
-import {IconTicket, IconMailOff, IconCircleCheck, IconAlertCircle} from "@tabler/icons-react";
+import {IconMailOff, IconCircleCheck, IconAlertCircle} from "@tabler/icons-react";
 import {NavLink} from "react-router";
 
 type Status = 'loading' | 'success' | 'already' | 'invalid' | 'error';
@@ -65,9 +65,8 @@ export default function Unsubscribe() {
         <div style={{display: 'flex', flexDirection: 'column', minHeight: '100vh', background: '#f7f9ff'}}>
             <header style={{background: 'linear-gradient(135deg,#ff6b00 0%,#101010 100%)', padding: '0 24px'}}>
                 <div style={{maxWidth: 1100, margin: '0 auto', height: 60, display: 'flex', alignItems: 'center'}}>
-                    <NavLink to="/" style={{display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: '#fff', fontWeight: 700, fontSize: '1.1rem'}}>
-                        <IconTicket size={26} />
-                        <span>Zenite Tickets</span>
+                    <NavLink to="/" style={{display: 'block', textDecoration: 'none'}}>
+                        <img src="/logos/zenite-tickets-premium.svg" alt="Zenite Tickets" style={{display: 'block', width: 178, height: 'auto'}} />
                     </NavLink>
                 </div>
             </header>

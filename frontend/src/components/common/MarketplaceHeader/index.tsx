@@ -1,5 +1,5 @@
 import {NavLink} from "react-router";
-import {IconChevronLeft, IconTicket} from "@tabler/icons-react";
+import {IconChevronLeft} from "@tabler/icons-react";
 import classes from "./MarketplaceHeader.module.scss";
 
 interface MarketplaceHeaderProps {
@@ -11,8 +11,7 @@ export const MarketplaceHeader = ({showBack = false}: MarketplaceHeaderProps) =>
         <header className={classes.header}>
             <div className={classes.inner}>
                 <NavLink to="/" className={classes.logo}>
-                    <IconTicket size={26} color="#fff"/>
-                    <span>Zenite Tickets</span>
+                    <img src="/logos/zenite-tickets-premium.svg" alt="Zenite Tickets"/>
                 </NavLink>
 
                 {showBack && (
