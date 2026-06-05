@@ -1,4 +1,4 @@
-# Especificação Técnica e de Produto — Módulo de Marketing TicketHub
+# Especificação Técnica e de Produto — Módulo de Marketing Zenite Tickets
 
 **Versão:** 1.0
 **Data:** 2026-05-25
@@ -295,7 +295,7 @@ Organizer seleciona segmento
 ### Decisões obrigatórias antes de qualquer código
 | Pergunta | Opção A | Opção B |
 |---|---|---|
-| Quem arca com o cashback? | TicketHub | Organizador (% por evento) |
+| Quem arca com o cashback? | Zenite Tickets | Organizador (% por evento) |
 | O saldo expira? | Sim, TTL configurável | Não expira |
 | O saldo é resgatável em dinheiro? | Não (só crédito) | Sim (Pix) — ⚠️ requer parecer BACEN |
 | Escopo do saldo | Por organizador | Cross-organizador |

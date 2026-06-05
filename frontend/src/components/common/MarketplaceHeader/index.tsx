@@ -12,7 +12,7 @@ export const MarketplaceHeader = ({showBack = false}: MarketplaceHeaderProps) =>
             <div className={classes.inner}>
                 <NavLink to="/" className={classes.logo}>
                     <IconTicket size={26} color="#fff"/>
-                    <span>TicketHub</span>
+                    <span>Zenite Tickets</span>
                 </NavLink>
 
                 {showBack && (

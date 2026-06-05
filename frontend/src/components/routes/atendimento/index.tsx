@@ -75,7 +75,7 @@ export default function Atendimento() {
                 <div className={classes.headerInner}>
                     <NavLink to="/" className={classes.logo}>
                         <IconTicket size={28} color="#fff"/>
-                        <span>TicketHub</span>
+                        <span>Zenite Tickets</span>
                     </NavLink>
                     <nav className={classes.nav}>
                         <NavLink to="/" className={classes.navLink}>Eventos</NavLink>

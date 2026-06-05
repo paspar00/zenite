@@ -633,7 +633,7 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
                                 </Anchor>
                             </div>
                             <p className={classes.footerBrand}>
-                                © {new Date().getFullYear()} TicketHub · Todos os direitos reservados
+                                © {new Date().getFullYear()} Zenite Tickets · Todos os direitos reservados
                             </p>
                         </div>
                     </div>

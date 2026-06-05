@@ -67,7 +67,7 @@ export default function Unsubscribe() {
                 <div style={{maxWidth: 1100, margin: '0 auto', height: 60, display: 'flex', alignItems: 'center'}}>
                     <NavLink to="/" style={{display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: '#fff', fontWeight: 700, fontSize: '1.1rem'}}>
                         <IconTicket size={26} />
-                        <span>TicketHub</span>
+                        <span>Zenite Tickets</span>
                     </NavLink>
                 </div>
             </header>
