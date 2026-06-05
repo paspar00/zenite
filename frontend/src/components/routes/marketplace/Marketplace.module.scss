@@ -38,18 +38,21 @@
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   color: #fff;
-  font-size: 20px;
-  font-weight: 700;
   text-decoration: none;
   flex-shrink: 0;
 
+  img {
+    display: block;
+    width: 206px;
+    height: auto;
+    color: #fff;
+  }
+
   @media (max-width: 420px) {
-    font-size: 18px;
-    gap: 7px;
+    img {
+      width: 178px;
+    }
   }
 }
 
@@ -293,6 +296,140 @@
   font-weight: 700;
   color: #101010;
   margin: 0 0 20px;
+}
+
+.presentation {
+  margin: 48px 0 8px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.98fr) minmax(340px, 1.02fr);
+  gap: 28px;
+  align-items: stretch;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    margin-top: 36px;
+  }
+}
+
+.presentationCopy {
+  padding: clamp(28px, 4vw, 44px) 0;
+
+  h2 {
+    max-width: 620px;
+    margin: 0;
+    color: #101010;
+    font-size: clamp(30px, 4.2vw, 52px);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  p {
+    max-width: 620px;
+    margin: 18px 0 0;
+    color: #4d5562;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 520px) {
+    padding: 30px 0 18px;
+
+    h2 {
+      font-size: 32px;
+      line-height: 1.05;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+}
+
+.presentationActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.presentationPrimary,
+.presentationSecondary {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 8px;
+  padding: 0 18px;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.presentationPrimary {
+  background: #101010;
+  color: #ffffff;
+}
+
+.presentationSecondary {
+  border: 1px solid #d8dde6;
+  color: #101010;
+  background: #ffffff;
+}
+
+.brandPanel {
+  min-height: 360px;
+  border-radius: 8px;
+  padding: clamp(26px, 4vw, 42px);
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 176, 0, 0.35), transparent 30%),
+    linear-gradient(135deg, #101010 0%, #1d1d1d 58%, #ff6b00 160%);
+  box-shadow: 0 22px 56px rgba(16, 16, 16, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (max-width: 520px) {
+    min-height: 310px;
+    padding: 24px;
+  }
+}
+
+.brandPanelLogo {
+  width: min(320px, 100%);
+  color: #ffffff;
+  filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.25));
+}
+
+.brandPanelGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 32px;
+
+  span {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  svg {
+    color: #ffb000;
+    flex: none;
+  }
+
+  @media (max-width: 520px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .spotlightHeader {

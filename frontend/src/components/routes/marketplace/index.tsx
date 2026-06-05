@@ -8,13 +8,17 @@ import {CustomerFooter} from "../../common/CustomerFooter";
 import classes from "./Marketplace.module.scss";
 import {
     IconCalendar,
+    IconChartBar,
     IconChevronRight,
     IconCreditCard,
     IconMapPin,
     IconMenu2,
     IconQrcode,
     IconSearch,
+    IconShieldCheck,
+    IconSparkles,
     IconTicket,
+    IconUsers,
 } from "@tabler/icons-react";
 
 const vilaVelhaEvent = {
@@ -135,6 +139,43 @@ function ComingSoonEventCard() {
     );
 }
 
+function BrandPresentation() {
+    return (
+        <section className={classes.presentation}>
+            <div className={classes.presentationCopy}>
+                <span className={classes.eyebrow}>Zenite para organizadores</span>
+                <h2>Venda inscrições com uma presença digital à altura do seu evento.</h2>
+                <p>
+                    A Zenite Tickets reúne página do evento, checkout seguro, Pix, cartão e gestão de
+                    participantes em uma experiência simples para quem compra e profissional para quem organiza.
+                </p>
+                <div className={classes.presentationActions}>
+                    <NavLink to="/auth/register" className={classes.presentationPrimary}>
+                        Criar meu evento <IconChevronRight size={16}/>
+                    </NavLink>
+                    <NavLink to="/atendimento" className={classes.presentationSecondary}>
+                        Falar com atendimento
+                    </NavLink>
+                </div>
+            </div>
+
+            <div className={classes.brandPanel} aria-label="Apresentação da Zenite Tickets">
+                <img
+                    className={classes.brandPanelLogo}
+                    src="/logos/zenite-tickets-premium.svg"
+                    alt="Zenite Tickets"
+                />
+                <div className={classes.brandPanelGrid}>
+                    <span><IconShieldCheck size={20}/> Pagamentos seguros</span>
+                    <span><IconUsers size={20}/> Gestão de participantes</span>
+                    <span><IconChartBar size={20}/> Relatórios em tempo real</span>
+                    <span><IconSparkles size={20}/> Página profissional</span>
+                </div>
+            </div>
+        </section>
+    );
+}
+
 export default function Marketplace() {
     const [search, setSearch] = useState('');
     const [menuOpen, setMenuOpen] = useState(false);
@@ -178,8 +219,7 @@ export default function Marketplace() {
             <header className={classes.header}>
                 <div className={classes.headerInner}>
                     <NavLink to="/" className={classes.logo}>
-                        <IconTicket size={28} color="#fff"/>
-                        <span>Zenite Tickets</span>
+                        <img src="/logos/zenite-tickets-premium.svg" alt="Zenite Tickets"/>
                     </NavLink>
                     <nav className={classes.nav}>
                         <a
@@ -252,6 +292,8 @@ export default function Marketplace() {
             </section>
 
             <div className={classes.container}>
+                <BrandPresentation/>
+
                 <section className={classes.section}>
                     <div className={classes.spotlightHeader}>
                         <div>
