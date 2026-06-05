@@ -123,7 +123,7 @@ export default function Atendimento() {
                     <h2 className={classes.sectionTitle}>Fale conosco</h2>
                     <div className={classes.contactGrid}>
                         <a
-                            href="https://wa.me/5500000000000"
+                            href="https://wa.me/5527998049096"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={classes.contactCard}
@@ -131,8 +131,8 @@ export default function Atendimento() {
                             <div className={classes.contactIcon} style={{background: "#25d366"}}>
                                 <IconBrandWhatsapp size={28} color="#fff"/>
                             </div>
-                            <h3>WhatsApp</h3>
-                            <p>Atendimento rápido via chat</p>
+                            <h3>William</h3>
+                            <p>+55 27 99804-9096</p>
                             <span className={classes.contactCta}>Abrir conversa →</span>
                         </a>
 
