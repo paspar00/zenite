@@ -38,21 +38,90 @@
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: #fff;
   text-decoration: none;
   flex-shrink: 0;
+}
 
-  img {
-    display: block;
-    width: 198px;
-    height: auto;
-    color: #fff;
+.logoMark {
+  width: 32px;
+  height: 24px;
+  position: relative;
+  flex: none;
+  border-radius: 5px;
+  background: #ffffff;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    width: 7px;
+    height: 8px;
+    border-radius: 999px;
+    background: #ff6b00;
   }
 
-  @media (max-width: 420px) {
-    img {
-      width: 172px;
+  &::before {
+    left: -3px;
+  }
+
+  &::after {
+    right: -3px;
+  }
+
+  span {
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(50% 0, 100% 100%, 50% 68%, 0 100%);
+      background: #ff6b00;
     }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -5px;
+      right: -5px;
+      bottom: 3px;
+      height: 3px;
+      border-radius: 999px;
+      background: #ff6b00;
+      opacity: 0.75;
+    }
+  }
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;
+
+  strong {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  small {
+    margin-top: 3px;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
 }
 

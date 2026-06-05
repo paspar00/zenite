@@ -73,7 +73,13 @@ export default function Atendimento() {
             <header className={classes.header}>
                 <div className={classes.headerInner}>
                     <NavLink to="/" className={classes.logo}>
-                        <img src="/logos/zenite-tickets-premium.svg" alt="Zenite Tickets"/>
+                        <span className={classes.logoMark} aria-hidden="true">
+                            <span/>
+                        </span>
+                        <span className={classes.logoText}>
+                            <strong>Zenite</strong>
+                            <small>Tickets</small>
+                        </span>
                     </NavLink>
                     <nav className={classes.nav}>
                         <NavLink to="/" className={classes.navLink}>Eventos</NavLink>
