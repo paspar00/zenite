@@ -238,7 +238,7 @@ export default function Marketplace() {
                         <IconSearch size={20} className={classes.searchIcon}/>
                         <input
                             className={classes.searchInput}
-                            placeholder="Pesquise pelo nome do evento, cidade ou estado..."
+                            placeholder="Busque por evento, cidade ou estado..."
                             value={search}
                             onChange={e => setSearch(e.target.value)}
                         />

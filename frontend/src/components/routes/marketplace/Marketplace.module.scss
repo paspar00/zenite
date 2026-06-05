@@ -30,6 +30,11 @@
   display: flex;
   align-items: center;
   gap: 32px;
+
+  @media (max-width: 720px) {
+    padding: 0 16px;
+    gap: 12px;
+  }
 }
 
 .logo {
@@ -41,12 +46,21 @@
   font-weight: 700;
   text-decoration: none;
   flex-shrink: 0;
+
+  @media (max-width: 420px) {
+    font-size: 18px;
+    gap: 7px;
+  }
 }
 
 .nav {
   display: flex;
   gap: 4px;
   flex: 1;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 }
 
 .navLink {
@@ -98,6 +112,10 @@
 
   &:hover {
     opacity: 0.9;
+  }
+
+  @media (max-width: 520px) {
+    display: none;
   }
 }
 
@@ -159,6 +177,10 @@
 .hero {
   background: linear-gradient(135deg, #ff6b00 0%, #ff8a00 60%, #ffb000 100%);
   padding: 56px 20px 48px;
+
+  @media (max-width: 520px) {
+    padding: 48px 20px 42px;
+  }
 }
 
 .heroInner {
@@ -173,12 +195,22 @@
   font-weight: 800;
   margin: 0 0 12px;
   letter-spacing: 0;
+
+  @media (max-width: 520px) {
+    font-size: 40px;
+    line-height: 1.05;
+  }
 }
 
 .heroSubtitle {
   color: rgba(255, 255, 255, 0.88);
   font-size: 17px;
   margin: 0 0 28px;
+
+  @media (max-width: 520px) {
+    font-size: 16px;
+    line-height: 1.55;
+  }
 }
 
 .searchBar {
@@ -190,6 +222,11 @@
   height: 56px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
   gap: 12px;
+
+  @media (max-width: 520px) {
+    height: 54px;
+    padding: 0 14px;
+  }
 }
 
 .searchIcon {
@@ -209,6 +246,11 @@
   &::placeholder {
     color: #aaa;
   }
+
+  @media (max-width: 520px) {
+    font-size: 14px;
+    min-width: 0;
+  }
 }
 
 .paymentMethods {
@@ -218,6 +260,10 @@
   gap: 16px;
   margin-top: 16px;
   flex-wrap: wrap;
+
+  @media (max-width: 520px) {
+    gap: 8px;
+  }
 }
 
 .paymentLabel {
@@ -255,6 +301,11 @@
   gap: 20px;
   align-items: flex-end;
   margin-bottom: 18px;
+
+  @media (max-width: 520px) {
+    align-items: flex-start;
+    gap: 12px;
+  }
 
   .sectionTitle {
     margin-bottom: 0;
@@ -310,7 +361,11 @@
   transition: transform 0.25s ease;
 
   @media (max-width: 760px) {
-    min-height: 220px;
+    min-height: 210px;
+  }
+
+  @media (max-width: 520px) {
+    min-height: 190px;
   }
 }
 
@@ -327,6 +382,11 @@
     line-height: 1;
     letter-spacing: 0;
     text-transform: uppercase;
+
+    @media (max-width: 520px) {
+      font-size: 30px;
+      line-height: 1.05;
+    }
   }
 
   .comingSoonText {
