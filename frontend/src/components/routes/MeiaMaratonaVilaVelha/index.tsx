@@ -1,5 +1,5 @@
 import {NavLink} from "react-router";
-import {IconArrowLeft, IconCalendarEvent, IconMapPin, IconTicket} from "@tabler/icons-react";
+import {IconArrowLeft, IconCalendarEvent, IconFlag, IconMapPin, IconRoute, IconTicket} from "@tabler/icons-react";
 import {CustomerFooter} from "../../common/CustomerFooter";
 import classes from "./MeiaMaratonaVilaVelha.module.scss";
 
@@ -30,8 +30,8 @@ export default function MeiaMaratonaVilaVelha() {
                     <span className={classes.badge}>3ª edição</span>
                     <h1>Meia Maratona de Vila Velha</h1>
                     <p className={classes.lead}>
-                        A próxima edição está sendo preparada. Em breve abriremos a data,
-                        percurso, lotes e inscrições oficiais.
+                        A página oficial da 3ª edição já está no ar. A organização está finalizando data,
+                        percurso, lotes e abertura das inscrições pela Zenite Tickets.
                     </p>
 
                     <div className={classes.infoGrid}>
@@ -50,17 +50,31 @@ export default function MeiaMaratonaVilaVelha() {
                             </div>
                         </div>
                         <div className={classes.infoItem}>
+                            <IconRoute size={22}/>
+                            <div>
+                                <strong>Modalidade</strong>
+                                <span>Meia maratona urbana</span>
+                            </div>
+                        </div>
+                        <div className={classes.infoItem}>
                             <IconTicket size={22}/>
                             <div>
                                 <strong>Inscrições</strong>
-                                <span>Em breve</span>
+                                <span>Abertura oficial em breve</span>
+                            </div>
+                        </div>
+                        <div className={classes.infoItem}>
+                            <IconFlag size={22}/>
+                            <div>
+                                <strong>Organização</strong>
+                                <span>Publicação oficial Zenite Tickets</span>
                             </div>
                         </div>
                     </div>
 
                     <div className={classes.notice}>
-                        <strong>Evento em preparação</strong>
-                        <span>Esta é uma página provisória da Zenite Tickets para abertura do site.</span>
+                        <strong>Pré-lançamento oficial</strong>
+                        <span>Os detalhes finais serão publicados aqui antes da abertura das inscrições.</span>
                     </div>
                 </section>
             </main>

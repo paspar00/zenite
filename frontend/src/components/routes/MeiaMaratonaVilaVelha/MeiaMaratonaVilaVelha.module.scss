@@ -49,12 +49,13 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+  background: #ff3b10;
 
   img {
     display: block;
     width: 100%;
     aspect-ratio: 5 / 3;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
@@ -64,6 +65,7 @@
     font-size: clamp(38px, 5vw, 72px);
     line-height: 0.95;
     letter-spacing: 0;
+    text-transform: uppercase;
   }
 }
 

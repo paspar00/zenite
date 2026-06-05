@@ -33,6 +33,20 @@ async function main() {
         : undefined;
 
     const app = express();
+    app.set("trust proxy", true);
+
+    if (isProduction && process.env.FORCE_HTTPS !== "false") {
+        app.use((req, res, next) => {
+            const forwardedProto = req.get("x-forwarded-proto")?.split(",")[0]?.trim();
+            if (forwardedProto === "http") {
+                return res.redirect(308, `https://${req.get("host")}${req.originalUrl}`);
+            }
+
+            res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+            next();
+        });
+    }
+
     app.use(cookieParser());
 
     app.use('/.well-known', express.static(path.join(__dirname, 'public/.well-known')));

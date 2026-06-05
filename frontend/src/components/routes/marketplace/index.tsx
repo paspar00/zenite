@@ -8,6 +8,7 @@ import {CustomerFooter} from "../../common/CustomerFooter";
 import classes from "./Marketplace.module.scss";
 import {
     IconCalendar,
+    IconChevronRight,
     IconCreditCard,
     IconMapPin,
     IconMenu2,
@@ -20,6 +21,8 @@ const vilaVelhaEvent = {
     title: "Meia Maratona de Vila Velha 3ª edição",
     location: "Vila Velha, ES",
     date: "Data a ser liberada",
+    status: "Pré-lançamento oficial",
+    description: "Percurso, kit atleta e abertura de inscrições serão anunciados pela Zenite Tickets.",
     url: "/meia-maratona-vila-velha-3-edicao",
     image: "/images/meia-maratona-vila-velha-3-logo.svg",
 };
@@ -119,10 +122,14 @@ function ComingSoonEventCard() {
                 style={{backgroundImage: `url(${vilaVelhaEvent.image})`}}
             />
             <div className={classes.comingSoonBody}>
-                <span className={classes.comingSoonBadge}>3ª edição</span>
+                <span className={classes.comingSoonBadge}>{vilaVelhaEvent.status}</span>
                 <h3>{vilaVelhaEvent.title}</h3>
+                <span className={classes.comingSoonText}>{vilaVelhaEvent.description}</span>
                 <p><IconMapPin size={14}/> {vilaVelhaEvent.location}</p>
                 <p><IconCalendar size={14}/> {vilaVelhaEvent.date}</p>
+                <span className={classes.comingSoonAction}>
+                    Ver detalhes do evento <IconChevronRight size={16}/>
+                </span>
             </div>
         </NavLink>
     );
@@ -225,7 +232,7 @@ export default function Marketplace() {
                 <div className={classes.heroInner}>
                     <h1 className={classes.heroTitle}>Zenite Tickets</h1>
                     <p className={classes.heroSubtitle}>
-                        Eventos, corridas e experiências com inscrições simples e seguras.
+                        Plataforma oficial para descobrir eventos e comprar inscrições com segurança, Pix e cartão.
                     </p>
                     <div className={classes.searchBar}>
                         <IconSearch size={20} className={classes.searchIcon}/>
@@ -248,10 +255,12 @@ export default function Marketplace() {
                 <section className={classes.section}>
                     <div className={classes.spotlightHeader}>
                         <div>
-                            <span className={classes.eyebrow}>Evento em preparação</span>
-                            <h2 className={classes.sectionTitle}>Abrindo em breve</h2>
+                            <span className={classes.eyebrow}>Destaque oficial</span>
+                            <h2 className={classes.sectionTitle}>Próximo lançamento</h2>
                         </div>
-                        <NavLink to={vilaVelhaEvent.url} className={classes.detailsLink}>Ver página provisória</NavLink>
+                        <NavLink to={vilaVelhaEvent.url} className={classes.detailsLink}>
+                            Ver detalhes <IconChevronRight size={16}/>
+                        </NavLink>
                     </div>
                     {searchMatchesVilaVelha && <ComingSoonEventCard/>}
                 </section>
