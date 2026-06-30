@@ -41,6 +41,11 @@ class Order extends BaseModel
         return $this->hasMany(Invoice::class)->orderBy('created_at', 'desc');
     }
 
+    public function latest_invoice(): HasOne
+    {
+        return $this->hasOne(Invoice::class)->latestOfMany();
+    }
+
     public function order_application_fee(): HasOne
     {
         return $this->hasOne(OrderApplicationFee::class);
