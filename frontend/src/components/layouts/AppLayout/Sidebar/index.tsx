@@ -73,12 +73,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
     return (
         <div className={classNames(`${classes.sidebar} ${sidebarOpen ? classes.open : classes.closed}`)}>
             <div className={classes.logo}>
-                <NavLink to={`/manage/events`} aria-label="Zenite Tickets">
+                <NavLink to={`/manage/events`} aria-label="Movve Tickets">
                     <span className={classes.logoMark} aria-hidden="true">
                         <span />
                     </span>
                     <span className={classes.logoText}>
-                        <strong>Zenite</strong>
+                        <strong>Movve</strong>
                         <small>Tickets</small>
                     </span>
                 </NavLink>

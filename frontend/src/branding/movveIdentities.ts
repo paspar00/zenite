@@ -1,6 +1,6 @@
-export const zeniteIdentities = {
+export const movveIdentities = {
     pulse: {
-        name: "Zenite Pulse",
+        name: "Movve Pulse",
         primary: "#ff6b00",
         secondary: "#101010",
         accent: "#ffd166",
@@ -8,7 +8,7 @@ export const zeniteIdentities = {
         description: "Energia laranja e preto para vendas, shows e eventos noturnos.",
     },
     premium: {
-        name: "Zenite Premium",
+        name: "Movve Premium",
         primary: "#f97316",
         secondary: "#18181b",
         accent: "#facc15",
@@ -16,7 +16,7 @@ export const zeniteIdentities = {
         description: "Mais sofisticada, com preto profundo, laranja limpo e toque dourado.",
     },
     arena: {
-        name: "Zenite Arena",
+        name: "Movve Arena",
         primary: "#ff4d00",
         secondary: "#050505",
         accent: "#ffffff",
@@ -25,4 +25,4 @@ export const zeniteIdentities = {
     },
 } as const;
 
-export type ZeniteIdentity = keyof typeof zeniteIdentities;
+export type MovveIdentity = keyof typeof movveIdentities;

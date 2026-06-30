@@ -69,7 +69,7 @@ export const WidgetEditor = () => {
         setReactComponentCode(`
 import React, { useEffect } from 'react';
 
-const ZeniteTicketsWidget = ({
+const MovveTicketsWidget = ({
   eventId,
   primaryColor = "${form.values.primary_color}",
   primaryTextColor = "${form.values.primary_text_color}",
@@ -107,18 +107,18 @@ const ZeniteTicketsWidget = ({
   );
 };
 
-export default ZeniteTicketsWidget;
+export default MovveTicketsWidget;
         `);
 
         setReactUsageCode(`
 import React from 'react';
-import ZeniteTicketsWidget from './ZeniteTicketsWidget';
+import MovveTicketsWidget from './MovveTicketsWidget';
 
 const App = () => {
   return (
     <div>
       <h1>My Website</h1>
-      <ZeniteTicketsWidget
+      <MovveTicketsWidget
         eventId="${eventId}"
         primaryColor="${form.values.primary_color}"
         primaryTextColor="${form.values.primary_text_color}"

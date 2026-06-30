@@ -165,10 +165,10 @@ services:
             
             /usr/bin/mc alias set myminio $$MINIO_SERVER_URL $$MINIO_ROOT_USER $$MINIO_ROOT_PASSWORD;
                         
-            /usr/bin/mc mb myminio/zenite-tickets-public;
-            /usr/bin/mc mb myminio/zenite-tickets-private;
+            /usr/bin/mc mb myminio/movve-tickets-public;
+            /usr/bin/mc mb myminio/movve-tickets-private;
             
-            /usr/bin/mc anonymous set public myminio/zenite-tickets-public;
+            /usr/bin/mc anonymous set public myminio/movve-tickets-public;
                         
             echo 'Buckets created and policies set.';
             exit 0;

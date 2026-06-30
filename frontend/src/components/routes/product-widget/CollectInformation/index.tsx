@@ -716,11 +716,11 @@ export const CollectInformation = () => {
                             <Trans>
                                 By continuing, you agree to the{' '}
                                 <a
-                                    href={getConfig('VITE_TOS_URL', 'https://zenitetickets.com/terms-of-service') as string}
+                                    href={getConfig('VITE_TOS_URL', 'https://movvetickets.com/terms-of-service') as string}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    {getConfig('VITE_APP_NAME', 'Zenite Tickets')} Terms of Service
+                                    {getConfig('VITE_APP_NAME', 'Movve Tickets')} Terms of Service
                                 </a>
                             </Trans>
                         </p>

@@ -1870,15 +1870,15 @@ msgstr ""
 #: src/components/modals/CreateEventModal/index.tsx:131
 #: src/components/modals/DuplicateEventModal/index.tsx:78
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:73
-msgid "Zenite Tickets Conference {0}"
+msgid "Movve Tickets Conference {0}"
 msgstr ""
 
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:117
-msgid "Zenite Tickets Conference Center"
+msgid "Movve Tickets Conference Center"
 msgstr ""
 
 #: src/components/layouts/AuthLayout/index.tsx:24
-msgid "zenitetickets.com logo"
+msgid "movvetickets.com logo"
 msgstr ""
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:77
@@ -4458,7 +4458,7 @@ msgid "Welcome back{0} 👋"
 msgstr ""
 
 #: src/components/routes/welcome/index.tsx:125
-msgid "Welcome to Zenite Tickets, {0} 👋"
+msgid "Welcome to Movve Tickets, {0} 👋"
 msgstr ""
 
 #: src/components/forms/ProductForm/index.tsx:242

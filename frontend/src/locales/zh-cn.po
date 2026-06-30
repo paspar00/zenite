@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
-"Project-Id-Version: Zenite Tickets\n"
+"Project-Id-Version: Movve Tickets\n"
 "Language: zh-Hans\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
@@ -4243,12 +4243,12 @@ msgid "Hi {0} 👋"
 msgstr "你好 {0} 👋"
 
 #: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:75
-msgid "Zenite Tickets Fee"
-msgstr "Zenite Tickets 费用"
+msgid "Movve Tickets Fee"
+msgstr "Movve Tickets 费用"
 
 #: src/components/routes/organizer/Reports/index.tsx:42
-msgid "Zenite Tickets platform fees and VAT breakdown by transaction"
-msgstr "Zenite Tickets 平台费用和每笔交易的增值税明细"
+msgid "Movve Tickets platform fees and VAT breakdown by transaction"
+msgstr "Movve Tickets 平台费用和每笔交易的增值税明细"
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:90
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:321
@@ -8465,8 +8465,8 @@ msgid "Thank you for attending!"
 msgstr "感谢您的参与！"
 
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:91
-msgid "Thanks for your support as we continue to grow and improve Zenite Tickets!"
-msgstr "感谢您的支持，我们将继续发展和改进 Zenite Tickets！"
+msgid "Thanks for your support as we continue to grow and improve Movve Tickets!"
+msgstr "感谢您的支持，我们将继续发展和改进 Movve Tickets！"
 
 #: src/components/routes/product-widget/SelectProducts/index.tsx:186
 #: src/components/routes/product-widget/SelectProducts/index.tsx:234
@@ -8804,8 +8804,8 @@ msgid "This product is sold out"
 msgstr "此产品已售罄"
 
 #: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:118
-msgid "This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Zenite Tickets may be missing historical data."
-msgstr "此报告仅供参考。在将此数据用于会计或税务目的之前，请务必咨询税务专业人士。请与您的Stripe仪表板进行交叉验证，因为Zenite Tickets可能缺少历史数据。"
+msgid "This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Movve Tickets may be missing historical data."
+msgstr "此报告仅供参考。在将此数据用于会计或税务目的之前，请务必咨询税务专业人士。请与您的Stripe仪表板进行交叉验证，因为Movve Tickets可能缺少历史数据。"
 
 #: src/components/routes/auth/ResetPassword/index.tsx:28
 msgid "This reset password link is invalid or expired."
@@ -9144,8 +9144,8 @@ msgid "Try another email"
 msgstr "尝试其他邮箱"
 
 #: src/components/common/PoweredByFooter/index.tsx:55
-msgid "Try Zenite Tickets Free"
-msgstr "免费试用Zenite Tickets"
+msgid "Try Movve Tickets Free"
+msgstr "免费试用Movve Tickets"
 
 #: src/components/common/LanguageSwitcher/index.tsx:38
 msgid "Turkish"

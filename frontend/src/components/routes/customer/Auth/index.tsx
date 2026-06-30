@@ -127,7 +127,7 @@ const CustomerAuth = () => {
                         {/* Logo */}
                         <div className={authClasses.logo}>
                             <img
-                                src={getConfig("VITE_APP_LOGO_DARK", "/logos/zenite-tickets-stacked-light.svg")}
+                                src={getConfig("VITE_APP_LOGO_DARK", "/logos/movve-tickets-stacked-light.svg")}
                                 alt="Logo"
                             />
                         </div>

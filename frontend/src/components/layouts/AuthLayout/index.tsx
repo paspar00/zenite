@@ -16,7 +16,7 @@ import {
     IconUsers,
 } from '@tabler/icons-react';
 import {useCallback, useMemo, useRef} from "react";
-import {isZeniteTickets} from "../../../utilites/helpers.ts";
+import {isMovveTickets} from "../../../utilites/helpers.ts";
 import {showInfo} from "../../../utilites/notifications.tsx";
 
 const allFeatures = [
@@ -117,7 +117,7 @@ const AuthLayout = () => {
 
         if (clickCountRef.current >= 5) {
             clickCountRef.current = 0;
-            showInfo(`Zenite Tickets v${__APP_VERSION__}`);
+            showInfo(`Movve Tickets v${__APP_VERSION__}`);
         }
     }, []);
 
@@ -136,13 +136,13 @@ const AuthLayout = () => {
                                     <span />
                                 </span>
                                 <span className={classes.logoText}>
-                                    <strong>Zenite</strong>
+                                    <strong>Movve</strong>
                                     <small>Tickets</small>
                                 </span>
                             </div>
                             <div className={classes.wrapper}>
                                 <Outlet />
-                                {!isZeniteTickets() && <PoweredByFooter />}
+                                {!isMovveTickets() && <PoweredByFooter />}
                             </div>
                         </main>
                     </div>

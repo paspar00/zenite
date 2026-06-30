@@ -12,12 +12,12 @@ export const Header = ({rightContent, fullWidth = false, logoTarget = '/manage/e
     return (
         <header className={classes.header}>
             <Container size="md" className={classes.inner} fluid={fullWidth}>
-                <NavLink className={classes.logo} to={logoTarget} aria-label="Zenite Tickets">
+                <NavLink className={classes.logo} to={logoTarget} aria-label="Movve Tickets">
                     <span className={classes.logoMark} aria-hidden="true">
                         <span />
                     </span>
                     <span className={classes.logoText}>
-                        <strong>Zenite</strong>
+                        <strong>Movve</strong>
                         <small>Tickets</small>
                     </span>
                 </NavLink>

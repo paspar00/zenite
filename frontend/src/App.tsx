@@ -30,7 +30,7 @@ declare global {
 }
 
 const defaultBrand = {
-    name: "Zenite Tickets",
+    name: "Movve Tickets",
     primaryColor: "#ff6b00",
     secondaryColor: "#101010",
     favicon: "/manifest-icons/favicon.svg",

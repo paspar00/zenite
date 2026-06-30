@@ -20,7 +20,7 @@ import {confirmationDialog} from "../../../../utilites/confirmationDialog.tsx";
 import {showError, showSuccess} from "../../../../utilites/notifications.tsx";
 import {useEffect, useRef, useState} from 'react';
 import {EventLifecycleStatus, EventStatus, StripePlatform} from "../../../../types.ts";
-import {isZeniteTickets} from "../../../../utilites/helpers.ts";
+import {isMovveTickets} from "../../../../utilites/helpers.ts";
 import {StripeConnectButton} from "../../../common/StripeConnectButton";
 import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
 import {GeoTargetingStatsCard} from "../../../common/GeoTargetingStatsCard";
@@ -59,7 +59,7 @@ export const EventDashboard = () => {
 
     const showStripeUpgradeNotice = account?.stripe_platform === StripePlatform.Canada.valueOf()
         && account?.stripe_connect_setup_complete
-        && isZeniteTickets();
+        && isMovveTickets();
 
     useEffect(() => {
         setIsMounted(true);

@@ -26,7 +26,7 @@ const vilaVelhaEvent = {
     location: "Vila Velha, ES",
     date: "Data a ser liberada",
     status: "Pré-lançamento oficial",
-    description: "Percurso, kit atleta e abertura de inscrições serão anunciados pela Zenite Tickets.",
+    description: "Percurso, kit atleta e abertura de inscrições serão anunciados pela Movve Tickets.",
     url: "/meia-maratona-vila-velha-3-edicao",
     image: "/images/meia-maratona-vila-velha-3-logo.svg",
 };
@@ -143,16 +143,16 @@ function BrandPresentation() {
     return (
         <section className={classes.presentation}>
             <div className={classes.presentationCopy}>
-                <span className={classes.eyebrow}>Zenite para organizadores</span>
+                <span className={classes.eyebrow}>Movve para organizadores</span>
                 <h2>Venda inscrições com uma presença digital à altura do seu evento.</h2>
                 <p>
-                    Zenite é o ponto mais alto: o auge da experiência esportiva. A marca une o pico da
-                    performance, as linhas de movimento e a bilheteria digital para representar eventos bem
-                    organizados, inscrições seguras e chegada no topo.
+                    Movve é movimento: a energia do esporte do primeiro passo à linha de chegada. A marca une
+                    velocidade, percurso e a bilheteria digital para representar eventos bem organizados,
+                    inscrições seguras e atletas sempre em movimento.
                 </p>
                 <div className={classes.brandMeaning}>
                     <strong>O símbolo</strong>
-                    <span>O triângulo central representa o zênite, o ponto máximo. As linhas laterais remetem a velocidade, percurso e esporte. A base em formato de ingresso conecta tudo à venda de inscrições.</span>
+                    <span>O símbolo remete ao movimento e à velocidade do esporte. As linhas marcam ritmo e percurso, e a base em formato de ingresso conecta tudo à venda de inscrições.</span>
                 </div>
                 <div className={classes.presentationActions}>
                     <NavLink to="/auth/register" className={classes.presentationPrimary}>
@@ -164,17 +164,17 @@ function BrandPresentation() {
                 </div>
             </div>
 
-            <div className={classes.brandPanel} aria-label="Apresentação da Zenite Tickets">
+            <div className={classes.brandPanel} aria-label="Apresentação da Movve Tickets">
                 <img
                     className={classes.brandPanelLogo}
-                    src="/logos/zenite-tickets-premium.svg"
-                    alt="Zenite Tickets"
+                    src="/logos/movve-tickets-premium.svg"
+                    alt="Movve Tickets"
                 />
                 <div className={classes.brandPanelGrid}>
                     <span><IconShieldCheck size={20}/> Pagamentos seguros</span>
                     <span><IconUsers size={20}/> Gestão de participantes</span>
                     <span><IconChartBar size={20}/> Relatórios em tempo real</span>
-                    <span><IconSparkles size={20}/> Marca no auge</span>
+                    <span><IconSparkles size={20}/> Marca em movimento</span>
                 </div>
             </div>
         </section>
@@ -228,7 +228,7 @@ export default function Marketplace() {
                             <span/>
                         </span>
                         <span className={classes.logoText}>
-                            <strong>Zenite</strong>
+                            <strong>Movve</strong>
                             <small>Tickets</small>
                         </span>
                     </NavLink>
@@ -281,7 +281,7 @@ export default function Marketplace() {
             {/* Hero */}
             <section className={classes.hero}>
                 <div className={classes.heroInner}>
-                    <h1 className={classes.heroTitle}>Zenite Tickets</h1>
+                    <h1 className={classes.heroTitle}>Movve Tickets</h1>
                     <p className={classes.heroSubtitle}>
                         Plataforma oficial para descobrir eventos e comprar inscrições com Pix, cartão, boleto e outros métodos.
                     </p>

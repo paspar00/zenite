@@ -9,7 +9,7 @@ BG_BLACK='\033[40m'
 NC='\033[0m' # No Color
 CERTS_DIR="./certs"
 
-echo -e "${GREEN}${BG_BLACK}Installing Zenite Tickets...${NC}"
+echo -e "${GREEN}${BG_BLACK}Installing Movve Tickets...${NC}"
 
 mkdir -p "$CERTS_DIR"
 
@@ -93,7 +93,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo -e "${GREEN}Zenite Tickets is now running at:${NC} https://localhost:8443"
+echo -e "${GREEN}Movve Tickets is now running at:${NC} https://localhost:8443"
 
 case "$(uname -s)" in
     Darwin) open https://localhost:8443/auth/register ;;

@@ -66,7 +66,7 @@ export default function Unsubscribe() {
             <header style={{background: 'linear-gradient(135deg,#ff6b00 0%,#101010 100%)', padding: '0 24px'}}>
                 <div style={{maxWidth: 1100, margin: '0 auto', height: 60, display: 'flex', alignItems: 'center'}}>
                     <NavLink to="/" style={{display: 'block', textDecoration: 'none'}}>
-                        <img src="/logos/zenite-tickets-premium.svg" alt="Zenite Tickets" style={{display: 'block', width: 178, height: 'auto'}} />
+                        <img src="/logos/movve-tickets-premium.svg" alt="Movve Tickets" style={{display: 'block', width: 178, height: 'auto'}} />
                     </NavLink>
                 </div>
             </header>
