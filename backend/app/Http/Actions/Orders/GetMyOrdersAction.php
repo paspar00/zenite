@@ -23,7 +23,7 @@ class GetMyOrdersAction extends BaseAction
         $orders = $this->orderRepository
             ->loadRelation(new Relationship(domainObject: EventDomainObject::class, name: 'event'))
             ->loadRelation(OrderItemDomainObject::class)
-            ->loadRelation(new Relationship(domainObject: InvoiceDomainObject::class, name: 'latest_invoice'))
+            ->loadRelation(InvoiceDomainObject::class)
             ->findCustomerOrdersByEmail($this->getAuthenticatedUser()->getEmail());
 
         return $this->resourceResponse(OrderResource::class, $orders);
