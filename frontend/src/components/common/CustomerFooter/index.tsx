@@ -6,15 +6,7 @@ export const CustomerFooter = () => {
         <footer className={classes.footer}>
             <div className={classes.inner}>
                 <span className={classes.brand}>
-                    Desenvolvido por{" "}
-                    <a
-                        href="https://formulaonline.space"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={classes.brandLink}
-                    >
-                        Formula Online
-                    </a>
+                    <strong className={classes.brandName}>Movve</strong> Tickets
                 </span>
 
                 <span className={classes.copy}>

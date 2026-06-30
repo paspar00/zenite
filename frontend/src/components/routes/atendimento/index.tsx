@@ -135,7 +135,7 @@ export default function Atendimento() {
                             <div className={classes.contactIcon} style={{background: "#25d366"}}>
                                 <IconBrandWhatsapp size={28} color="#fff"/>
                             </div>
-                            <h3>William</h3>
+                            <h3>Atendimento organizadores</h3>
                             <p>+55 27 99804-9096</p>
                             <span className={classes.contactCta}>Abrir conversa →</span>
                         </a>

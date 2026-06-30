@@ -24,17 +24,13 @@
 
 .brand {
   color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
-.brandLink {
+.brandName {
   color: #ffb000;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.15s;
-
-  &:hover {
-    color: #ff6b00;
-  }
+  font-weight: 700;
 }
 
 .copy {
