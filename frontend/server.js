@@ -35,6 +35,29 @@ async function main() {
     const app = express();
     app.set("trust proxy", true);
 
+    if (isProduction && process.env.REDIRECT_WWW_TO_APEX !== "false") {
+        app.use((req, res, next) => {
+            const host = req.get("host");
+
+            if (!host) {
+                return next();
+            }
+
+            const [hostname, port] = host.split(":");
+            if (hostname.toLowerCase().startsWith("www.")) {
+                const forwardedProto = req.get("x-forwarded-proto")?.split(",")[0]?.trim();
+                const protocol = process.env.FORCE_HTTPS === "false"
+                    ? forwardedProto || req.protocol
+                    : "https";
+                const apexHost = `${hostname.slice(4)}${port ? `:${port}` : ""}`;
+
+                return res.redirect(308, `${protocol}://${apexHost}${req.originalUrl}`);
+            }
+
+            next();
+        });
+    }
+
     if (isProduction && process.env.FORCE_HTTPS !== "false") {
         app.use((req, res, next) => {
             const forwardedProto = req.get("x-forwarded-proto")?.split(",")[0]?.trim();
