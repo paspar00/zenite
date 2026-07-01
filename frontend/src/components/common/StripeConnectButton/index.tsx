@@ -5,7 +5,7 @@ import { t } from '@lingui/macro';
 import { useCreateOrGetStripeConnectDetails } from '../../../queries/useCreateOrGetStripeConnectDetails';
 import { useGetAccount } from '../../../queries/useGetAccount';
 import { showSuccess } from '../../../utilites/notifications';
-import { isMovveTickets } from '../../../utilites/helpers';
+import { isOrbitaTickets } from '../../../utilites/helpers';
 
 interface StripeConnectButtonProps {
     buttonText?: string;
@@ -31,9 +31,9 @@ export const StripeConnectButton: React.FC<StripeConnectButtonProps> = ({
     const accountQuery = useGetAccount();
     const account = accountQuery.data;
     
-    // For Movve Tickets, use the new platform parameter for Ireland migration
+    // For Orbita Sports, use the new platform parameter for Ireland migration
     // For open-source, use existing logic (no platform parameter)
-    const platformToUse = isMovveTickets() ? platform || 'ie' : undefined;
+    const platformToUse = isOrbitaTickets() ? platform || 'ie' : undefined;
     
     const stripeDetailsQuery = useCreateOrGetStripeConnectDetails(
         account?.id || '',

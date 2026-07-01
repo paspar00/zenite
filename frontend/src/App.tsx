@@ -30,7 +30,7 @@ declare global {
 }
 
 const defaultBrand = {
-    name: "Movve Tickets",
+    name: "Orbita Sports",
     primaryColor: "#ff6b00",
     secondaryColor: "#101010",
     favicon: "/manifest-icons/favicon.svg",

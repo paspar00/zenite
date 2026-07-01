@@ -1,6 +1,6 @@
-# Movve Tickets local development with Docker
+# Orbita Sports local development with Docker
 
-This guide walks you through setting up Movve Tickets using Docker, including requirements, setup steps, configuration,
+This guide walks you through setting up Orbita Sports using Docker, including requirements, setup steps, configuration,
 and environment variables.
 
 ## Requirements
@@ -17,7 +17,7 @@ and environment variables.
 ### 1. Clone the repository
 
 ```bash
-git clone git@github.com:MovveTickets/movve-tickets.git
+git clone git@github.com:OrbitaTickets/orbita-sports.git
 ```
 
 ### 2. Start the development environment
@@ -25,7 +25,7 @@ git clone git@github.com:MovveTickets/movve-tickets.git
 Navigate to the Docker development directory and run the startup script:
 
 ```bash
-cd Movve Tickets/docker/development
+cd Orbita Sports/docker/development
 ./start-dev.sh
 ```
 
@@ -44,8 +44,8 @@ Windows users should follow the steps below to manually run the setup commands i
 Using Git Bash or Windows Terminal:
 
 ```bash
-git clone git@github.com:MovveTickets/movve-tickets.git
-cd Movve Tickets/docker/development
+git clone git@github.com:OrbitaTickets/orbita-sports.git
+cd Orbita Sports/docker/development
 ```
 
 ### 2. Generate SSL certificates
@@ -112,11 +112,11 @@ start https://localhost:8443/auth/register
 
 ## Additional configuration
 
-Movve Tickets uses environment variables for configuration. You’ll find `.env` files in:
+Orbita Sports uses environment variables for configuration. You’ll find `.env` files in:
 
 - `frontend/.env`
 - `backend/.env`
 
 You can modify these to customize your setup.
 
-For a full list of environment variables, see the [Environment Variables Documentation](https://movvetickets.com/docs/getting-started/deploying#environment-variables).
+For a full list of environment variables, see the [Environment Variables Documentation](https://orbitasports.com/docs/getting-started/deploying#environment-variables).

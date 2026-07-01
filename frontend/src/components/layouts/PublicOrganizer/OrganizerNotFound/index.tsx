@@ -10,7 +10,7 @@ export const OrganizerNotFound = () => {
             pageTitle={t`Organizer Not Found`}
             metaDescription={t`The organizer you're looking for could not be found. The page may have been moved, deleted, or the URL might be incorrect.`}
             buttonText={t`Create your own event`}
-            buttonUrl="https://app.movvetickets.com/auth/register?utm_source=app.movvetickets.com&utm_content=organizer-not-found/create-event"
+            buttonUrl="https://app.orbitasports.com/auth/register?utm_source=app.orbitasports.com&utm_content=organizer-not-found/create-event"
             buttonIcon={<IconCalendarPlus size={18}/>}
         >
 

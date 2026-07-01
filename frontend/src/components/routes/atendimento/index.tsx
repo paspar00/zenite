@@ -77,8 +77,8 @@ export default function Atendimento() {
                             <span/>
                         </span>
                         <span className={classes.logoText}>
-                            <strong>Movve</strong>
-                            <small>Tickets</small>
+                            <strong>Orbita</strong>
+                            <small>Sports</small>
                         </span>
                     </NavLink>
                     <nav className={classes.nav}>

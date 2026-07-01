@@ -4243,12 +4243,12 @@ msgid "Hi {0} 👋"
 msgstr "你好 {0} 👋"
 
 #: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:75
-msgid "Movve Tickets Fee"
-msgstr "Movve Tickets 費用"
+msgid "Orbita Sports Fee"
+msgstr "Orbita Sports 費用"
 
 #: src/components/routes/organizer/Reports/index.tsx:42
-msgid "Movve Tickets platform fees and VAT breakdown by transaction"
-msgstr "Movve Tickets 平台費用及每筆交易的增值稅明細"
+msgid "Orbita Sports platform fees and VAT breakdown by transaction"
+msgstr "Orbita Sports 平台費用及每筆交易的增值稅明細"
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:90
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:321
@@ -8465,8 +8465,8 @@ msgid "Thank you for attending!"
 msgstr "感謝您的參與！"
 
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:91
-msgid "Thanks for your support as we continue to grow and improve Movve Tickets!"
-msgstr "感謝您的支持，我們將繼續發展和改進 Movve Tickets！"
+msgid "Thanks for your support as we continue to grow and improve Orbita Sports!"
+msgstr "感謝您的支持，我們將繼續發展和改進 Orbita Sports！"
 
 #: src/components/routes/product-widget/SelectProducts/index.tsx:186
 #: src/components/routes/product-widget/SelectProducts/index.tsx:234
@@ -8804,8 +8804,8 @@ msgid "This product is sold out"
 msgstr "此產品已售罄"
 
 #: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:118
-msgid "This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Movve Tickets may be missing historical data."
-msgstr "此報告僅供參考。在將此數據用於會計或稅務目的之前，請務必諮詢稅務專業人士。請與您的Stripe儀表板進行交叉驗證，因為Movve Tickets可能缺少歷史數據。"
+msgid "This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Orbita Sports may be missing historical data."
+msgstr "此報告僅供參考。在將此數據用於會計或稅務目的之前，請務必諮詢稅務專業人士。請與您的Stripe儀表板進行交叉驗證，因為Orbita Sports可能缺少歷史數據。"
 
 #: src/components/routes/auth/ResetPassword/index.tsx:28
 msgid "This reset password link is invalid or expired."
@@ -9144,8 +9144,8 @@ msgid "Try another email"
 msgstr "嘗試其他郵箱"
 
 #: src/components/common/PoweredByFooter/index.tsx:55
-msgid "Try Movve Tickets Free"
-msgstr "免費試用Movve Tickets"
+msgid "Try Orbita Sports Free"
+msgstr "免費試用Orbita Sports"
 
 #: src/components/common/LanguageSwitcher/index.tsx:38
 msgid "Turkish"

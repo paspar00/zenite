@@ -4243,12 +4243,12 @@ msgid "Hi {0} 👋"
 msgstr "Szia {0} 👋"
 
 #: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:75
-msgid "Movve Tickets Fee"
-msgstr "Movve Tickets díj"
+msgid "Orbita Sports Fee"
+msgstr "Orbita Sports díj"
 
 #: src/components/routes/organizer/Reports/index.tsx:42
-msgid "Movve Tickets platform fees and VAT breakdown by transaction"
-msgstr "Movve Tickets platform díjak és ÁFA bontás tranzakciónként"
+msgid "Orbita Sports platform fees and VAT breakdown by transaction"
+msgstr "Orbita Sports platform díjak és ÁFA bontás tranzakciónként"
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:90
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:321
@@ -8465,8 +8465,8 @@ msgid "Thank you for attending!"
 msgstr "Köszönjük, hogy részt vett!"
 
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:91
-msgid "Thanks for your support as we continue to grow and improve Movve Tickets!"
-msgstr "Köszönjük támogatását, miközben tovább fejlődünk és fejlesztjük a Movve Tickets-et!"
+msgid "Thanks for your support as we continue to grow and improve Orbita Sports!"
+msgstr "Köszönjük támogatását, miközben tovább fejlődünk és fejlesztjük a Orbita Sports-et!"
 
 #: src/components/routes/product-widget/SelectProducts/index.tsx:186
 #: src/components/routes/product-widget/SelectProducts/index.tsx:234
@@ -8804,8 +8804,8 @@ msgid "This product is sold out"
 msgstr "Ez a termék elfogyott"
 
 #: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:118
-msgid "This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Movve Tickets may be missing historical data."
-msgstr "Ez a jelentés csak tájékoztató jellegű. Mindig konzultáljon adószakértővel, mielőtt ezeket az adatokat számviteli vagy adózási célokra használná. Kérjük, ellenőrizze a Stripe irányítópultjával, mivel a Movve Tickets esetleg hiányos előzményadatokkal rendelkezik."
+msgid "This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Orbita Sports may be missing historical data."
+msgstr "Ez a jelentés csak tájékoztató jellegű. Mindig konzultáljon adószakértővel, mielőtt ezeket az adatokat számviteli vagy adózási célokra használná. Kérjük, ellenőrizze a Stripe irányítópultjával, mivel a Orbita Sports esetleg hiányos előzményadatokkal rendelkezik."
 
 #: src/components/routes/auth/ResetPassword/index.tsx:28
 msgid "This reset password link is invalid or expired."
@@ -9144,8 +9144,8 @@ msgid "Try another email"
 msgstr "Próbáljon másik e-mailt"
 
 #: src/components/common/PoweredByFooter/index.tsx:55
-msgid "Try Movve Tickets Free"
-msgstr "Próbálja ki a Movve Tickets-et ingyen"
+msgid "Try Orbita Sports Free"
+msgstr "Próbálja ki a Orbita Sports-et ingyen"
 
 #: src/components/common/LanguageSwitcher/index.tsx:38
 msgid "Turkish"

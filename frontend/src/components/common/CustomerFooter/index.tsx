@@ -6,7 +6,7 @@ export const CustomerFooter = () => {
         <footer className={classes.footer}>
             <div className={classes.inner}>
                 <span className={classes.brand}>
-                    <strong className={classes.brandName}>Movve</strong> Tickets
+                    <strong className={classes.brandName}>Orbita</strong> Sports
                 </span>
 
                 <span className={classes.copy}>

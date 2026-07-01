@@ -143,7 +143,7 @@ const AcceptInvitation = () => {
                                     I agree to the{' '}
                                     <Anchor
                                         target={'_blank'}
-                                        href={getConfig("VITE_TOS_URL", 'https://movvetickets.com/terms-of-service')}
+                                        href={getConfig("VITE_TOS_URL", 'https://orbitasports.com/terms-of-service')}
                                     >
                                         terms and conditions
                                     </Anchor>
@@ -154,7 +154,7 @@ const AcceptInvitation = () => {
                         <Checkbox
                             mb="md"
                             {...form.getInputProps('marketing_opt_in', {type: 'checkbox'})}
-                            label={<Trans>Receive product updates from {getConfig("VITE_APP_NAME", "Movve Tickets")}.</Trans>}
+                            label={<Trans>Receive product updates from {getConfig("VITE_APP_NAME", "Orbita Sports")}.</Trans>}
                         />
 
                         <Button

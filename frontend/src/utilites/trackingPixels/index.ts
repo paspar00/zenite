@@ -21,14 +21,14 @@ export function initializeTrackingPixels(pixels: TrackingPixelConfig[]): void {
         if (!pixel.enabled) continue;
         const plugin = pluginRegistry[pixel.provider];
         if (!plugin) {
-            console.warn(`[movve-tickets] Unknown tracking pixel provider: ${pixel.provider}`);
+            console.warn(`[orbita-sports] Unknown tracking pixel provider: ${pixel.provider}`);
             continue;
         }
         try {
             plugin.initialize(pixel.pixel_id);
             activePlugins.push(plugin);
         } catch (error) {
-            console.error(`[movve-tickets] Failed to initialize ${pixel.provider}:`, error);
+            console.error(`[orbita-sports] Failed to initialize ${pixel.provider}:`, error);
         }
     }
 }

@@ -15,8 +15,8 @@ export const MarketplaceHeader = ({showBack = false}: MarketplaceHeaderProps) =>
                         <span/>
                     </span>
                     <span className={classes.logoText}>
-                        <strong>Movve</strong>
-                        <small>Tickets</small>
+                        <strong>Orbita</strong>
+                        <small>Sports</small>
                     </span>
                 </NavLink>
 

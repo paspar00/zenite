@@ -26,7 +26,7 @@ const vilaVelhaEvent = {
     location: "Vila Velha, ES",
     date: "Data a ser liberada",
     status: "Pré-lançamento oficial",
-    description: "Percurso, kit atleta e abertura de inscrições serão anunciados pela Movve Tickets.",
+    description: "Percurso, kit atleta e abertura de inscrições serão anunciados pela Orbita Sports.",
     url: "/meia-maratona-vila-velha-3-edicao",
     image: "/images/meia-maratona-vila-velha-3-logo.svg",
 };
@@ -143,10 +143,10 @@ function BrandPresentation() {
     return (
         <section className={classes.presentation}>
             <div className={classes.presentationCopy}>
-                <span className={classes.eyebrow}>Movve para organizadores</span>
+                <span className={classes.eyebrow}>Orbita para organizadores</span>
                 <h2>Venda inscrições com uma presença digital à altura do seu evento.</h2>
                 <p>
-                    Movve é movimento: a energia do esporte do primeiro passo à linha de chegada. A marca une
+                    Orbita é movimento: a energia do esporte do primeiro passo à linha de chegada. A marca une
                     velocidade, percurso e a bilheteria digital para representar eventos bem organizados,
                     inscrições seguras e atletas sempre em movimento.
                 </p>
@@ -164,11 +164,11 @@ function BrandPresentation() {
                 </div>
             </div>
 
-            <div className={classes.brandPanel} aria-label="Apresentação da Movve Tickets">
+            <div className={classes.brandPanel} aria-label="Apresentação da Orbita Sports">
                 <img
                     className={classes.brandPanelLogo}
-                    src="/logos/movve-tickets-premium.svg"
-                    alt="Movve Tickets"
+                    src="/logos/orbita-sports-premium.svg"
+                    alt="Orbita Sports"
                 />
                 <div className={classes.brandPanelGrid}>
                     <span><IconShieldCheck size={20}/> Pagamentos seguros</span>
@@ -228,8 +228,8 @@ export default function Marketplace() {
                             <span/>
                         </span>
                         <span className={classes.logoText}>
-                            <strong>Movve</strong>
-                            <small>Tickets</small>
+                            <strong>Orbita</strong>
+                            <small>Sports</small>
                         </span>
                     </NavLink>
                     <nav className={classes.nav}>
@@ -281,7 +281,7 @@ export default function Marketplace() {
             {/* Hero */}
             <section className={classes.hero}>
                 <div className={classes.heroInner}>
-                    <h1 className={classes.heroTitle}>Movve Tickets</h1>
+                    <h1 className={classes.heroTitle}>Orbita Sports</h1>
                     <p className={classes.heroSubtitle}>
                         Plataforma oficial para descobrir eventos e comprar inscrições com Pix, cartão, boleto e outros métodos.
                     </p>

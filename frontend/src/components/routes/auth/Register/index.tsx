@@ -214,7 +214,7 @@ export const Register = () => {
                     <Checkbox
                         mb="md"
                         {...form.getInputProps('marketing_opt_in', {type: 'checkbox'})}
-                        label={<Trans>Receive product updates from {getConfig("VITE_APP_NAME", "Movve Tickets")}.</Trans>}
+                        label={<Trans>Receive product updates from {getConfig("VITE_APP_NAME", "Orbita Sports")}.</Trans>}
                     />
 
                     <Button color="secondary.5" type="submit" fullWidth disabled={mutate.isPending}>
@@ -224,10 +224,10 @@ export const Register = () => {
                 <footer>
                     <Trans>
                         By registering you agree to our <NavLink target={'_blank'}
-                                                                 to={getConfig("VITE_TOS_URL", "https://movvetickets.com/terms-of-service?utm_source=app-register-footer") as string}>Terms
+                                                                 to={getConfig("VITE_TOS_URL", "https://orbitasports.com/terms-of-service?utm_source=app-register-footer") as string}>Terms
                         of Service</NavLink> and <NavLink
                         target={'_blank'}
-                        to={getConfig("VITE_PRIVACY_URL", 'https://movvetickets.com/privacy-policy?utm_source=app-register-footer') as string}>Privacy Policy</NavLink>.
+                        to={getConfig("VITE_PRIVACY_URL", 'https://orbitasports.com/privacy-policy?utm_source=app-register-footer') as string}>Privacy Policy</NavLink>.
                     </Trans>
                 </footer>
             </div>

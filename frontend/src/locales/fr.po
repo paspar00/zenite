@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
-"Project-Id-Version: Movve Tickets\n"
+"Project-Id-Version: Orbita Sports\n"
 "Language: fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
@@ -4243,12 +4243,12 @@ msgid "Hi {0} 👋"
 msgstr "Salut {0} 👋"
 
 #: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:75
-msgid "Movve Tickets Fee"
-msgstr "Frais Movve Tickets"
+msgid "Orbita Sports Fee"
+msgstr "Frais Orbita Sports"
 
 #: src/components/routes/organizer/Reports/index.tsx:42
-msgid "Movve Tickets platform fees and VAT breakdown by transaction"
-msgstr "Frais de plateforme Movve Tickets et ventilation TVA par transaction"
+msgid "Orbita Sports platform fees and VAT breakdown by transaction"
+msgstr "Frais de plateforme Orbita Sports et ventilation TVA par transaction"
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:90
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:321
@@ -8465,8 +8465,8 @@ msgid "Thank you for attending!"
 msgstr "Merci pour votre présence !"
 
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:91
-msgid "Thanks for your support as we continue to grow and improve Movve Tickets!"
-msgstr "Merci pour votre soutien alors que nous continuons à développer et améliorer Movve Tickets !"
+msgid "Thanks for your support as we continue to grow and improve Orbita Sports!"
+msgstr "Merci pour votre soutien alors que nous continuons à développer et améliorer Orbita Sports !"
 
 #: src/components/routes/product-widget/SelectProducts/index.tsx:186
 #: src/components/routes/product-widget/SelectProducts/index.tsx:234
@@ -8804,8 +8804,8 @@ msgid "This product is sold out"
 msgstr "Ce produit est épuisé"
 
 #: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:118
-msgid "This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Movve Tickets may be missing historical data."
-msgstr "Ce rapport est fourni à titre informatif uniquement. Consultez toujours un professionnel de la fiscalité avant d'utiliser ces données à des fins comptables ou fiscales. Veuillez vérifier avec votre tableau de bord Stripe car Movve Tickets peut manquer de données historiques."
+msgid "This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Orbita Sports may be missing historical data."
+msgstr "Ce rapport est fourni à titre informatif uniquement. Consultez toujours un professionnel de la fiscalité avant d'utiliser ces données à des fins comptables ou fiscales. Veuillez vérifier avec votre tableau de bord Stripe car Orbita Sports peut manquer de données historiques."
 
 #: src/components/routes/auth/ResetPassword/index.tsx:28
 msgid "This reset password link is invalid or expired."
@@ -9144,8 +9144,8 @@ msgid "Try another email"
 msgstr "Essayer un autre e-mail"
 
 #: src/components/common/PoweredByFooter/index.tsx:55
-msgid "Try Movve Tickets Free"
-msgstr "Essayer Movve Tickets gratuitement"
+msgid "Try Orbita Sports Free"
+msgstr "Essayer Orbita Sports gratuitement"
 
 #: src/components/common/LanguageSwitcher/index.tsx:38
 msgid "Turkish"

@@ -110,8 +110,8 @@ export const iHavePurchasedALicence = () => {
     return getConfig('VITE_I_HAVE_PURCHASED_A_LICENCE');
 }
 
-export const isMovveTickets = () => {
-    return getConfig('VITE_FRONTEND_URL')?.includes('movvetickets.com');
+export const isOrbitaTickets = () => {
+    return getConfig('VITE_FRONTEND_URL')?.includes('orbitasports.com');
 }
 
 export const isEmptyHtml = (content: string) => {

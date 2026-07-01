@@ -17,7 +17,7 @@ export const CookieConsentBanner = ({onConsent}: CookieConsentBannerProps) => {
         'VITE_COOKIE_CONSENT_TEXT',
         t`We use cookies to help us understand how the site is used and to improve your experience.`
     );
-    const privacyUrl = getConfig('VITE_PRIVACY_URL', 'https://movvetickets.com/privacy-policy?utm_source=app-cookie-banner');
+    const privacyUrl = getConfig('VITE_PRIVACY_URL', 'https://orbitasports.com/privacy-policy?utm_source=app-cookie-banner');
 
     const handleAccept = () => {
         onConsent(true);

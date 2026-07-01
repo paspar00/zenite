@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="320" height="80" viewBox="0 0 320 80" role="img" aria-labelledby="title">
-  <title id="title">Movve Tickets Logo Light</title>
+  <title id="title">Orbita Sports Logo Light</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&amp;display=swap');
     .brand { font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: 0; }
@@ -11,6 +11,6 @@
     <path d="M-11 10 0-14 11 10 0 5Z" fill="#ff6b00"/>
     <path d="M-19-1h6M13-1h6" stroke="#ffd166" stroke-width="3" stroke-linecap="round"/>
   </g>
-  <text x="88" y="36" class="brand" font-size="29" fill="#ffffff">MOVVE</text>
-  <text x="90" y="58" class="sub" font-size="14" fill="#ffb000">TICKETS</text>
+  <text x="88" y="36" class="brand" font-size="29" fill="#ffffff">ORBITA</text>
+  <text x="90" y="58" class="sub" font-size="14" fill="#ffb000">SPORTS</text>
 </svg>

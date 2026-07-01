@@ -99,8 +99,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@movvetickets.com'),
-        'name' => env('MAIL_FROM_NAME', 'Movve Tickets'),
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@orbitasports.com'),
+        'name' => env('MAIL_FROM_NAME', 'Orbita Sports'),
     ],
 
     /*

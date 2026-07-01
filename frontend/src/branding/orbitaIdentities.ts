@@ -1,6 +1,6 @@
-export const movveIdentities = {
+export const orbitaIdentities = {
     pulse: {
-        name: "Movve Pulse",
+        name: "Orbita Pulse",
         primary: "#ff6b00",
         secondary: "#101010",
         accent: "#ffd166",
@@ -8,7 +8,7 @@ export const movveIdentities = {
         description: "Energia laranja e preto para vendas, shows e eventos noturnos.",
     },
     premium: {
-        name: "Movve Premium",
+        name: "Orbita Premium",
         primary: "#f97316",
         secondary: "#18181b",
         accent: "#facc15",
@@ -16,7 +16,7 @@ export const movveIdentities = {
         description: "Mais sofisticada, com preto profundo, laranja limpo e toque dourado.",
     },
     arena: {
-        name: "Movve Arena",
+        name: "Orbita Arena",
         primary: "#ff4d00",
         secondary: "#050505",
         accent: "#ffffff",
@@ -25,4 +25,4 @@ export const movveIdentities = {
     },
 } as const;
 
-export type MovveIdentity = keyof typeof movveIdentities;
+export type OrbitaIdentity = keyof typeof orbitaIdentities;

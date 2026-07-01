@@ -13,8 +13,8 @@ export default function MeiaMaratonaVilaVelha() {
                 </NavLink>
                 <img
                     className={classes.brand}
-                    src="/logos/movve-tickets-text-light.svg"
-                    alt="Movve Tickets"
+                    src="/logos/orbita-sports-text-light.svg"
+                    alt="Orbita Sports"
                 />
             </header>
 
@@ -31,7 +31,7 @@ export default function MeiaMaratonaVilaVelha() {
                     <h1>Meia Maratona de Vila Velha</h1>
                     <p className={classes.lead}>
                         A página oficial da 3ª edição já está no ar. A organização está finalizando data,
-                        percurso, lotes e abertura das inscrições pela Movve Tickets.
+                        percurso, lotes e abertura das inscrições pela Orbita Sports.
                     </p>
 
                     <div className={classes.infoGrid}>
@@ -67,7 +67,7 @@ export default function MeiaMaratonaVilaVelha() {
                             <IconFlag size={22}/>
                             <div>
                                 <strong>Organização</strong>
-                                <span>Publicação oficial Movve Tickets</span>
+                                <span>Publicação oficial Orbita Sports</span>
                             </div>
                         </div>
                     </div>

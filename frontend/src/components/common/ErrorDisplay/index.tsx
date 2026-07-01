@@ -28,7 +28,7 @@ export const ErrorDisplay = () => {
             return;
         }
 
-        const reloadKey = 'movve-tickets.dynamic-import-reload';
+        const reloadKey = 'orbita-sports.dynamic-import-reload';
         const currentPath = window.location.href;
 
         try {
@@ -64,8 +64,8 @@ export const ErrorDisplay = () => {
                 <Container size="md" className={classes.root}>
                     <Stack gap="xl" align="center">
                         <Image
-                            src={getConfig("VITE_APP_LOGO_DARK", "/logos/movve-tickets-stacked-light.svg")}
-                            alt={getConfig("VITE_APP_NAME", "Movve Tickets") + " Logo"}
+                            src={getConfig("VITE_APP_LOGO_DARK", "/logos/orbita-sports-stacked-light.svg")}
+                            alt={getConfig("VITE_APP_NAME", "Orbita Sports") + " Logo"}
                             w={rem(140)}
                             h="auto"
                             fit="contain"

@@ -1,19 +1,19 @@
-# Movve Tickets All-in-One Docker Image
+# Orbita Sports All-in-One Docker Image
 
 The all-in-one Docker image runs both the frontend and backend services in a single container. While it can be used in
 production, the recommended approach for production is to run the frontend and backend separately for better scalability and security.
 
 The provided docker-compose.yml file is meant for development and testing purposes. For production, you should use
-the [Docker image](https://hub.docker.com/r/movvetickets/movve-tickets-all-in-one), or create your own Docker compose file with the
-necessary [configurations for production](https://movvetickets.com/docs/getting-started/deploying#configuring-environment-variables).
+the [Docker image](https://hub.docker.com/r/orbitatickets/orbita-sports-all-in-one), or create your own Docker compose file with the
+necessary [configurations for production](https://orbitasports.com/docs/getting-started/deploying#configuring-environment-variables).
 
 ## Quick Start with Docker
 
 ### Step 1: Clone the Repository
 
 ```bash
-git clone git@github.com:MovveTickets/movve-tickets.git
-cd movve-tickets/docker/all-in-one
+git clone git@github.com:OrbitaTickets/orbita-sports.git
+cd orbita-sports/docker/all-in-one
 ```
 
 ### Step 2: Copy the Environment File

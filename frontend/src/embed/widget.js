@@ -10,7 +10,7 @@
             const scriptURL = scriptElement.src;
             scriptOrigin = new URL(scriptURL).origin;
         } catch (e) {
-            console.error('Movve Tickets widget error: Invalid script URL');
+            console.error('Orbita Sports widget error: Invalid script URL');
             return;
         }
 
@@ -18,7 +18,7 @@
         widgets.forEach((widget, index) => {
             const eventId = widget.getAttribute('data-hievents-id');
             if (!eventId) {
-                console.error('Movve Tickets widget error: data-hievents-id is required');
+                console.error('Orbita Sports widget error: data-hievents-id is required');
                 return;
             }
 
@@ -39,7 +39,7 @@
                 ' allow-presentation'
             );
 
-            iframe.setAttribute('title', 'Movve Tickets Widget');
+            iframe.setAttribute('title', 'Orbita Sports Widget');
             iframe.style.border = 'none';
             iframe.style.width = '100%';
 

@@ -16,7 +16,7 @@ import {
     IconUsers,
 } from '@tabler/icons-react';
 import {useCallback, useMemo, useRef} from "react";
-import {isMovveTickets} from "../../../utilites/helpers.ts";
+import {isOrbitaTickets} from "../../../utilites/helpers.ts";
 import {showInfo} from "../../../utilites/notifications.tsx";
 
 const allFeatures = [
@@ -117,7 +117,7 @@ const AuthLayout = () => {
 
         if (clickCountRef.current >= 5) {
             clickCountRef.current = 0;
-            showInfo(`Movve Tickets v${__APP_VERSION__}`);
+            showInfo(`Orbita Sports v${__APP_VERSION__}`);
         }
     }, []);
 
@@ -136,13 +136,13 @@ const AuthLayout = () => {
                                     <span />
                                 </span>
                                 <span className={classes.logoText}>
-                                    <strong>Movve</strong>
-                                    <small>Tickets</small>
+                                    <strong>Orbita</strong>
+                                    <small>Sports</small>
                                 </span>
                             </div>
                             <div className={classes.wrapper}>
                                 <Outlet />
-                                {!isMovveTickets() && <PoweredByFooter />}
+                                {!isOrbitaTickets() && <PoweredByFooter />}
                             </div>
                         </main>
                     </div>
