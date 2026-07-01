@@ -12,7 +12,7 @@ import {getUserCurrency} from "../../../../utilites/currency.ts";
 import {getConfig} from "../../../../utilites/config.ts";
 import {captureUtmData, getStoredUtmData, clearStoredUtmData} from "../../../../utilites/utm.ts";
 
-const ATTENDEE_PROFILE_STORAGE_KEY = 'movve_attendee_profiles_v1';
+const ATTENDEE_PROFILE_STORAGE_KEY = 'orbita_attendee_profiles_v1';
 
 const bloodTypeOptions = [
     {value: '', label: t`Select`},

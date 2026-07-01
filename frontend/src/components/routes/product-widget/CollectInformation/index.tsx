@@ -35,7 +35,7 @@ import classes from "./CollectInformation.module.scss";
 import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
 import {clearWaitlistJoinedForEvent} from "../../../../hooks/useWaitlistJoined.ts";
 
-const ATTENDEE_PROFILE_STORAGE_KEY = 'movve_attendee_profiles_v1';
+const ATTENDEE_PROFILE_STORAGE_KEY = 'orbita_attendee_profiles_v1';
 
 interface SavedAttendeeProfile {
     id: string;
