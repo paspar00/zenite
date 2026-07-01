@@ -43,6 +43,10 @@ export interface AcceptInvitationRequest {
 
 export interface RegisterAccountRequest extends AcceptInvitationRequest {
     locale: SupportedLocales;
+    cpf?: string | null;
+    blood_type?: string | null;
+    emergency_contact_name?: string | null;
+    emergency_contact_phone?: string | null;
     utm_source?: string | null;
     utm_medium?: string | null;
     utm_campaign?: string | null;
@@ -562,6 +566,8 @@ export interface Product {
     has_waiting_entries?: boolean;
     waitlist_entry_count?: number;
     lot_mode_enabled?: boolean;
+    image?: string;
+    image_url?: string;
 }
 
 export interface ProductCategory {

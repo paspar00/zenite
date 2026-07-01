@@ -41,6 +41,38 @@ import {clearWaitlistJoinedForEvent} from "../../../../hooks/useWaitlistJoined.t
 
 const AFFILIATE_EXPIRY_DAYS = 30;
 
+const getImageFromHtml = (html?: string) => {
+    if (!html) {
+        return null;
+    }
+
+    return html.match(/<img[^>]+src=["']([^"']+)["']/i)?.[1] || null;
+};
+
+const getProductImage = (product: Product, categoryImage?: string | null, categoryDescription?: string) => {
+    return product.image_url
+        || product.image
+        || getImageFromHtml(product.description)
+        || categoryImage
+        || getImageFromHtml(categoryDescription);
+};
+
+const formatSaleDate = (date?: string | Date) => {
+    if (!date) {
+        return null;
+    }
+
+    const parsedDate = new Date(date);
+    if (Number.isNaN(parsedDate.getTime())) {
+        return null;
+    }
+
+    return parsedDate.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+    });
+};
+
 const sendHeightToIframeWidgets = () => {
     const height = document.documentElement.scrollHeight;
     const widgetHeight = document.querySelector('.hi-product-widget-container')?.getBoundingClientRect().height || 0;
@@ -211,6 +243,11 @@ const SelectProducts = (props: SelectProductsProps) => {
     const productCategories = event?.product_categories || [];
     const productAreAvailable = productCategories && productCategories.some(category => !!category?.products?.length);
     const products: Product[] = productCategories.reduce((acc: Product[], category) => acc.concat(category.products ?? []), []);
+    const firstSaleStartDate = products
+        .map((product) => product.sale_start_date)
+        .filter(Boolean)
+        .sort((a, b) => new Date(a as string).getTime() - new Date(b as string).getTime())[0];
+    const formattedSaleStartDate = formatSaleDate(firstSaleStartDate);
 
     const selectedProductQuantitySum = useMemo(() => {
         let total = 0;
@@ -416,8 +453,15 @@ const SelectProducts = (props: SelectProductsProps) => {
                 <form target={'__blank'} onSubmit={form.onSubmit(handleProductSelection as any)}>
                     <Input type={'hidden'} {...form.getInputProps('promo_code')} />
                     <Input type={'hidden'} {...form.getInputProps('affiliate_code')} />
+                    <div className={'hi-registration-channel'}>
+                        {formattedSaleStartDate
+                            ? <Trans>Registrations open on {formattedSaleStartDate} via movvesports.com.br</Trans>
+                            : <Trans>Registrations via movvesports.com.br</Trans>}
+                    </div>
                     <div className={'hi-product-category-rows'}>
                         {productCategories && productCategories.map((category) => {
+                            const categoryImage = getImageFromHtml(category.description);
+
                             return (
                                 <div className={'hi-product-category-row'} key={category.id}>
                                     <h2 className={'hi-product-category-title'} style={category.description ? {
@@ -460,6 +504,15 @@ const SelectProducts = (props: SelectProductsProps) => {
                                                     {product.is_highlighted && product.highlight_message && (
                                                         <div className={'hi-product-highlight-message'}>
                                                             {product.highlight_message}
+                                                        </div>
+                                                    )}
+                                                    {getProductImage(product, categoryImage, category.description) && (
+                                                        <div className={'hi-product-image-row'}>
+                                                            <img
+                                                                src={getProductImage(product, categoryImage, category.description) as string}
+                                                                alt={product.title}
+                                                                loading="lazy"
+                                                            />
                                                         </div>
                                                     )}
                                                     <div className={'hi-title-row'}>

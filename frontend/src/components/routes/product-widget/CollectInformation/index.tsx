@@ -5,6 +5,7 @@ import {
     Button,
     Checkbox,
     NativeSelect,
+    Radio,
     SegmentedControl,
     Skeleton,
     Text,
@@ -33,6 +34,54 @@ import countries from "../../../../../data/countries.json";
 import classes from "./CollectInformation.module.scss";
 import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
 import {clearWaitlistJoinedForEvent} from "../../../../hooks/useWaitlistJoined.ts";
+
+const ATTENDEE_PROFILE_STORAGE_KEY = 'movve_attendee_profiles_v1';
+
+interface SavedAttendeeProfile {
+    id: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    cpf?: string;
+    blood_type?: string;
+    emergency_contact_name?: string;
+    emergency_contact_phone?: string;
+}
+
+const bloodTypeOptions = [
+    {value: '', label: t`Select`},
+    {value: 'A+', label: 'A+'},
+    {value: 'A-', label: 'A-'},
+    {value: 'B+', label: 'B+'},
+    {value: 'B-', label: 'B-'},
+    {value: 'AB+', label: 'AB+'},
+    {value: 'AB-', label: 'AB-'},
+    {value: 'O+', label: 'O+'},
+    {value: 'O-', label: 'O-'},
+];
+
+const normalizeCpf = (cpf?: string) => (cpf || '').replace(/\D/g, '');
+
+const loadSavedAttendeeProfiles = (): SavedAttendeeProfile[] => {
+    if (typeof window === 'undefined') {
+        return [];
+    }
+
+    try {
+        const profiles = JSON.parse(localStorage.getItem(ATTENDEE_PROFILE_STORAGE_KEY) || '[]');
+        return Array.isArray(profiles) ? profiles : [];
+    } catch {
+        return [];
+    }
+};
+
+const saveAttendeeProfiles = (profiles: SavedAttendeeProfile[]) => {
+    if (typeof window === 'undefined') {
+        return;
+    }
+
+    localStorage.setItem(ATTENDEE_PROFILE_STORAGE_KEY, JSON.stringify(profiles.slice(0, 25)));
+};
 
 const LoadingSkeleton = () =>
     (
@@ -72,6 +121,7 @@ export const CollectInformation = () => {
     const requireBillingAddress = event?.settings?.require_billing_address;
     const isPerOrderCollection = event?.settings?.attendee_details_collection_method === 'PER_ORDER';
     const [copyOption, setCopyOption] = useState<'none' | 'first' | 'all'>('none');
+    const [savedAttendeeProfiles, setSavedAttendeeProfiles] = useState<SavedAttendeeProfile[]>([]);
 
     const isEmailValid = (email: string) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -91,6 +141,10 @@ export const CollectInformation = () => {
                 last_name: "",
                 email: "",
                 email_confirmation: "",
+                cpf: "",
+                blood_type: "",
+                emergency_contact_name: "",
+                emergency_contact_phone: "",
                 address: {},
                 questions: {},
                 opted_into_marketing: false,
@@ -100,6 +154,10 @@ export const CollectInformation = () => {
                 last_name: "",
                 email: "",
                 email_confirmation: "",
+                cpf: "",
+                blood_type: "",
+                emergency_contact_name: "",
+                emergency_contact_phone: "",
                 product_price_id: "",
                 product_id: "",
                 questions: {},
@@ -129,7 +187,7 @@ export const CollectInformation = () => {
 
         const attendeeProductIds = new Set<IdParam>(
             products
-                .filter(product => product && product.product_type === 'TICKET')
+                .filter((product): product is NonNullable<typeof product> => !!product && product.product_type === 'TICKET')
                 .map(product => product.id)
         );
 
@@ -169,6 +227,10 @@ export const CollectInformation = () => {
                         last_name: form.values.order.last_name,
                         email: form.values.order.email,
                         email_confirmation: form.values.order.email,
+                        cpf: form.values.order.cpf,
+                        blood_type: form.values.order.blood_type,
+                        emergency_contact_name: form.values.order.emergency_contact_name,
+                        emergency_contact_phone: form.values.order.emergency_contact_phone,
                     };
                 } else {
                     return {
@@ -177,6 +239,10 @@ export const CollectInformation = () => {
                         last_name: "",
                         email: "",
                         email_confirmation: "",
+                        cpf: "",
+                        blood_type: "",
+                        emergency_contact_name: "",
+                        emergency_contact_phone: "",
                     };
                 }
             }
@@ -290,9 +356,72 @@ export const CollectInformation = () => {
         return formOrderQuestions;
     }
 
+    const updateSavedProfilesFromValues = (values: any) => {
+        const incomingProfiles: SavedAttendeeProfile[] = [];
+
+        const addProfile = (profile: Omit<SavedAttendeeProfile, 'id'> & { id?: string }) => {
+            const cpf = normalizeCpf(profile.cpf);
+            if (!cpf || !profile.first_name || !profile.email) {
+                return;
+            }
+
+            incomingProfiles.push({
+                ...profile,
+                id: cpf,
+                cpf,
+            });
+        };
+
+        addProfile(values.order);
+        values.products?.forEach(addProfile);
+
+        if (incomingProfiles.length === 0) {
+            return;
+        }
+
+        const mergedProfiles = [
+            ...incomingProfiles,
+            ...savedAttendeeProfiles.filter(
+                (profile) => !incomingProfiles.some((incoming) => incoming.id === profile.id)
+            ),
+        ];
+
+        setSavedAttendeeProfiles(mergedProfiles);
+        saveAttendeeProfiles(mergedProfiles);
+    };
+
+    const applySavedAttendeeProfile = (index: number, profileId: string) => {
+        const profile = savedAttendeeProfiles.find((item) => item.id === profileId);
+        if (!profile) {
+            return;
+        }
+
+        form.setFieldValue(`products.${index}.first_name`, profile.first_name);
+        form.setFieldValue(`products.${index}.last_name`, profile.last_name);
+        form.setFieldValue(`products.${index}.email`, profile.email);
+        form.setFieldValue(`products.${index}.email_confirmation`, profile.email);
+        form.setFieldValue(`products.${index}.cpf`, profile.cpf || '');
+        form.setFieldValue(`products.${index}.blood_type`, profile.blood_type || '');
+        form.setFieldValue(`products.${index}.emergency_contact_name`, profile.emergency_contact_name || '');
+        form.setFieldValue(`products.${index}.emergency_contact_phone`, profile.emergency_contact_phone || '');
+    };
+
+    const fillAttendeeByCpf = (index: number, cpf: string) => {
+        const normalizedCpf = normalizeCpf(cpf);
+        const profile = savedAttendeeProfiles.find((item) => normalizeCpf(item.cpf) === normalizedCpf);
+        if (profile) {
+            applySavedAttendeeProfile(index, profile.id);
+        }
+    };
+
     const handleSubmit = (values: any) => {
+        updateSavedProfilesFromValues(values);
         mutation.mutate(values);
     };
+
+    useEffect(() => {
+        setSavedAttendeeProfiles(loadSavedAttendeeProfiles());
+    }, []);
 
     useEffect(() => {
         if (isEventFetched && isOrderFetched && isQuestionsFetched && productQuestions && orderQuestions) {
@@ -361,7 +490,7 @@ export const CollectInformation = () => {
         />;
     }
 
-    if (isOrderError && orderError?.response?.status === 404) {
+    if (isOrderError && (orderError as any)?.response?.status === 404) {
         if (isFromWaitlist && eventId) {
             clearWaitlistJoinedForEvent(eventId);
         }
@@ -440,6 +569,32 @@ export const CollectInformation = () => {
                             label={t`Last Name`}
                             placeholder={t`Last Name`}
                             {...form.getInputProps("order.last_name")}
+                        />
+                    </InputGroup>
+
+                    <InputGroup>
+                        <TextInput
+                            label={t`CPF`}
+                            placeholder="000.000.000-00"
+                            {...form.getInputProps("order.cpf")}
+                        />
+                        <NativeSelect
+                            label={t`Blood Type`}
+                            data={bloodTypeOptions}
+                            {...form.getInputProps("order.blood_type")}
+                        />
+                    </InputGroup>
+
+                    <InputGroup>
+                        <TextInput
+                            label={t`Emergency Contact`}
+                            placeholder={t`Emergency contact name`}
+                            {...form.getInputProps("order.emergency_contact_name")}
+                        />
+                        <TextInput
+                            label={t`Emergency Phone`}
+                            placeholder={t`Emergency phone`}
+                            {...form.getInputProps("order.emergency_contact_phone")}
                         />
                     </InputGroup>
 
@@ -640,6 +795,24 @@ export const CollectInformation = () => {
 
                                         {productRequiresDetails && (
                                             <>
+                                                {savedAttendeeProfiles.length > 0 && (
+                                                    <div className={classes.savedAttendeeSelector}>
+                                                        <Text size="sm" fw={600}>{t`Who is this registration for?`}</Text>
+                                                        <Radio.Group
+                                                            onChange={(value) => applySavedAttendeeProfile(currentProductIndex, value)}
+                                                        >
+                                                            <div className={classes.savedAttendeeOptions}>
+                                                                {savedAttendeeProfiles.map((profile) => (
+                                                                    <Radio
+                                                                        key={profile.id}
+                                                                        value={profile.id}
+                                                                        label={`${profile.first_name} ${profile.last_name || ''}`.trim()}
+                                                                    />
+                                                                ))}
+                                                            </div>
+                                                        </Radio.Group>
+                                                    </div>
+                                                )}
                                                 <InputGroup>
                                                     <TextInput
                                                         withAsterisk
@@ -673,6 +846,33 @@ export const CollectInformation = () => {
                                                         rightSection={isEmailValid(form.values.products[currentProductIndex]?.email_confirmation || '') ?
                                                             <EmailCheckIcon/> : null}
                                                         {...form.getInputProps(`products.${currentProductIndex}.email_confirmation`)}
+                                                    />
+                                                </InputGroup>
+
+                                                <InputGroup>
+                                                    <TextInput
+                                                        label={t`CPF`}
+                                                        placeholder="000.000.000-00"
+                                                        {...form.getInputProps(`products.${currentProductIndex}.cpf`)}
+                                                        onBlur={(event) => fillAttendeeByCpf(currentProductIndex, event.currentTarget.value)}
+                                                    />
+                                                    <NativeSelect
+                                                        label={t`Blood Type`}
+                                                        data={bloodTypeOptions}
+                                                        {...form.getInputProps(`products.${currentProductIndex}.blood_type`)}
+                                                    />
+                                                </InputGroup>
+
+                                                <InputGroup>
+                                                    <TextInput
+                                                        label={t`Emergency Contact`}
+                                                        placeholder={t`Emergency contact name`}
+                                                        {...form.getInputProps(`products.${currentProductIndex}.emergency_contact_name`)}
+                                                    />
+                                                    <TextInput
+                                                        label={t`Emergency Phone`}
+                                                        placeholder={t`Emergency phone`}
+                                                        {...form.getInputProps(`products.${currentProductIndex}.emergency_contact_phone`)}
                                                     />
                                                 </InputGroup>
                                             </>

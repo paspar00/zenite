@@ -158,6 +158,21 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
 }
 
+.savedAttendeeSelector {
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px solid var(--checkout-border, #F3F4F6);
+  border-radius: $radius-sm;
+  background: var(--checkout-surface-subtle, #F9FAFB);
+}
+
+.savedAttendeeOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  margin-top: 10px;
+}
+
 .checkoutActions {
   margin-top: 32px;
   margin-bottom: 24px;

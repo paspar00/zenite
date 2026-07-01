@@ -17,6 +17,10 @@ class CompleteOrderProductDataDTO extends BaseDTO
         public readonly ?string     $first_name = null,
         public readonly ?string     $last_name = null,
         public readonly ?string     $email = null,
+        public readonly ?string     $cpf = null,
+        public readonly ?string     $blood_type = null,
+        public readonly ?string     $emergency_contact_name = null,
+        public readonly ?string     $emergency_contact_phone = null,
     )
     {
     }

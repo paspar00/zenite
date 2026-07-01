@@ -1,4 +1,4 @@
-import {Button, Checkbox, PasswordInput, SimpleGrid, TextInput} from "@mantine/core";
+import {Button, Checkbox, NativeSelect, PasswordInput, SimpleGrid, TextInput} from "@mantine/core";
 import {hasLength, isEmail, matchesField, useForm} from "@mantine/form";
 import {RegisterAccountRequest} from "../../../../types.ts";
 import {useFormErrorResponseHandler} from "../../../../hooks/useFormErrorResponseHandler.tsx";
@@ -12,6 +12,58 @@ import {getUserCurrency} from "../../../../utilites/currency.ts";
 import {getConfig} from "../../../../utilites/config.ts";
 import {captureUtmData, getStoredUtmData, clearStoredUtmData} from "../../../../utilites/utm.ts";
 
+const ATTENDEE_PROFILE_STORAGE_KEY = 'movve_attendee_profiles_v1';
+
+const bloodTypeOptions = [
+    {value: '', label: t`Select`},
+    {value: 'A+', label: 'A+'},
+    {value: 'A-', label: 'A-'},
+    {value: 'B+', label: 'B+'},
+    {value: 'B-', label: 'B-'},
+    {value: 'AB+', label: 'AB+'},
+    {value: 'AB-', label: 'AB-'},
+    {value: 'O+', label: 'O+'},
+    {value: 'O-', label: 'O-'},
+];
+
+const normalizeCpf = (cpf?: string | null) => (cpf || '').replace(/\D/g, '');
+
+const saveRegistrationProfile = (data: RegisterAccountRequest) => {
+    if (typeof window === 'undefined') {
+        return;
+    }
+
+    const cpf = normalizeCpf(data.cpf);
+    if (!cpf) {
+        return;
+    }
+
+    try {
+        const existingProfiles = JSON.parse(localStorage.getItem(ATTENDEE_PROFILE_STORAGE_KEY) || '[]');
+        const profiles = Array.isArray(existingProfiles) ? existingProfiles : [];
+        const profile = {
+            id: cpf,
+            cpf,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            email: data.email,
+            blood_type: data.blood_type || '',
+            emergency_contact_name: data.emergency_contact_name || '',
+            emergency_contact_phone: data.emergency_contact_phone || '',
+        };
+
+        localStorage.setItem(
+            ATTENDEE_PROFILE_STORAGE_KEY,
+            JSON.stringify([
+                profile,
+                ...profiles.filter((item) => item.id !== cpf),
+            ].slice(0, 25))
+        );
+    } catch {
+        localStorage.setItem(ATTENDEE_PROFILE_STORAGE_KEY, JSON.stringify([]));
+    }
+};
+
 export const Register = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,6 +76,10 @@ export const Register = () => {
             email: '',
             password: '',
             password_confirmation: '',
+            cpf: '',
+            blood_type: '',
+            emergency_contact_name: '',
+            emergency_contact_phone: '',
             timezone: typeof window !== 'undefined'
                 ? Intl.DateTimeFormat().resolvedOptions().timeZone
                 : 'UTC',
@@ -42,6 +98,8 @@ export const Register = () => {
     const mutate = useRegisterAccount();
 
     const registerUser = (data: RegisterAccountRequest) => {
+        saveRegistrationProfile(data);
+
         const utmData = getStoredUtmData();
         const registrationData = utmData ? {...data, ...utmData} : data;
 
@@ -105,6 +163,32 @@ export const Register = () => {
                         placeholder={'your@email.com'}
                         required
                     />
+
+                    <SimpleGrid verticalSpacing={{base: "md", sm: 0}} cols={{base: 1, sm: 2}} mt="md" mb="md">
+                        <TextInput
+                            {...form.getInputProps('cpf')}
+                            label={t`CPF`}
+                            placeholder="000.000.000-00"
+                        />
+                        <NativeSelect
+                            {...form.getInputProps('blood_type')}
+                            label={t`Blood Type`}
+                            data={bloodTypeOptions}
+                        />
+                    </SimpleGrid>
+
+                    <SimpleGrid verticalSpacing={{base: "md", sm: 0}} cols={{base: 1, sm: 2}} mb="md">
+                        <TextInput
+                            {...form.getInputProps('emergency_contact_name')}
+                            label={t`Emergency Contact`}
+                            placeholder={t`Emergency contact name`}
+                        />
+                        <TextInput
+                            {...form.getInputProps('emergency_contact_phone')}
+                            label={t`Emergency Phone`}
+                            placeholder={t`Emergency phone`}
+                        />
+                    </SimpleGrid>
 
                     <SimpleGrid verticalSpacing={{base: "md", sm: 0}} cols={{base: 1, sm: 2}} mt="md" mb="md">
                         <PasswordInput

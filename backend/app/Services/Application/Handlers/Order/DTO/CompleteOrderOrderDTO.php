@@ -24,6 +24,10 @@ class CompleteOrderOrderDTO extends BaseDTO
         public readonly ?Collection $questions,
         public readonly ?array      $address = [],
         public readonly bool        $opted_into_marketing = false,
+        public readonly ?string     $cpf = null,
+        public readonly ?string     $blood_type = null,
+        public readonly ?string     $emergency_contact_name = null,
+        public readonly ?string     $emergency_contact_phone = null,
     )
     {
     }

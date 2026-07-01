@@ -184,6 +184,12 @@ class CompleteOrderHandler
                 AttendeeDomainObjectAbstract::PUBLIC_ID => IdHelper::publicId(IdHelper::ATTENDEE_PREFIX),
                 AttendeeDomainObjectAbstract::SHORT_ID => $shortId,
                 AttendeeDomainObjectAbstract::LOCALE => $order->getLocale(),
+                AttendeeDomainObjectAbstract::NOTES => $this->buildParticipantNotes(
+                    $isPerOrderCollection ? $orderDTO->cpf : $attendee->cpf,
+                    $isPerOrderCollection ? $orderDTO->blood_type : $attendee->blood_type,
+                    $isPerOrderCollection ? $orderDTO->emergency_contact_name : $attendee->emergency_contact_name,
+                    $isPerOrderCollection ? $orderDTO->emergency_contact_phone : $attendee->emergency_contact_phone,
+                ),
             ];
 
             $createdProductData->push(new CreatedProductDataDTO(
@@ -323,6 +329,12 @@ class CompleteOrderHandler
                     OrderDomainObjectAbstract::FIRST_NAME => $orderDTO->first_name,
                     OrderDomainObjectAbstract::LAST_NAME => $orderDTO->last_name,
                     OrderDomainObjectAbstract::EMAIL => $orderDTO->email,
+                    OrderDomainObjectAbstract::NOTES => $this->buildParticipantNotes(
+                        $orderDTO->cpf,
+                        $orderDTO->blood_type,
+                        $orderDTO->emergency_contact_name,
+                        $orderDTO->emergency_contact_phone,
+                    ),
                     OrderDomainObjectAbstract::PAYMENT_STATUS => $order->isPaymentRequired()
                         ? OrderPaymentStatus::AWAITING_PAYMENT->name
                         : OrderPaymentStatus::NO_PAYMENT_REQUIRED->name,
@@ -344,6 +356,26 @@ class CompleteOrderHandler
         }
 
         return $updatedOrder;
+    }
+
+    private function buildParticipantNotes(
+        ?string $cpf,
+        ?string $bloodType,
+        ?string $emergencyContactName,
+        ?string $emergencyContactPhone,
+    ): ?string
+    {
+        $notes = collect([
+            __('CPF') => $cpf,
+            __('Blood type') => $bloodType,
+            __('Emergency contact') => $emergencyContactName,
+            __('Emergency phone') => $emergencyContactPhone,
+        ])
+            ->filter(fn(?string $value) => filled($value))
+            ->map(fn(string $value, string $label) => $label . ': ' . $value)
+            ->implode(PHP_EOL);
+
+        return $notes === '' ? null : $notes;
     }
 
     /**

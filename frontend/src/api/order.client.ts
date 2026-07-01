@@ -14,6 +14,10 @@ export interface OrderDetails {
     first_name: string,
     last_name: string,
     email: string,
+    cpf?: string,
+    blood_type?: string,
+    emergency_contact_name?: string,
+    emergency_contact_phone?: string,
 }
 
 export interface AttendeeDetails extends OrderDetails {
